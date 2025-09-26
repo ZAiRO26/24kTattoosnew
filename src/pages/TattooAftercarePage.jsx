@@ -1,63 +1,26 @@
-import React from 'react'
-import { Shield, Clock, Droplets, Heart } from 'lucide-react'
+import React from 'react';
 
-const TattooAftercarePage = () => {
-  const aftercareSteps = [
-    {
-      icon: <Shield className="text-red-400" size={24} />,
-      title: "Keep It Clean",
-      description: "Gently wash your tattoo with mild, fragrance-free soap twice daily. Pat dry with a clean towel."
-    },
-    {
-      icon: <Droplets className="text-red-400" size={24} />,
-      title: "Moisturize Regularly",
-      description: "Apply a thin layer of fragrance-free moisturizer 2-3 times daily to keep the skin hydrated."
-    },
-    {
-      icon: <Clock className="text-red-400" size={24} />,
-      title: "Be Patient",
-      description: "Healing takes 2-4 weeks. Avoid picking at scabs and let the natural healing process occur."
-    },
-    {
-      icon: <Heart className="text-red-400" size={24} />,
-      title: "Protect Your Investment",
-      description: "Avoid sun exposure, swimming, and tight clothing during the healing process."
-    }
-  ]
+const TattooAftercarePage = () => (
+  <div className="pt-16 min-h-screen bg-black text-white">
+    <section className="max-w-4xl mx-auto px-4 py-16">
+      <h1 className="text-4xl md:text-5xl font-bold mb-6 text-yellow-400">Tattoo Aftercare</h1>
+      <p className="text-lg text-gray-300 mb-6">
+        Proper aftercare is essential for a beautiful, healthy tattoo. Follow these guidelines to ensure the best healing and long-lasting results:
+      </p>
+      <ul className="list-disc pl-6 text-gray-300 mb-6 space-y-2">
+        <li>Leave the bandage on for 2-4 hours after your tattoo is finished.</li>
+        <li>Wash your hands before touching your tattoo.</li>
+        <li>Gently wash the tattoo with mild, fragrance-free soap and warm water.</li>
+        <li>Pat dry with a clean towel—do not rub.</li>
+        <li>Apply a thin layer of recommended ointment or fragrance-free lotion.</li>
+        <li>Avoid soaking, swimming, or sun exposure during healing.</li>
+        <li>Do not pick or scratch at scabs or peeling skin.</li>
+        <li>Contact your artist or studio if you have any concerns.</li>
+      </ul>
+      <p className="text-gray-400 text-sm mt-8">For more information, ask your artist or visit our FAQ page.</p>
+    </section>
+  </div>
+);
 
-  return (
-    <div className="pt-16">
-      <section className="relative py-20 bg-gray-900">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 gradient-text">
-              Tattoo Aftercare
-            </h1>
-            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-              Proper aftercare is essential for beautiful, long-lasting tattoos. Follow these guidelines for optimal healing.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-20 bg-black">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 gap-8">
-            {aftercareSteps.map((step, index) => (
-              <div key={index} className="bg-gray-900 p-8 rounded-lg">
-                <div className="w-16 h-16 bg-red-600 rounded-full mb-4 flex items-center justify-center">
-                  {step.icon}
-                </div>
-                <h3 className="text-xl font-bold mb-3">{step.title}</h3>
-                <p className="text-gray-400">{step.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-    </div>
-  )
-}
-
-export default TattooAftercarePage
+export default TattooAftercarePage;
 

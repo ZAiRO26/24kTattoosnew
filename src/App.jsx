@@ -3,6 +3,10 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
 import Header from './components/Header'
 import TattooGalleriesPage from './pages/TattooGalleriesPage'
+import TattoosPage from './pages/TattoosPage'
+import TattooArtistsPage from './pages/TattooArtistsPage'
+import TattooAftercarePage from './pages/TattooAftercarePage'
+import TattooPoliciesPage from './pages/TattooPoliciesPage'
 
 // Simple HomePage without complex components
 const SimpleHomePage = () => {
@@ -134,7 +138,11 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<SimpleHomePage />} />
+          <Route path="/tattoos" element={<TattoosPage />} />
           <Route path="/tattoos/galleries" element={<TattooGalleriesPage />} />
+          <Route path="/tattoos/artists" element={<TattooArtistsPage />} />
+          <Route path="/tattoos/aftercare" element={<TattooAftercarePage />} />
+          <Route path="/tattoos/policies" element={<TattooPoliciesPage />} />
         </Routes>
       </div>
     </Router>
