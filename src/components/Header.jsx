@@ -62,9 +62,11 @@ const Header = () => {
               {navigationItems.map((item) => (
                 <li key={item.name} className="relative group">
                   {item.dropdown ? (
-                    <>
-                      <button
-                        className={`uppercase font-semibold tracking-wide px-2 py-1 transition-colors duration-200 ${isActive(item.path) ? 'text-yellow-400' : 'text-gray-200'} hover:text-yellow-400 flex items-center gap-1`}
+                    <div className="relative flex items-center">
+                      <Link
+                        to={item.name === 'Tattoos' ? '/tattoos' : item.path}
+                        className={`uppercase font-semibold tracking-wide px-2 py-1 transition-colors duration-200 flex items-center gap-1 ${isActive(item.name === 'Tattoos' ? '/tattoos' : item.path) ? 'text-yellow-400' : 'text-gray-200'} hover:text-yellow-400`}
+                        onClick={() => setActiveDropdown(null)}
                         onMouseEnter={() => {
                           if (dropdownTimeout) clearTimeout(dropdownTimeout)
                           setActiveDropdown(item.name)
@@ -76,7 +78,7 @@ const Header = () => {
                       >
                         {item.name}
                         <ChevronDown size={16} />
-                      </button>
+                      </Link>
                       <div
                         className={`absolute left-1/2 -translate-x-1/2 top-full mt-3 w-56 bg-black border border-gray-700 rounded-lg shadow-xl z-50 flex flex-col space-y-1 py-2 transition-all duration-200 ${activeDropdown === item.name ? 'block' : 'hidden'} group-hover:block`}
                         onMouseEnter={() => {
@@ -99,7 +101,7 @@ const Header = () => {
                           </Link>
                         ))}
                       </div>
-                    </>
+                    </div>
                   ) : (
                     <Link
                       to={item.path}
