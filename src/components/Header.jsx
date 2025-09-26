@@ -5,6 +5,7 @@ import { Menu, X, ChevronDown } from 'lucide-react'
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [activeDropdown, setActiveDropdown] = useState(null)
+  const [dropdownTimeout, setDropdownTimeout] = useState(null)
   const location = useLocation()
 
   const navigationItems = [
@@ -64,15 +65,28 @@ const Header = () => {
                     <>
                       <button
                         className={`uppercase font-semibold tracking-wide px-2 py-1 transition-colors duration-200 ${isActive(item.path) ? 'text-yellow-400' : 'text-gray-200'} hover:text-yellow-400 flex items-center gap-1`}
-                        onMouseEnter={() => setActiveDropdown(item.name)}
-                        onMouseLeave={() => setActiveDropdown(null)}
+                        onMouseEnter={() => {
+                          if (dropdownTimeout) clearTimeout(dropdownTimeout)
+                          setActiveDropdown(item.name)
+                        }}
+                        onMouseLeave={() => {
+                          const timeout = setTimeout(() => setActiveDropdown(null), 250)
+                          setDropdownTimeout(timeout)
+                        }}
                       >
                         {item.name}
                         <ChevronDown size={16} />
                       </button>
-                      <div className={`absolute left-1/2 -translate-x-1/2 top-full mt-3 w-56 bg-black border border-gray-700 rounded-lg shadow-xl z-50 flex flex-col space-y-1 py-2 transition-all duration-200 ${activeDropdown === item.name ? 'block' : 'hidden'} group-hover:block`}
-                        onMouseEnter={() => setActiveDropdown(item.name)}
-                        onMouseLeave={() => setActiveDropdown(null)}
+                      <div
+                        className={`absolute left-1/2 -translate-x-1/2 top-full mt-3 w-56 bg-black border border-gray-700 rounded-lg shadow-xl z-50 flex flex-col space-y-1 py-2 transition-all duration-200 ${activeDropdown === item.name ? 'block' : 'hidden'} group-hover:block`}
+                        onMouseEnter={() => {
+                          if (dropdownTimeout) clearTimeout(dropdownTimeout)
+                          setActiveDropdown(item.name)
+                        }}
+                        onMouseLeave={() => {
+                          const timeout = setTimeout(() => setActiveDropdown(null), 250)
+                          setDropdownTimeout(timeout)
+                        }}
                       >
                         {item.dropdown.map((subItem) => (
                           <Link

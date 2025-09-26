@@ -1,6 +1,8 @@
 import React from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+
 import Header from './components/Header'
+import TattooGalleriesPage from './pages/TattooGalleriesPage'
 
 // Simple HomePage without complex components
 const SimpleHomePage = () => {
@@ -132,6 +134,7 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<SimpleHomePage />} />
+          <Route path="/tattoos/galleries" element={<TattooGalleriesPage />} />
         </Routes>
       </div>
     </Router>
