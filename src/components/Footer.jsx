@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Facebook, Instagram, Pinterest } from 'lucide-react'
+import { Facebook, Instagram } from 'lucide-react'
+import { FaPinterest } from 'react-icons/fa'
 
 
 const Footer = () => {
@@ -40,7 +41,7 @@ const Footer = () => {
             <div className="flex gap-4 justify-center md:justify-start">
               <a href="#" className="bg-[#3a3533] p-3 rounded"><Facebook className="text-white w-6 h-6" /></a>
               <a href="#" className="bg-[#3a3533] p-3 rounded"><Instagram className="text-white w-6 h-6" /></a>
-              <a href="#" className="bg-[#3a3533] p-3 rounded"><Pinterest className="text-white w-6 h-6" /></a>
+              <a href="#" className="bg-[#3a3533] p-3 rounded"><FaPinterest className="text-white w-6 h-6" /></a>
             </div>
           </div>
         </div>
