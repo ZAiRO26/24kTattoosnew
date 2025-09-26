@@ -24,3 +24,4 @@ const TattooAftercarePage = () => (
 
 export default TattooAftercarePage;
 
+

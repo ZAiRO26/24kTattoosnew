@@ -33,8 +33,8 @@ const TattoosPage = () => (
       </div>
       <p className="text-gray-400 text-sm mt-8">
         Follow us: {' '}
-        <a href="https://www.facebook.com/SlavetotheNeedleTattoo" target="_blank" rel="noopener noreferrer" className="hover:underline text-blue-400">Facebook</a>{' | '}
-        <a href="https://www.instagram.com/slavetotheneedle/?hl=en" target="_blank" rel="noopener noreferrer" className="hover:underline text-pink-400">Instagram</a>{' | '}
+  {/* Facebook link removed for rebranding */}
+  {/* Instagram link removed for rebranding */}
         <a href="http://pinterest.com/seattletattooer/" target="_blank" rel="noopener noreferrer" className="hover:underline text-red-400">Pinterest</a>
       </p>
     </section>

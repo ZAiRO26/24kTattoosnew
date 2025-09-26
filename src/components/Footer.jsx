@@ -2,75 +2,52 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { Facebook, Instagram, Pinterest } from 'lucide-react'
 
+
 const Footer = () => {
   return (
-    <footer className="bg-gray-900 py-12">
+    <footer className="bg-[#181818] border-t border-b border-yellow-700 py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid md:grid-cols-3 gap-8 mb-8">
-          {/* Ballard Location */}
+        <div className="grid md:grid-cols-3 gap-8 mb-8 text-center md:text-left">
+          {/* BALLARD */}
           <div>
-            <h3 className="text-lg font-bold mb-4">Ballard</h3>
-            <div className="space-y-2 text-gray-400">
-              <p><strong>Address:</strong></p>
-              <p>508 NW 65th Street Seattle, WA 98117</p>
-              <p><strong>Phone Number:</strong></p>
-              <p>206-789-2618</p>
+            <h3 className="text-2xl font-serif font-bold mb-4 text-white tracking-wide">BALLARD</h3>
+            <div className="mb-2">
+              <span className="font-bold text-white">ADDRESS</span>
+              <div className="text-gray-200 font-serif text-lg">508 NW 65th Street<br/>Seattle, WA 98117</div>
             </div>
-            <Link 
-              to="/locations#ballard"
-              className="mt-4 bg-red-600 hover:bg-red-700 px-4 py-2 rounded-lg font-semibold transition-colors inline-block text-sm"
-            >
-              Contact Ballard Shop
-            </Link>
+            <div className="mb-2">
+              <span className="font-bold text-white">PHONE NUMBER</span>
+              <div className="text-gray-200 font-serif text-lg">206-789-2618</div>
+            </div>
+            <button className="mt-4 border border-white text-white px-6 py-2 font-bold font-serif text-lg hover:bg-white hover:text-black transition-colors">CONTACT BALLARD SHOP →</button>
           </div>
-
-          {/* Wallingford Location */}
+          {/* WALLINGFORD */}
           <div>
-            <h3 className="text-lg font-bold mb-4">Wallingford</h3>
-            <div className="space-y-2 text-gray-400">
-              <p><strong>Address:</strong></p>
-              <p>403 NE 45th Street Seattle, WA 98105</p>
-              <p><strong>Phone Number:</strong></p>
-              <p>206-545-3685</p>
+            <h3 className="text-2xl font-serif font-bold mb-4 text-white tracking-wide">WALLINGFORD</h3>
+            <div className="mb-2">
+              <span className="font-bold text-white">ADDRESS</span>
+              <div className="text-gray-200 font-serif text-lg">403 NE 45th Street<br/>Seattle, WA 98105</div>
             </div>
-            <Link 
-              to="/locations#wallingford"
-              className="mt-4 bg-red-600 hover:bg-red-700 px-4 py-2 rounded-lg font-semibold transition-colors inline-block text-sm"
-            >
-              Contact Wallingford Shop
-            </Link>
+            <div className="mb-2">
+              <span className="font-bold text-white">PHONE NUMBER</span>
+              <div className="text-gray-200 font-serif text-lg">206-545-3685</div>
+            </div>
+            <button className="mt-4 border border-white text-white px-6 py-2 font-bold font-serif text-lg hover:bg-white hover:text-black transition-colors">CONTACT WALLINGFORD SHOP →</button>
           </div>
-
-          {/* Social Media */}
+          {/* FOLLOW US */}
           <div>
-            <h3 className="text-lg font-bold mb-4">Follow us</h3>
-            <div className="flex space-x-4 mb-4">
-              <Facebook className="text-red-400 hover:text-red-300 cursor-pointer" size={24} />
-              <Instagram className="text-red-400 hover:text-red-300 cursor-pointer" size={24} />
-              <Pinterest className="text-red-400 hover:text-red-300 cursor-pointer" size={24} />
-            </div>
-            <div className="text-gray-400">
-              <p className="mb-2">Stay connected for updates on:</p>
-              <ul className="space-y-1 text-sm">
-                <li>• New artist portfolios</li>
-                <li>• Special promotions</li>
-                <li>• Studio events</li>
-                <li>• Latest tattoo work</li>
-              </ul>
+            <h3 className="text-2xl font-serif font-bold mb-4 text-white tracking-wide">FOLLOW US</h3>
+            <div className="flex gap-4 justify-center md:justify-start">
+              <a href="#" className="bg-[#3a3533] p-3 rounded"><Facebook className="text-white w-6 h-6" /></a>
+              <a href="#" className="bg-[#3a3533] p-3 rounded"><Instagram className="text-white w-6 h-6" /></a>
+              <a href="#" className="bg-[#3a3533] p-3 rounded"><Pinterest className="text-white w-6 h-6" /></a>
             </div>
           </div>
         </div>
-
         {/* Bottom Section */}
-        <div className="border-t border-gray-700 pt-8">
+        <div className="border-t border-yellow-700 pt-8 mt-8">
           <div className="text-center">
-            <div className="text-2xl font-bold gradient-text mb-4">
-              24K TATTOOS
-            </div>
-            <p className="text-gray-400 mb-4">Professional tattoo artistry since 2010</p>
-            <p className="text-gray-500 text-sm">
-              © 2024 24K Tattoos. All rights reserved. | Website Design by Full Circle Web
-            </p>
+            <span className="text-white font-serif text-lg">© 2025 24K Tattoo Hair & oddities</span>
           </div>
         </div>
       </div>

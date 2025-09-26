@@ -1,6 +1,18 @@
+
 import React, { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { Menu, X, ChevronDown } from 'lucide-react'
+
+// Google Fonts import for script and tattoo style
+const fontStyles = `
+  @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Permanent+Marker&display=swap');
+`;
+if (typeof document !== 'undefined' && !document.getElementById('custom-fonts')) {
+  const style = document.createElement('style');
+  style.id = 'custom-fonts';
+  style.innerHTML = fontStyles;
+  document.head.appendChild(style);
+}
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -53,11 +65,36 @@ const Header = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link to="/" className="text-3xl font-extrabold tracking-widest text-yellow-400 uppercase font-tattoo">
-            24K Tattoos
+          <Link to="/" className="flex flex-col items-center gap-0 select-none" style={{textDecoration: 'none', lineHeight: 1}}>
+            <span style={{
+              fontFamily: 'Great Vibes, cursive',
+              fontSize: '2.1rem',
+              color: 'white',
+              fontWeight: 400,
+              letterSpacing: '0.02em',
+              marginBottom: '-0.3em',
+              textShadow: '2px 2px 8px #000, 0 0 2px #000'
+            }}>
+              24K Tattoo Hair & oddities
+            </span>
+            <span style={{
+              fontFamily: 'Permanent Marker, sans-serif',
+              fontSize: '2.2rem',
+              color: '#e53e3e',
+              fontWeight: 700,
+              letterSpacing: '0.08em',
+              textTransform: 'uppercase',
+              textShadow: '2px 2px 8px #000, 0 0 2px #000'
+            }}>
+              TATTOO
+            </span>
           </Link>
           {/* Desktop Nav */}
           <div className="hidden lg:flex flex-1 justify-center">
+            <a href="https://www.instagram.com/xxivk.in/?hl=en" target="_blank" rel="noopener noreferrer" className="ml-8 text-pink-400 hover:text-pink-600 font-semibold text-lg flex items-center">
+              <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24" className="mr-1"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.334 3.608 1.308.974.974 1.246 2.241 1.308 3.608.058 1.266.069 1.646.069 4.85s-.012 3.584-.07 4.85c-.062 1.366-.334 2.633-1.308 3.608-.974.974-2.241 1.246-3.608 1.308-1.266.058-1.646.069-4.85.069s-3.584-.012-4.85-.07c-1.366-.062-2.633-.334-3.608-1.308-.974-.974-1.246-2.241-1.308-3.608C2.175 15.747 2.163 15.367 2.163 12s.012-3.584.07-4.85c.062-1.366.334-2.633 1.308-3.608.974-.974 2.241-1.246 3.608-1.308C8.416 2.175 8.796 2.163 12 2.163zm0-2.163C8.741 0 8.332.013 7.052.072 5.771.131 4.659.425 3.678 1.406c-.98.98-1.274 2.092-1.333 3.374C2.013 8.332 2 8.741 2 12c0 3.259.013 3.668.072 4.948.059 1.282.353 2.394 1.333 3.374.98.98 2.092 1.274 3.374 1.333C8.332 23.987 8.741 24 12 24s3.668-.013 4.948-.072c1.282-.059 2.394-.353 3.374-1.333.98-.98 1.274-2.092 1.333-3.374.059-1.28.072-1.689.072-4.948s-.013-3.668-.072-4.948c-.059-1.282-.353-2.394-1.333-3.374-.98-.98-2.092-1.274-3.374-1.333C15.668.013 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.162a3.999 3.999 0 1 1 0-7.998 3.999 3.999 0 0 1 0 7.998zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+              Instagram
+            </a>
             <ul className="flex space-x-8">
               {navigationItems.map((item) => (
                 <li key={item.name} className="relative group">

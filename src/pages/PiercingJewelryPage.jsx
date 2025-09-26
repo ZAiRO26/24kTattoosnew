@@ -13,7 +13,7 @@ const PiercingJewelryPage = () => (
           Whether you are looking for classic studs, hoops, or unique statement pieces, our team can help you find the perfect jewelry for your new or existing piercing. All jewelry is sterilized and safe for initial piercings.
         </p>
         <img
-          src="https://slavetotheneedle.com/wp-content/uploads/2014/07/DSC00530.1-731x1024.jpg.webp"
+          src="/tattoo-hero-logo.png"
           alt="Piercing Jewelry Display"
           className="mx-auto rounded-lg shadow-lg mb-6"
           style={{maxWidth: 350}}
@@ -25,4 +25,5 @@ const PiercingJewelryPage = () => (
 );
 
 export default PiercingJewelryPage;
+
 

@@ -2,54 +2,55 @@ import React from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
 import Header from './components/Header'
+import Footer from './components/Footer'
+import CustomCursor from './components/CustomCursor'
 import TattooGalleriesPage from './pages/TattooGalleriesPage'
 import TattoosPage from './pages/TattoosPage'
 import TattooArtistsPage from './pages/TattooArtistsPage'
 import TattooAftercarePage from './pages/TattooAftercarePage'
 import TattooPoliciesPage from './pages/TattooPoliciesPage'
+import PiercingPage from './pages/PiercingPage';
+import PiercingJewelryPage from './pages/PiercingJewelryPage';
+import PiercingAftercarePage from './pages/PiercingAftercarePage';
+import PiercingPricingPage from './pages/PiercingPricingPage';
+import PiercingPoliciesPage from './pages/PiercingPoliciesPage';
 
-// Simple HomePage without complex components
+
+// Simple HomePage styled to match the provided snip
 const SimpleHomePage = () => {
   return (
     <div className="pt-16">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center">
-        <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/50">
-          <div className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-40"
-               style={{backgroundImage: `url(https://images.unsplash.com/photo-1565058379802-bbe93b2f703a?w=1200&h=800&fit=crop)`}}>
-          </div>
+      <section className="relative min-h-screen flex items-center justify-start">
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{backgroundImage: `url(https://images.unsplash.com/photo-1565058379802-bbe93b2f703a?w=1200&h=800&fit=crop)`}}></div>
+          <div className="absolute inset-0 bg-black opacity-60"></div>
         </div>
-        
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 gradient-text">
-              24K TATTOOS
+        <div className="relative z-10 flex flex-col md:flex-row w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 items-center justify-between">
+          {/* Left: Main Heading and Button */}
+          <div className="md:w-2/3 w-full text-left flex flex-col items-center md:items-start">
+            <img 
+              src="/tattoo-hero-logo.png"
+              alt="24K Tattoo Hair & oddities Logo"
+              className="mb-6" 
+              style={{ maxWidth: 320, width: '100%', height: 'auto', filter: 'drop-shadow(0 2px 12px #0008)' }}
+            />
+            <h1 className="text-6xl md:text-7xl font-extrabold mb-4 text-yellow-400 leading-tight uppercase" style={{letterSpacing: '-2px'}}>
+              24K Tattoo Hair & oddities
             </h1>
-            <p className="text-xl md:text-2xl mb-4 text-gray-300">
-              Seattle's Premier Tattoo & Piercing Studio
-            </p>
-            <p className="text-lg mb-8 text-gray-400 max-w-2xl mx-auto">
-              Bring Your Artistic Vision to Life with Seattle's Premier Tattoo & Piercing Artists at 24K Tattoos
-            </p>
-            <div className="space-x-4">
-              <button className="bg-red-600 hover:bg-red-700 px-8 py-3 rounded-lg font-semibold transition-colors">
-                Browse our Artists
-              </button>
-              <button className="border border-red-600 hover:bg-red-600 px-8 py-3 rounded-lg font-semibold transition-colors">
-                Book Now
-              </button>
-            </div>
+            <p className="text-2xl md:text-3xl font-semibold text-white mb-2">Tattoo & Piercing Studio</p>
+            <p className="text-xl md:text-2xl text-gray-200 mb-6">Hyderabad</p>
+            <button className="mt-8 bg-red-700 hover:bg-red-800 px-8 py-4 rounded-none font-bold text-lg text-white tracking-wide transition-colors shadow-lg" style={{borderRadius: 0, border: 'none'}}>
+              BROWSE OUR ARTISTS <span className="ml-2">&#8594;</span>
+            </button>
           </div>
-        </div>
-      </section>
-
-      {/* Walk Ins Welcome Section */}
-      <section className="py-20 bg-gray-900">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">Walk Ins Welcome</h2>
-          <p className="text-xl text-gray-400 mb-8">
-            No appointment needed! Come visit us during business hours for consultations and walk-in tattoos.
-          </p>
+          {/* Right: Walk Ins Welcome */}
+          <div className="md:w-1/3 w-full mt-12 md:mt-0 md:pl-12 flex flex-col items-end">
+            <h2 className="text-3xl md:text-4xl font-bold mb-2 text-red-600 text-right">Walk Ins Welcome</h2>
+            <p className="text-lg md:text-xl text-white text-right max-w-xs">
+              Bring Your Artistic Vision to Life with Hyderabad’s Premier Tattoo & Piercing Artists at 24K Tattoo Hair & oddities
+            </p>
+          </div>
         </div>
       </section>
 
@@ -134,16 +135,25 @@ const SimpleHomePage = () => {
 function App() {
   return (
     <Router>
-      <div className="min-h-screen bg-black text-white">
+      <div className="min-h-screen bg-black text-white flex flex-col min-h-screen">
+        <CustomCursor />
         <Header />
-        <Routes>
-          <Route path="/" element={<SimpleHomePage />} />
-          <Route path="/tattoos" element={<TattoosPage />} />
-          <Route path="/tattoos/galleries" element={<TattooGalleriesPage />} />
-          <Route path="/tattoos/artists" element={<TattooArtistsPage />} />
-          <Route path="/tattoos/aftercare" element={<TattooAftercarePage />} />
-          <Route path="/tattoos/policies" element={<TattooPoliciesPage />} />
-        </Routes>
+        <div className="flex-1">
+          <Routes>
+            <Route path="/" element={<SimpleHomePage />} />
+            <Route path="/tattoos" element={<TattoosPage />} />
+            <Route path="/tattoos/galleries" element={<TattooGalleriesPage />} />
+            <Route path="/tattoos/artists" element={<TattooArtistsPage />} />
+            <Route path="/tattoos/aftercare" element={<TattooAftercarePage />} />
+            <Route path="/tattoos/policies" element={<TattooPoliciesPage />} />
+            <Route path="/piercings" element={<PiercingPage />} />
+            <Route path="/piercings/jewelry" element={<PiercingJewelryPage />} />
+            <Route path="/piercings/aftercare" element={<PiercingAftercarePage />} />
+            <Route path="/piercings/pricing" element={<PiercingPricingPage />} />
+            <Route path="/piercings/policies" element={<PiercingPoliciesPage />} />
+          </Routes>
+        </div>
+        <Footer />
       </div>
     </Router>
   )

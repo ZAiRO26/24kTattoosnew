@@ -38,7 +38,7 @@ const PiercingPage = () => {
           </p>
           <div className="flex flex-col md:flex-row gap-8 items-center">
             <img
-              src="https://slavetotheneedle.com/wp-content/uploads/2014/07/DSC00530.1-731x1024.jpg.webp"
+              src="/tattoo-hero-logo.png"
               alt="Close-up of an ear with multiple piercings, including a cartilage piercing with a small chain, two lobe piercings with a pink and blue stud, and a helix piercing with a circular stud."
               className="w-full md:w-1/2 rounded-lg shadow-lg mb-6 md:mb-0"
               style={{maxWidth: 350}}
@@ -80,8 +80,8 @@ const PiercingPage = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h3 className="text-xl font-bold mb-4 text-gray-200">Follow Us</h3>
           <div className="flex flex-wrap justify-center gap-6 mb-4">
-            <a href="https://www.facebook.com/SlavetotheNeedleTattoo" target="_blank" rel="noopener noreferrer" className="text-red-400 underline">Facebook</a>
-            <a href="https://www.instagram.com/slavetotheneedle/?hl=en" target="_blank" rel="noopener noreferrer" className="text-red-400 underline">Instagram</a>
+            {/* Facebook link removed for rebranding */}
+            {/* Instagram link removed for rebranding */}
             <a href="http://pinterest.com/seattletattooer/" target="_blank" rel="noopener noreferrer" className="text-red-400 underline">Pinterest</a>
           </div>
         </div>
@@ -91,4 +91,5 @@ const PiercingPage = () => {
 };
 
 export default PiercingPage;
+
 
