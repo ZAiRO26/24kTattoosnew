@@ -1,9 +1,11 @@
+import FAQSection from './components/FAQSection';
+import HeroSlider from './components/HeroSlider';
 import React from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
 import Header from './components/Header'
 import Footer from './components/Footer'
-import CustomCursor from './components/CustomCursor'
+
 import TattooGalleriesPage from './pages/TattooGalleriesPage'
 import TattoosPage from './pages/TattoosPage'
 import TattooArtistsPage from './pages/TattooArtistsPage'
@@ -16,115 +18,95 @@ import PiercingPricingPage from './pages/PiercingPricingPage';
 import PiercingPoliciesPage from './pages/PiercingPoliciesPage';
 
 
-// Simple HomePage styled to match the provided snip
-const SimpleHomePage = () => {
+
+// Redesigned HomePage matching the provided reference
+const HomePage = () => {
   return (
-    <div className="pt-16">
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-start">
-        <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{backgroundImage: `url(https://images.unsplash.com/photo-1565058379802-bbe93b2f703a?w=1200&h=800&fit=crop)`}}></div>
-          <div className="absolute inset-0 bg-black opacity-60"></div>
-        </div>
-        <div className="relative z-10 flex flex-col md:flex-row w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 items-center justify-between">
-          {/* Left: Main Heading and Button */}
-          <div className="md:w-2/3 w-full text-left flex flex-col items-center md:items-start">
-            <img 
-              src="/tattoo-hero-logo.png"
-              alt="24K Tattoo Hair & oddities Logo"
-              className="mb-6" 
-              style={{ maxWidth: 320, width: '100%', height: 'auto', filter: 'drop-shadow(0 2px 12px #0008)' }}
-            />
-            <h1 className="text-6xl md:text-7xl font-extrabold mb-4 text-yellow-400 leading-tight uppercase" style={{letterSpacing: '-2px'}}>
-              24K Tattoo Hair & oddities
-            </h1>
-            <p className="text-2xl md:text-3xl font-semibold text-white mb-2">Tattoo & Piercing Studio</p>
-            <p className="text-xl md:text-2xl text-gray-200 mb-6">Hyderabad</p>
-            <button className="mt-8 bg-red-700 hover:bg-red-800 px-8 py-4 rounded-none font-bold text-lg text-white tracking-wide transition-colors shadow-lg" style={{borderRadius: 0, border: 'none'}}>
-              BROWSE OUR ARTISTS <span className="ml-2">&#8594;</span>
-            </button>
-          </div>
-          {/* Right: Walk Ins Welcome */}
-          <div className="md:w-1/3 w-full mt-12 md:mt-0 md:pl-12 flex flex-col items-end">
-            <h2 className="text-3xl md:text-4xl font-bold mb-2 text-red-600 text-right">Walk Ins Welcome</h2>
-            <p className="text-lg md:text-xl text-white text-right max-w-xs">
-              Bring Your Artistic Vision to Life with Hyderabad’s Premier Tattoo & Piercing Artists at 24K Tattoo Hair & oddities
-            </p>
-          </div>
-        </div>
-      </section>
+  <div className="pt-0 bg-white text-gray-900">
+      {/* Hero Section with Slider */}
+      <HeroSlider />
 
       {/* Welcome Section */}
-      <section className="py-20 bg-black">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-4xl md:text-5xl font-bold mb-6">Welcome to 24K Tattoos</h2>
-              <p className="text-lg text-gray-400 mb-6">
-                Your destination for exceptional tattoo artists in Seattle. Situated in the heart of the city's lively art community, our studio is renowned for its artistic expertise.
-              </p>
-              <p className="text-lg text-gray-400 mb-8">
-                From elaborate tattoos to precise piercings, each piece reflects our unwavering commitment to quality.
-              </p>
-            </div>
-            <div className="grid grid-cols-2 gap-4">
-              <img 
-                src="https://images.unsplash.com/photo-1565058379802-bbe93b2f703a?w=400&h=400&fit=crop"
-                alt="Tattoo artist at work"
-                className="w-full h-64 object-cover rounded-lg"
-              />
-              <img 
-                src="https://images.unsplash.com/photo-1611501275019-9b5cda994e8d?w=400&h=400&fit=crop"
-                alt="Tattoo studio interior"
-                className="w-full h-64 object-cover rounded-lg"
-              />
-            </div>
+  <section className="bg-black py-12 border-b border-gray-800">
+        <div className="max-w-5xl mx-auto px-4 flex flex-col md:flex-row gap-8 items-center">
+          <div className="flex-1">
+            <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">WELCOME TO <span className="text-yellow-400">24K TATTOO HAIR & ODDITIES</span></h2>
+            <p className="text-gray-200 mb-4">Your destination for exceptional tattoo artists. Our studio is renowned for its artistic expertise and commitment to quality.</p>
+            <button className="bg-yellow-400 hover:bg-yellow-500 px-6 py-2 font-bold text-black tracking-wide transition-colors shadow-lg uppercase rounded-none" style={{borderRadius:0}}>BOOK AN APPOINTMENT</button>
+          </div>
+          <div className="flex-1 grid grid-cols-2 gap-4">
+            <img src="/tattoo1.jpg" alt="Tattoo 1" className="w-full h-40 object-cover rounded border border-gray-800" />
+            <img src="/tattoo2.jpg" alt="Tattoo 2" className="w-full h-40 object-cover rounded" />
+            <img src="/tattoo3.jpg" alt="Tattoo 3" className="w-full h-40 object-cover rounded" />
+            <img src="/tattoo4.jpg" alt="Tattoo 4" className="w-full h-40 object-cover rounded" />
           </div>
         </div>
       </section>
 
-      {/* Locations Section */}
-      <section className="py-20 bg-gray-900">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">Our Locations</h2>
+      {/* What We Do Best Section */}
+  <section className="bg-black py-12 border-b border-gray-800">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">WHAT <span className="text-yellow-400">WE DO BEST</span></h2>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+            {/* Example tattoo categories */}
+            <div className="bg-black/60 p-2 rounded text-center">
+              <img src="/tattoo5.jpg" alt="Animal Tattoos" className="w-full h-32 object-cover rounded mb-2" />
+              <span className="text-white text-sm font-semibold">ANIMAL TATTOOS</span>
+            </div>
+            <div className="bg-black/60 p-2 rounded text-center">
+              <img src="/tattoo6.jpg" alt="Traditional Tattoos" className="w-full h-32 object-cover rounded mb-2" />
+              <span className="text-white text-sm font-semibold">TRADITIONAL TATTOOS</span>
+            </div>
+            <div className="bg-black/60 p-2 rounded text-center">
+              <img src="/tattoo7.jpg" alt="Neo-Traditional Tattoos" className="w-full h-32 object-cover rounded mb-2" />
+              <span className="text-white text-sm font-semibold">NEO-TRADITIONAL TATTOOS</span>
+            </div>
+            <div className="bg-black/60 p-2 rounded text-center">
+              <img src="/tattoo8.jpg" alt="Dragon Tattoos" className="w-full h-32 object-cover rounded mb-2" />
+              <span className="text-white text-sm font-semibold">DRAGON TATTOOS</span>
+            </div>
           </div>
+          <div className="flex justify-center">
+            <button className="bg-black text-white border border-white px-6 py-2 rounded-none font-bold uppercase tracking-widest hover:bg-white hover:text-black transition-colors">SHOW FULL GALLERY</button>
+          </div>
+        </div>
+      </section>
 
-          <div className="grid md:grid-cols-2 gap-12">
-            {/* Ballard Location */}
-            <div className="bg-black/50 p-8 rounded-lg">
-              <h3 className="text-2xl font-bold mb-4">Ballard</h3>
-              <h4 className="text-lg font-semibold mb-4">24K Tattoos & Body Piercing</h4>
-              <p className="text-red-400 mb-6 font-semibold">PIERCING AT BALLARD LOCATION ONLY</p>
-              
-              <div className="space-y-4">
-                <div>
-                  <h5 className="font-semibold">Address</h5>
-                  <p className="text-gray-400">508 NW 65th Street Seattle, WA 98117</p>
-                </div>
-                <div>
-                  <h5 className="font-semibold">Call us</h5>
-                  <p className="text-gray-400">206-789-2618</p>
-                </div>
-              </div>
-            </div>
+      {/* Piercing Section */}
+      <section className="bg-black py-12 border-b border-gray-800">
+        <div className="max-w-5xl mx-auto px-4 flex flex-col md:flex-row gap-8 items-center">
+          <div className="flex-1">
+            <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">PIERCING</h2>
+            <p className="text-gray-200 mb-4">Piercing artistry at its finest. Our experienced piercers offer a wide range of services in a safe, clean, and welcoming environment.</p>
+            <button className="bg-red-700 hover:bg-red-800 px-6 py-2 font-bold text-white tracking-wide transition-colors shadow-lg uppercase rounded-none" style={{borderRadius:0}}>BOOK A PIERCING APPOINTMENT</button>
+          </div>
+          <div className="flex-1 grid grid-cols-2 gap-4">
+            <img src="/piercing1.jpg" alt="Piercing 1" className="w-full h-40 object-cover rounded" />
+            <img src="/piercing2.jpg" alt="Piercing 2" className="w-full h-40 object-cover rounded" />
+          </div>
+        </div>
+      </section>
 
-            {/* Wallingford Location */}
-            <div className="bg-black/50 p-8 rounded-lg">
-              <h3 className="text-2xl font-bold mb-4">Wallingford</h3>
-              <h4 className="text-lg font-semibold mb-4">24K Tattoos</h4>
-              
-              <div className="space-y-4">
-                <div>
-                  <h5 className="font-semibold">Address</h5>
-                  <p className="text-gray-400">403 NE 45th Street Seattle, WA 98105</p>
-                </div>
-                <div>
-                  <h5 className="font-semibold">Call us</h5>
-                  <p className="text-gray-400">206-545-3685</p>
-                </div>
-              </div>
-            </div>
+      {/* FAQ Section */}
+      <section className="bg-black py-16">
+        <div className="max-w-4xl mx-auto px-4">
+          <h2 className="text-4xl md:text-5xl font-serif font-bold text-white mb-12 text-left">Frequently Asked Questions</h2>
+          <FAQSection />
+        </div>
+      </section>
+
+
+
+
+      {/* Instagram / Gallery Section */}
+      <section className="bg-[#7a1818] py-12">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-2xl md:text-3xl font-bold text-white mb-8">ON INSTAGRAM</h2>
+          <div className="grid grid-cols-2 md:grid-cols-6 gap-4">
+            {/* Placeholder images for Instagram gallery */}
+            {[...Array(12)].map((_, i) => (
+              <img key={i} src={`/insta${i+1}.jpg`} alt={`Instagram ${i+1}`} className="w-full h-32 object-cover rounded" />
+            ))}
           </div>
         </div>
       </section>
@@ -136,11 +118,10 @@ function App() {
   return (
     <Router>
       <div className="min-h-screen bg-black text-white flex flex-col min-h-screen">
-        <CustomCursor />
         <Header />
         <div className="flex-1">
           <Routes>
-            <Route path="/" element={<SimpleHomePage />} />
+            <Route path="/" element={<HomePage />} />
             <Route path="/tattoos" element={<TattoosPage />} />
             <Route path="/tattoos/galleries" element={<TattooGalleriesPage />} />
             <Route path="/tattoos/artists" element={<TattooArtistsPage />} />

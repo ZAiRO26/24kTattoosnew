@@ -1,59 +1,87 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import { Facebook, Instagram } from 'lucide-react'
-import { FaPinterest } from 'react-icons/fa'
 
+import React from 'react';
+import { FaFacebookF, FaInstagram, FaWhatsapp, FaYoutube, FaArrowUp } from 'react-icons/fa';
 
 const Footer = () => {
+      {/* Scroll to Top Floating Button */}
+      <div className="fixed right-8 bottom-12 z-50">
+        <button
+          className="w-14 h-14 rounded-full bg-green-500 flex items-center justify-center shadow-lg hover:bg-green-600 transition-colors"
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          aria-label="Scroll to top"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="white" className="w-7 h-7">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M12 8l-6 6m6-6l6 6" />
+          </svg>
+        </button>
+      </div>
   return (
-    <footer className="bg-[#181818] border-t border-b border-yellow-700 py-12">
+  <footer className="bg-gray-50 border-t border-gray-200 pt-12 pb-4 text-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid md:grid-cols-3 gap-8 mb-8 text-center md:text-left">
-          {/* BALLARD */}
+        <div className="grid md:grid-cols-4 gap-12 mb-8">
+          {/* Brand/Intro */}
           <div>
-            <h3 className="text-2xl font-serif font-bold mb-4 text-white tracking-wide">BALLARD</h3>
-            <div className="mb-2">
-              <span className="font-bold text-white">ADDRESS</span>
-              <div className="text-gray-200 font-serif text-lg">508 NW 65th Street<br/>Seattle, WA 98117</div>
+              <h2 className="text-3xl font-extrabold mb-4 tracking-tight">24K Tattoo Hair & oddities</h2>
+              <p className="mb-6 text-lg leading-relaxed whitespace-pre-line">Tattoos that tell your story – Since 2005
+  🔱Hyderabad's OG Tattoo Artist🔱</p>
+            <div className="flex gap-4 text-2xl">
+              <a href="#" className="hover:text-green-600"><FaFacebookF /></a>
+              <a href="#" className="hover:text-green-600"><FaInstagram /></a>
+              <a href="#" className="hover:text-green-600"><FaWhatsapp /></a>
+              <a href="#" className="hover:text-green-600"><FaYoutube /></a>
             </div>
-            <div className="mb-2">
-              <span className="font-bold text-white">PHONE NUMBER</span>
-              <div className="text-gray-200 font-serif text-lg">206-789-2618</div>
-            </div>
-            <button className="mt-4 border border-white text-white px-6 py-2 font-bold font-serif text-lg hover:bg-white hover:text-black transition-colors">CONTACT BALLARD SHOP →</button>
           </div>
-          {/* WALLINGFORD */}
+          {/* Quick Links */}
           <div>
-            <h3 className="text-2xl font-serif font-bold mb-4 text-white tracking-wide">WALLINGFORD</h3>
-            <div className="mb-2">
-              <span className="font-bold text-white">ADDRESS</span>
-              <div className="text-gray-200 font-serif text-lg">403 NE 45th Street<br/>Seattle, WA 98105</div>
-            </div>
-            <div className="mb-2">
-              <span className="font-bold text-white">PHONE NUMBER</span>
-              <div className="text-gray-200 font-serif text-lg">206-545-3685</div>
-            </div>
-            <button className="mt-4 border border-white text-white px-6 py-2 font-bold font-serif text-lg hover:bg-white hover:text-black transition-colors">CONTACT WALLINGFORD SHOP →</button>
+            <h3 className="text-xl font-bold mb-4">Quick Links</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="hover:underline">Home</a></li>
+              <li><a href="#" className="hover:underline">About Us</a></li>
+              <li><a href="#" className="hover:underline">Products</a></li>
+              <li><a href="#" className="hover:underline">Blog</a></li>
+              <li><a href="#" className="hover:underline">Contact</a></li>
+            </ul>
           </div>
-          {/* FOLLOW US */}
+          {/* Products */}
           <div>
-            <h3 className="text-2xl font-serif font-bold mb-4 text-white tracking-wide">FOLLOW US</h3>
-            <div className="flex gap-4 justify-center md:justify-start">
-              <a href="#" className="bg-[#3a3533] p-3 rounded"><Facebook className="text-white w-6 h-6" /></a>
-              <a href="#" className="bg-[#3a3533] p-3 rounded"><Instagram className="text-white w-6 h-6" /></a>
-              <a href="#" className="bg-[#3a3533] p-3 rounded"><FaPinterest className="text-white w-6 h-6" /></a>
-            </div>
+            <h3 className="text-xl font-bold mb-4">Products</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="hover:underline">Product 1</a></li>
+              <li><a href="#" className="hover:underline">Product 2</a></li>
+              <li><a href="#" className="hover:underline">Product 3</a></li>
+              <li><a href="#" className="hover:underline">Product 4</a></li>
+              <li><a href="#" className="hover:underline">Product 5</a></li>
+            </ul>
+          </div>
+          {/* Contact Us */}
+          <div>
+            <h3 className="text-xl font-bold mb-4">Contact Us</h3>
+            <ul className="space-y-2 text-base">
+              <li><span className="font-semibold">24K Tattoo Hair & oddities</span></li>
+              <li>Road no 1, entry, near Nagarjuna Circle Road, opp. Mpm Times Square mall, Banjara Hills, near Florists, Hyderabad 500034</li>
+              <li>+91-8178687129</li>
+              <li>email@example.com</li>
+            </ul>
           </div>
         </div>
-        {/* Bottom Section */}
-        <div className="border-t border-yellow-700 pt-8 mt-8">
-          <div className="text-center">
-            <span className="text-white font-serif text-lg">© 2025 24K Tattoo Hair & oddities</span>
-          </div>
+        <hr className="my-6 border-gray-200" />
+        <div className="flex flex-col md:flex-row items-center justify-between text-sm text-gray-500">
+            <span>© 2025 24K Tattoo Hair & oddities. All rights reserved.</span>
         </div>
       </div>
+      {/* Floating Action Buttons */}
+      <div className="fixed left-8 bottom-24 flex flex-col gap-4 z-50">
+        <a
+          href="https://wa.me/918178687129"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="w-14 h-14 rounded-full bg-green-500 flex items-center justify-center shadow-lg hover:bg-green-600 transition-colors"
+        >
+          <FaWhatsapp className="text-white text-2xl" />
+        </a>
+      </div>
     </footer>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;
