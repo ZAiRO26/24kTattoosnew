@@ -17,6 +17,9 @@ import PiercingAftercarePage from './pages/PiercingAftercarePage';
 import PiercingPricingPage from './pages/PiercingPricingPage';
 import PiercingPoliciesPage from './pages/PiercingPoliciesPage';
 import BookNowPage from './pages/BookNowPage';
+import DosAndDontsPage from './pages/DosAndDontsPage';
+import HairServicesPage from './pages/HairServicesPage';
+import PiercingServicesPage from './pages/PiercingServicesPage';
 
 
 
@@ -176,6 +179,9 @@ function App() {
             <Route path="/piercings/pricing" element={<PiercingPricingPage />} />
             <Route path="/piercings/policies" element={<PiercingPoliciesPage />} />
             <Route path="/book-now" element={<BookNowPage />} />
+            <Route path="/dos-and-donts" element={<DosAndDontsPage />} />
+            <Route path="/hair-services" element={<HairServicesPage />} />
+            <Route path="/piercing-services" element={<PiercingServicesPage />} />
           </Routes>
         </div>
         <Footer />

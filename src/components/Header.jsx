@@ -10,11 +10,18 @@ const Header = () => {
   const location = useLocation()
 
   const navigationItems = [
-    { name: 'Welcome', path: '/' },
+    { name: 'Home', path: '/' },
     { name: 'Work', path: '/tattoos/galleries' },
-    { name: 'Shop', path: '/shop' },
-    { name: 'Team', path: '/tattoos/artists' },
-    { name: 'Studios', path: '/locations' },
+    { name: 'About Us', path: '/tattoos/artists' },
+    {
+      name: 'Hair and Piercing',
+      path: '/hair-and-piercing',
+      dropdown: [
+        { name: 'Hair Services', path: '/hair-services' },
+        { name: 'Piercing Services', path: '/piercing-services' }
+      ]
+    },
+    { name: "Do's and Don'ts", path: '/dos-and-donts' },
     { name: 'Contact', path: '/book-now' }
   ]
 
@@ -29,33 +36,82 @@ const Header = () => {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center">
-            <div className="text-2xl font-bold text-minimal-black tracking-wider">
-              24K TATTOO
-            </div>
+            <img 
+              src="/assets/logo1.PNG" 
+              alt="24K Tattoo Hair & Oddities Logo" 
+              className="h-16 w-auto object-contain"
+            />
           </Link>
           
           {/* Desktop Nav */}
-          <div className="hidden lg:flex items-center space-x-8">
+          <div className="hidden lg:flex items-center space-x-8 ml-12">
             {navigationItems.map((item) => (
-              <Link
-                key={item.name}
-                to={item.path}
-                className={`text-sm font-medium tracking-wide transition-colors duration-200 ${
-                  isActive(item.path) 
-                    ? 'text-minimal-black border-b border-minimal-black pb-1' 
-                    : 'text-minimal-gray hover:text-minimal-black'
-                }`}
-              >
-                {item.name}
-              </Link>
+              <div key={item.name} className="relative group">
+                {item.dropdown ? (
+                  <div className="relative flex items-center">
+                    <Link
+                      to={item.path}
+                      className={`text-sm font-medium tracking-wide transition-colors duration-200 flex items-center gap-1 ${
+                        isActive(item.path) 
+                          ? 'text-minimal-black border-b border-minimal-black pb-1' 
+                          : 'text-minimal-gray hover:text-minimal-black'
+                      }`}
+                      onClick={() => setActiveDropdown(null)}
+                      onMouseEnter={() => {
+                        if (dropdownTimeout) clearTimeout(dropdownTimeout)
+                        setActiveDropdown(item.name)
+                      }}
+                      onMouseLeave={() => {
+                        const timeout = setTimeout(() => setActiveDropdown(null), 250)
+                        setDropdownTimeout(timeout)
+                      }}
+                    >
+                      {item.name}
+                      <ChevronDown size={16} />
+                    </Link>
+                    <div
+                      className={`absolute left-1/2 -translate-x-1/2 top-full mt-3 w-56 bg-white border border-minimal-border rounded-lg shadow-xl z-50 flex flex-col space-y-1 py-2 transition-all duration-200 ${
+                        activeDropdown === item.name ? 'block' : 'hidden'
+                      } group-hover:block`}
+                      onMouseEnter={() => {
+                        if (dropdownTimeout) clearTimeout(dropdownTimeout)
+                        setActiveDropdown(item.name)
+                      }}
+                      onMouseLeave={() => {
+                        const timeout = setTimeout(() => setActiveDropdown(null), 250)
+                        setDropdownTimeout(timeout)
+                      }}
+                    >
+                      {item.dropdown.map((subItem) => (
+                        <Link
+                          key={subItem.name}
+                          to={subItem.path}
+                          className="block px-5 py-2 text-base font-medium text-minimal-black hover:bg-minimal-light-gray hover:text-minimal-black transition-colors rounded"
+                          onClick={() => setActiveDropdown(null)}
+                        >
+                          {subItem.name}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                ) : (
+                  <Link
+                    to={item.path}
+                    className={`text-sm font-medium tracking-wide transition-colors duration-200 ${
+                      isActive(item.path) 
+                        ? 'text-minimal-black border-b border-minimal-black pb-1' 
+                        : 'text-minimal-gray hover:text-minimal-black'
+                    }`}
+                  >
+                    {item.name}
+                  </Link>
+                )}
+              </div>
             ))}
           </div>
 
           {/* Right side buttons */}
           <div className="hidden lg:flex items-center space-x-4">
-            <button className="text-sm font-medium text-minimal-black border border-minimal-black px-4 py-2 hover:bg-minimal-black hover:text-white transition-colors duration-200">
-              FINANCE YOUR TATTOO
-            </button>
             <Link
               to="/book-now"
               className="bg-minimal-black text-white px-6 py-2 text-sm font-medium hover:bg-minimal-dark-gray transition-colors duration-200"
@@ -78,23 +134,35 @@ const Header = () => {
           <div className="lg:hidden border-t border-minimal-border bg-white">
             <div className="px-6 py-4 space-y-4">
               {navigationItems.map((item) => (
-                <Link
-                  key={item.name}
-                  to={item.path}
-                  className={`block text-sm font-medium transition-colors ${
-                    isActive(item.path) 
-                      ? 'text-minimal-black' 
-                      : 'text-minimal-gray hover:text-minimal-black'
-                  }`}
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {item.name}
-                </Link>
+                <div key={item.name}>
+                  <Link
+                    to={item.path}
+                    className={`block text-sm font-medium transition-colors ${
+                      isActive(item.path) 
+                        ? 'text-minimal-black' 
+                        : 'text-minimal-gray hover:text-minimal-black'
+                    }`}
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {item.name}
+                  </Link>
+                  {item.dropdown && (
+                    <div className="ml-4 space-y-1">
+                      {item.dropdown.map((subItem) => (
+                        <Link
+                          key={subItem.name}
+                          to={subItem.path}
+                          className="block text-sm text-minimal-gray hover:text-minimal-black transition-colors"
+                          onClick={() => setIsMenuOpen(false)}
+                        >
+                          {subItem.name}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
               ))}
               <div className="pt-4 space-y-3">
-                <button className="block w-full text-sm font-medium text-minimal-black border border-minimal-black px-4 py-2 hover:bg-minimal-black hover:text-white transition-colors duration-200">
-                  FINANCE YOUR TATTOO
-                </button>
                 <Link
                   to="/book-now"
                   className="block w-full bg-minimal-black text-white px-4 py-2 text-sm font-medium text-center hover:bg-minimal-dark-gray transition-colors duration-200"
