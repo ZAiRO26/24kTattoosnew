@@ -3,17 +3,6 @@ import React, { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { Menu, X, ChevronDown } from 'lucide-react'
 
-// Google Fonts import for script and tattoo style
-const fontStyles = `
-  @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Permanent+Marker&display=swap');
-`;
-if (typeof document !== 'undefined' && !document.getElementById('custom-fonts')) {
-  const style = document.createElement('style');
-  style.id = 'custom-fonts';
-  style.innerHTML = fontStyles;
-  document.head.appendChild(style);
-}
-
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [activeDropdown, setActiveDropdown] = useState(null)
@@ -21,39 +10,12 @@ const Header = () => {
   const location = useLocation()
 
   const navigationItems = [
-    { name: 'Home', path: '/' },
-    { name: 'Tattoo Galleries', path: '/tattoos/galleries' },
-    {
-      name: 'About',
-      path: '/tattoos',
-      dropdown: [
-        { name: 'Tattoo Artists', path: '/tattoos/artists' },
-        { name: 'Tattoo Aftercare', path: '/tattoos/aftercare' },
-        { name: 'Tattoo Policies', path: '/tattoos/policies' },
-        { name: 'FAQ', path: '/faq' }
-      ]
-    },
-    {
-      name: 'Piercings',
-      path: '/piercings',
-      dropdown: [
-        { name: 'Piercing Jewelry', path: '/piercings/jewelry' },
-        { name: 'Piercing Aftercare', path: '/piercings/aftercare' },
-        { name: 'Piercing Pricing', path: '/piercings/pricing' },
-        { name: 'Piercing Policies', path: '/piercings/policies' },
-        { name: 'Book Piercing Online', path: '/piercings/book-online' }
-      ]
-    },
-
-
-    {
-      name: 'Locations',
-      path: '/locations',
-      dropdown: [
-        { name: 'Ballard', path: '/locations#ballard' },
-        { name: 'Wallingford', path: '/locations#wallingford' }
-      ]
-    }
+    { name: 'Welcome', path: '/' },
+    { name: 'Work', path: '/tattoos/galleries' },
+    { name: 'Shop', path: '/shop' },
+    { name: 'Team', path: '/tattoos/artists' },
+    { name: 'Studios', path: '/locations' },
+    { name: 'Contact', path: '/book-now' }
   ]
 
   const isActive = (path) => {
@@ -62,129 +24,83 @@ const Header = () => {
   }
 
   return (
-  <nav className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-200 shadow-lg">
-      <div className="max-w-7xl mx-auto px-4 sm:px-8">
-        <div className="flex items-center justify-between h-24">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-minimal-border">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link to="/" className="flex flex-col items-center justify-center h-full select-none" style={{textDecoration: 'none', height: '100%'}}>
-            <img 
-              src="/assets/logo1.PNG" 
-              alt="24K Tattoo Hair & Oddities Logo" 
-              className="object-contain"
-              style={{ height: '70px', maxHeight: '70px', width: 'auto', display: 'block', margin: 0 }}
-            />
+          <Link to="/" className="flex items-center">
+            <div className="text-2xl font-bold text-minimal-black tracking-wider">
+              24K TATTOO
+            </div>
           </Link>
+          
           {/* Desktop Nav */}
-          <div className="hidden lg:flex flex-1 justify-center">
-            <ul className="flex space-x-8">
-              {navigationItems.map((item) => (
-                <li key={item.name} className="relative group">
-                  {item.dropdown ? (
-                    <div className="relative flex items-center">
-                      <Link
-                        to={item.name === 'Tattoos' ? '/tattoos' : item.path}
-                        className={`uppercase font-semibold tracking-wide px-2 py-1 transition-colors duration-200 flex items-center gap-1 ${isActive(item.name === 'Tattoos' ? '/tattoos' : item.path) ? 'text-yellow-600' : 'text-gray-800'} hover:text-yellow-600`}
-                        onClick={() => setActiveDropdown(null)}
-                        onMouseEnter={() => {
-                          if (dropdownTimeout) clearTimeout(dropdownTimeout)
-                          setActiveDropdown(item.name)
-                        }}
-                        onMouseLeave={() => {
-                          const timeout = setTimeout(() => setActiveDropdown(null), 250)
-                          setDropdownTimeout(timeout)
-                        }}
-                      >
-                        {item.name}
-                        <ChevronDown size={16} />
-                      </Link>
-                      <div
-                        className={`absolute left-1/2 -translate-x-1/2 top-full mt-3 w-56 bg-white border border-gray-200 rounded-lg shadow-xl z-50 flex flex-col space-y-1 py-2 transition-all duration-200 ${activeDropdown === item.name ? 'block' : 'hidden'} group-hover:block`}
-                        onMouseEnter={() => {
-                          if (dropdownTimeout) clearTimeout(dropdownTimeout)
-                          setActiveDropdown(item.name)
-                        }}
-                        onMouseLeave={() => {
-                          const timeout = setTimeout(() => setActiveDropdown(null), 250)
-                          setDropdownTimeout(timeout)
-                        }}
-                      >
-                        {item.dropdown.map((subItem) => (
-                          <Link
-                            key={subItem.name}
-                            to={subItem.path}
-                            className="block px-5 py-2 text-base font-medium text-gray-800 hover:bg-gray-200 hover:text-yellow-600 transition-colors rounded"
-                            onClick={() => setActiveDropdown(null)}
-                          >
-                            {subItem.name}
-                          </Link>
-                        ))}
-                      </div>
-                    </div>
-                  ) : (
-                    <Link
-                      to={item.path}
-                      className={`uppercase font-semibold tracking-wide px-2 py-1 transition-colors duration-200 ${isActive(item.path) ? 'text-yellow-600' : 'text-gray-800'} hover:text-yellow-600`}
-                    >
-                      {item.name}
-                    </Link>
-                  )}
-                </li>
-              ))}
-            </ul>
+          <div className="hidden lg:flex items-center space-x-8">
+            {navigationItems.map((item) => (
+              <Link
+                key={item.name}
+                to={item.path}
+                className={`text-sm font-medium tracking-wide transition-colors duration-200 ${
+                  isActive(item.path) 
+                    ? 'text-minimal-black border-b border-minimal-black pb-1' 
+                    : 'text-minimal-gray hover:text-minimal-black'
+                }`}
+              >
+                {item.name}
+              </Link>
+            ))}
           </div>
-          {/* Book Now Button */}
-          <div className="hidden lg:block ml-8">
+
+          {/* Right side buttons */}
+          <div className="hidden lg:flex items-center space-x-4">
+            <button className="text-sm font-medium text-minimal-black border border-minimal-black px-4 py-2 hover:bg-minimal-black hover:text-white transition-colors duration-200">
+              FINANCE YOUR TATTOO
+            </button>
             <Link
-              to="/locations"
-              className="bg-yellow-400 text-black hover:bg-yellow-500 px-7 py-3 rounded-full font-bold uppercase tracking-widest shadow-lg transition-colors duration-200 border-2 border-yellow-400 hover:border-yellow-500"
+              to="/book-now"
+              className="bg-minimal-black text-white px-6 py-2 text-sm font-medium hover:bg-minimal-dark-gray transition-colors duration-200"
             >
-              Book Now
+              BOOK TATTOO APPOINTMENT
             </Link>
           </div>
+
           {/* Mobile Menu Button */}
           <button
-            className="lg:hidden ml-2 p-2 rounded hover:bg-gray-200 focus:outline-none"
+            className="lg:hidden p-2"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
-            {isMenuOpen ? <X /> : <Menu />}
+            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
+
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="lg:hidden bg-white border-t border-gray-200">
-            <div className="px-2 pt-2 pb-3 space-y-1">
+          <div className="lg:hidden border-t border-minimal-border bg-white">
+            <div className="px-6 py-4 space-y-4">
               {navigationItems.map((item) => (
-                <div key={item.name}>
-                  <Link
-                    to={item.path}
-                    className="block px-3 py-2 uppercase font-semibold tracking-wide text-gray-800 hover:text-yellow-600 transition-colors"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    {item.name}
-                  </Link>
-                  {item.dropdown && (
-                    <div className="ml-4 space-y-1">
-                      {item.dropdown.map((subItem) => (
-                        <Link
-                          key={subItem.name}
-                          to={subItem.path}
-                          className="block px-3 py-1 text-sm text-gray-800 hover:text-yellow-600 transition-colors"
-                          onClick={() => setIsMenuOpen(false)}
-                        >
-                          {subItem.name}
-                        </Link>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              ))}
-              <div className="pt-4">
                 <Link
-                  to="/locations"
-                  className="block w-full bg-yellow-400 text-black hover:bg-yellow-500 px-3 py-2 rounded-full font-bold uppercase text-center tracking-widest transition-colors border-2 border-yellow-400 hover:border-yellow-500"
+                  key={item.name}
+                  to={item.path}
+                  className={`block text-sm font-medium transition-colors ${
+                    isActive(item.path) 
+                      ? 'text-minimal-black' 
+                      : 'text-minimal-gray hover:text-minimal-black'
+                  }`}
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  Book Now
+                  {item.name}
+                </Link>
+              ))}
+              <div className="pt-4 space-y-3">
+                <button className="block w-full text-sm font-medium text-minimal-black border border-minimal-black px-4 py-2 hover:bg-minimal-black hover:text-white transition-colors duration-200">
+                  FINANCE YOUR TATTOO
+                </button>
+                <Link
+                  to="/book-now"
+                  className="block w-full bg-minimal-black text-white px-4 py-2 text-sm font-medium text-center hover:bg-minimal-dark-gray transition-colors duration-200"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  BOOK TATTOO APPOINTMENT
                 </Link>
               </div>
             </div>

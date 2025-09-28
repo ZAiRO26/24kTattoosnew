@@ -26,3 +26,4 @@ const PiercingPoliciesPage = () => (
 export default PiercingPoliciesPage;
 
 
+

@@ -60,3 +60,4 @@ const PiercingPricingPage = () => (
 export default PiercingPricingPage;
 
 
+

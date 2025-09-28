@@ -23,3 +23,4 @@ const TattooPoliciesPage = () => (
 export default TattooPoliciesPage;
 
 
+

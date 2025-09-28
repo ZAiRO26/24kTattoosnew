@@ -27,3 +27,4 @@ const PiercingJewelryPage = () => (
 export default PiercingJewelryPage;
 
 
+

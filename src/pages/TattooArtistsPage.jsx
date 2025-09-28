@@ -18,3 +18,4 @@ const TattooArtistsPage = () => (
 export default TattooArtistsPage;
 
 
+

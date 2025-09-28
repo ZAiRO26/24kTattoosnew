@@ -16,32 +16,33 @@ a {
 }
 
 a:hover {
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 body {
   font-family: 'Inter', sans-serif;
-  background-color: #fff;
-  color: #222;
+  background-color: #ffffff;
+  color: #000000;
   line-height: 1.6;
+  font-weight: 400;
 }
 
-/* Custom scrollbar */
+/* Custom scrollbar - minimalistic */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #1f2937;
+  background: #f8f9fa;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #dc2626;
-  border-radius: 4px;
+  background: #000000;
+  border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #b91c1c;
+  background: #333333;
 }
 
 /* Smooth scrolling */
@@ -49,38 +50,86 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Custom animations */
-@keyframes pulse-red {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.7;
-  }
-}
-
-.animate-pulse-red {
-  animation: pulse-red 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-}
-
-/* Gradient text */
-.gradient-text {
-  background: linear-gradient(45deg, #dc2626, #fbbf24, #dc2626);
-  background-size: 200% 200%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: gradient-shift 3s ease infinite;
-}
-
-@keyframes gradient-shift {
+/* Minimalistic animations */
+@keyframes fadeInUp {
   0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
+    opacity: 0;
+    transform: translateY(20px);
   }
   100% {
-    background-position: 0% 50%;
+    opacity: 1;
+    transform: translateY(0);
   }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+/* Clean button styles */
+.btn-minimal {
+  background: #000000;
+  color: #ffffff;
+  border: 1px solid #000000;
+  padding: 12px 24px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 14px;
+}
+
+.btn-minimal:hover {
+  background: #ffffff;
+  color: #000000;
+  border: 1px solid #000000;
+}
+
+.btn-outline {
+  background: transparent;
+  color: #000000;
+  border: 1px solid #000000;
+  padding: 12px 24px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 14px;
+}
+
+.btn-outline:hover {
+  background: #000000;
+  color: #ffffff;
+}
+
+/* Typography */
+.text-minimal {
+  color: #000000;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+.text-minimal-light {
+  color: #666666;
+  font-weight: 300;
+}
+
+/* Clean borders */
+.border-minimal {
+  border: 1px solid #e5e5e5;
+}
+
+.border-minimal-dark {
+  border: 1px solid #000000;
+}
+
+/* Spacing utilities */
+.section-padding {
+  padding: 80px 0;
+}
+
+.container-minimal {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
 }

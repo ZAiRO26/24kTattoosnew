@@ -26,3 +26,4 @@ const PiercingAftercarePage = () => (
 export default PiercingAftercarePage;
 
 
+
