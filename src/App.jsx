@@ -20,6 +20,14 @@ import BookNowPage from './pages/BookNowPage';
 import DosAndDontsPage from './pages/DosAndDontsPage';
 import HairServicesPage from './pages/HairServicesPage';
 import PiercingServicesPage from './pages/PiercingServicesPage';
+import PressSocialsPage from './pages/PressSocialsPage';
+import TattooStylesPage from './pages/TattooStylesPage';
+import OurStoryPage from './pages/OurStoryPage';
+import AboutArtistPage from './pages/AboutArtistPage';
+import StudioPage from './pages/StudioPage';
+import DosAndDontsTattoosPage from './pages/DosAndDontsTattoosPage';
+import DosAndDontsPiercingsPage from './pages/DosAndDontsPiercingsPage';
+import DosAndDontsFAQPage from './pages/DosAndDontsFAQPage';
 
 
 
@@ -170,6 +178,7 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/tattoos" element={<TattoosPage />} />
             <Route path="/tattoos/galleries" element={<TattooGalleriesPage />} />
+            <Route path="/styles" element={<TattooStylesPage />} />
             <Route path="/tattoos/artists" element={<TattooArtistsPage />} />
             <Route path="/tattoos/aftercare" element={<TattooAftercarePage />} />
             <Route path="/tattoos/policies" element={<TattooPoliciesPage />} />
@@ -182,6 +191,13 @@ function App() {
             <Route path="/dos-and-donts" element={<DosAndDontsPage />} />
             <Route path="/hair-services" element={<HairServicesPage />} />
             <Route path="/piercing-services" element={<PiercingServicesPage />} />
+            <Route path="/press-socials" element={<PressSocialsPage />} />
+            <Route path="/about/our-story" element={<OurStoryPage />} />
+            <Route path="/about/artist" element={<AboutArtistPage />} />
+            <Route path="/about/studio" element={<StudioPage />} />
+            <Route path="/dos-and-donts/tattoos" element={<DosAndDontsTattoosPage />} />
+            <Route path="/dos-and-donts/piercings" element={<DosAndDontsPiercingsPage />} />
+            <Route path="/dos-and-donts/faq" element={<DosAndDontsFAQPage />} />
           </Routes>
         </div>
         <Footer />

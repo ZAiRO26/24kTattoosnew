@@ -11,8 +11,16 @@ const Header = () => {
 
   const navigationItems = [
     { name: 'Home', path: '/' },
-    { name: 'Work', path: '/tattoos/galleries' },
-    { name: 'About Us', path: '/tattoos/artists' },
+    { name: 'Styles', path: '/styles' },
+    {
+      name: 'About Us',
+      path: '/about',
+      dropdown: [
+        { name: 'Our story', path: '/about/our-story' },
+        { name: 'About artist', path: '/about/artist' },
+        { name: 'Studio', path: '/about/studio' }
+      ]
+    },
     {
       name: 'Hair and Piercing',
       path: '/hair-and-piercing',
@@ -21,8 +29,17 @@ const Header = () => {
         { name: 'Piercing Services', path: '/piercing-services' }
       ]
     },
-    { name: "Do's and Don'ts", path: '/dos-and-donts' },
-    { name: 'Contact', path: '/book-now' }
+    {
+      name: "Do's and Don'ts",
+      path: '/dos-and-donts',
+      dropdown: [
+        { name: 'Tattoos', path: '/dos-and-donts/tattoos' },
+        { name: 'Piercings', path: '/dos-and-donts/piercings' },
+        { name: 'FAQ', path: '/dos-and-donts/faq' }
+      ]
+    },
+    { name: 'Contact', path: '/book-now' },
+    { name: 'Press & Socials', path: '/press-socials' }
   ]
 
   const isActive = (path) => {
@@ -44,7 +61,7 @@ const Header = () => {
           </Link>
           
           {/* Desktop Nav */}
-          <div className="hidden lg:flex items-center space-x-8 ml-12">
+          <div className="hidden lg:flex items-center space-x-8 ml-20">
             {navigationItems.map((item) => (
               <div key={item.name} className="relative group">
                 {item.dropdown ? (
