@@ -170,6 +170,27 @@ const DosAndDontsPiercingsPage = () => (
       </div>
     </section>
 
+    {/* Piercing Aftercare - inserted above CTA */}
+    <section className="py-16 bg-minimal-white">
+      <div className="max-w-4xl mx-auto px-6">
+        <h2 className="text-3xl md:text-4xl font-bold text-minimal-black mb-6">Piercing Aftercare</h2>
+        <p className="text-lg text-minimal-gray mb-6">
+          Proper aftercare is essential for the healing and longevity of your new piercing. Our team provides detailed aftercare instructions to ensure your piercing heals safely and beautifully.
+        </p>
+        <ul className="list-disc pl-6 space-y-2 text-minimal-gray">
+          <li>Wash your hands thoroughly before touching your piercing.</li>
+          <li>Clean the area with a saline solution or a piercing aftercare spray as recommended by your piercer.</li>
+          <li>Avoid rotating or removing jewelry during the healing process.</li>
+          <li>Do not use alcohol, hydrogen peroxide, or harsh soaps on your piercing.</li>
+          <li>Avoid swimming in pools, hot tubs, or natural bodies of water until fully healed.</li>
+          <li>Contact your piercer if you notice signs of infection or have any concerns.</li>
+        </ul>
+        <p className="text-minimal-gray mt-6">
+          For more information or questions about aftercare, please contact our studio or visit us in person.
+        </p>
+      </div>
+    </section>
+
     {/* Call to Action */}
     <section className="py-16 bg-minimal-white">
       <div className="max-w-4xl mx-auto px-6 text-center">

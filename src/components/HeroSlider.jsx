@@ -52,7 +52,7 @@ export default function HeroSlider() {
             </button>
             <button 
               className="border border-white text-white px-8 py-4 font-medium hover:bg-white hover:text-black transition-colors duration-200"
-              onClick={() => window.location.href = '/tattoos/galleries'}
+              onClick={() => window.location.href = '/styles'}
             >
               VIEW OUR WORK
             </button>

@@ -35,10 +35,11 @@ const Header = () => {
       dropdown: [
         { name: 'Tattoos', path: '/dos-and-donts/tattoos' },
         { name: 'Piercings', path: '/dos-and-donts/piercings' },
+        { name: 'Policies', path: '/dos-and-donts/policies' },
         { name: 'FAQ', path: '/dos-and-donts/faq' }
       ]
     },
-    { name: 'Contact', path: '/book-now' },
+    { name: 'Contact us', path: '/book-now' },
     { name: 'Press & Socials', path: '/press-socials' }
   ]
 

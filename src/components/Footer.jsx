@@ -37,20 +37,22 @@ const Footer = () => {
             <ul className="space-y-2">
               <li><a href="#" className="hover:underline">Home</a></li>
               <li><a href="#" className="hover:underline">About Us</a></li>
-              <li><a href="#" className="hover:underline">Products</a></li>
-              <li><a href="#" className="hover:underline">Blog</a></li>
-              <li><a href="#" className="hover:underline">Contact</a></li>
+              <li><a href="/styles" className="hover:underline">Styles</a></li>
+              <li><a href="/hair-and-piercing" className="hover:underline">Hair and Piercing</a></li>
+              <li><a href="/dos-and-donts" className="hover:underline">Do's and Don'ts</a></li>
+              <li><a href="#" className="hover:underline">Contact us</a></li>
             </ul>
           </div>
-          {/* Products */}
+          {/* Styles */}
           <div>
-            <h3 className="text-xl font-bold mb-4">Products</h3>
+            <h3 className="text-xl font-bold mb-4"><a href="/styles" className="hover:underline">Styles</a></h3>
             <ul className="space-y-2">
-              <li><a href="#" className="hover:underline">Product 1</a></li>
-              <li><a href="#" className="hover:underline">Product 2</a></li>
-              <li><a href="#" className="hover:underline">Product 3</a></li>
-              <li><a href="#" className="hover:underline">Product 4</a></li>
-              <li><a href="#" className="hover:underline">Product 5</a></li>
+              <li><a href="/styles" className="hover:underline">Cover ups</a></li>
+              <li><a href="/styles" className="hover:underline">Black & grey</a></li>
+              <li><a href="/styles" className="hover:underline">Colour</a></li>
+              <li><a href="/styles" className="hover:underline">Portraits & Realistic</a></li>
+              <li><a href="/styles" className="hover:underline">Micro /minimalist tattoo</a></li>
+              <li><a href="/styles" className="hover:underline">Customised</a></li>
             </ul>
           </div>
           {/* Contact Us */}

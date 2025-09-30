@@ -6,16 +6,10 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Header from './components/Header'
 import Footer from './components/Footer'
 
-import TattooGalleriesPage from './pages/TattooGalleriesPage'
-import TattoosPage from './pages/TattoosPage'
 import TattooArtistsPage from './pages/TattooArtistsPage'
 import TattooAftercarePage from './pages/TattooAftercarePage'
 import TattooPoliciesPage from './pages/TattooPoliciesPage'
-import PiercingPage from './pages/PiercingPage';
-import PiercingJewelryPage from './pages/PiercingJewelryPage';
-import PiercingAftercarePage from './pages/PiercingAftercarePage';
-import PiercingPricingPage from './pages/PiercingPricingPage';
-import PiercingPoliciesPage from './pages/PiercingPoliciesPage';
+// Removed old piercing pages
 import BookNowPage from './pages/BookNowPage';
 import DosAndDontsPage from './pages/DosAndDontsPage';
 import HairServicesPage from './pages/HairServicesPage';
@@ -28,6 +22,7 @@ import StudioPage from './pages/StudioPage';
 import DosAndDontsTattoosPage from './pages/DosAndDontsTattoosPage';
 import DosAndDontsPiercingsPage from './pages/DosAndDontsPiercingsPage';
 import DosAndDontsFAQPage from './pages/DosAndDontsFAQPage';
+import DosAndDontsPoliciesPage from './pages/DosAndDontsPoliciesPage';
 
 
 
@@ -176,17 +171,19 @@ function App() {
         <div className="flex-1">
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/tattoos" element={<TattoosPage />} />
-            <Route path="/tattoos/galleries" element={<TattooGalleriesPage />} />
+            {/* Removed tattoos pages; redirect old URLs to /styles */}
+            <Route path="/tattoos" element={<TattooStylesPage />} />
+            <Route path="/tattoos/galleries" element={<TattooStylesPage />} />
             <Route path="/styles" element={<TattooStylesPage />} />
             <Route path="/tattoos/artists" element={<TattooArtistsPage />} />
             <Route path="/tattoos/aftercare" element={<TattooAftercarePage />} />
             <Route path="/tattoos/policies" element={<TattooPoliciesPage />} />
-            <Route path="/piercings" element={<PiercingPage />} />
-            <Route path="/piercings/jewelry" element={<PiercingJewelryPage />} />
-            <Route path="/piercings/aftercare" element={<PiercingAftercarePage />} />
-            <Route path="/piercings/pricing" element={<PiercingPricingPage />} />
-            <Route path="/piercings/policies" element={<PiercingPoliciesPage />} />
+            {/* Redirect legacy piercing URLs to Do's and Don'ts/Piercings */}
+            <Route path="/piercings" element={<DosAndDontsPiercingsPage />} />
+            <Route path="/piercings/jewelry" element={<DosAndDontsPiercingsPage />} />
+            <Route path="/piercings/aftercare" element={<DosAndDontsPiercingsPage />} />
+            <Route path="/piercings/pricing" element={<DosAndDontsPiercingsPage />} />
+            <Route path="/piercings/policies" element={<DosAndDontsPoliciesPage />} />
             <Route path="/book-now" element={<BookNowPage />} />
             <Route path="/dos-and-donts" element={<DosAndDontsPage />} />
             <Route path="/hair-services" element={<HairServicesPage />} />
@@ -198,6 +195,7 @@ function App() {
             <Route path="/dos-and-donts/tattoos" element={<DosAndDontsTattoosPage />} />
             <Route path="/dos-and-donts/piercings" element={<DosAndDontsPiercingsPage />} />
             <Route path="/dos-and-donts/faq" element={<DosAndDontsFAQPage />} />
+            <Route path="/dos-and-donts/policies" element={<DosAndDontsPoliciesPage />} />
           </Routes>
         </div>
         <Footer />
