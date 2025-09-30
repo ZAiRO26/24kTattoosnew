@@ -193,7 +193,7 @@ const BookNowPage = () => {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full bg-minimal-black hover:bg-minimal-dark-gray disabled:bg-minimal-gray text-white py-4 px-6 rounded-lg font-semibold transition-colors flex items-center justify-center"
+                    className="w-full bg-accent-gold hover:bg-gold-dark disabled:bg-minimal-gray text-luxury-dark py-4 px-6 rounded-lg font-semibold transition-colors flex items-center justify-center"
                   >
                     {isSubmitting ? (
                       <>
@@ -257,14 +257,14 @@ const BookNowPage = () => {
                   href="https://www.google.com/maps/place/24K+Tattoo+Hair+%26+oddities/@17.4251569,78.4487585,17z/data=!3m1!4b1!4m6!3m5!1s0x3bcb9734f08aec33:0x6342c84f3483e2c1!8m2!3d17.4251569!4d78.4487585!16s%2Fg%2F11hcyvd_z3?entry=ttu&g_ep=EgoyMDI1MDkyNC4wIKXMDSoASAFQAw%3D%3D" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="flex-1 inline-flex items-center justify-center bg-minimal-black text-white px-4 py-3 rounded-lg hover:bg-minimal-dark-gray transition-colors text-sm font-medium"
+                  className="flex-1 inline-flex items-center justify-center bg-accent-gold text-luxury-dark px-4 py-3 rounded-lg hover:bg-gold-dark transition-colors text-sm font-medium"
                 >
                   <MapPin className="w-4 h-4 mr-2" />
                   Get Directions
                 </a>
                 <a 
                   href="tel:+919876543210"
-                  className="flex-1 inline-flex items-center justify-center border border-minimal-black text-minimal-black px-4 py-3 rounded-lg hover:bg-minimal-light-gray transition-colors text-sm font-medium"
+                  className="flex-1 inline-flex items-center justify-center border border-accent-gold text-accent-gold px-4 py-3 rounded-lg hover:bg-accent-gold hover:text-luxury-dark transition-colors text-sm font-medium"
                 >
                   <Phone className="w-4 h-4 mr-2" />
                   Call Now
@@ -317,9 +317,9 @@ const BookNowPage = () => {
       </section>
 
       {/* Additional Information */}
-      <section className="py-16 bg-minimal-white">
+      <section className="py-16 bg-light-charcoal">
         <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-3xl font-bold text-minimal-black mb-8">
+          <h2 className="text-3xl font-bold text-gray-300 mb-8">
             Ready to Start Your Tattoo Journey?
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
@@ -329,8 +329,8 @@ const BookNowPage = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
-              <h3 className="text-xl font-semibold text-minimal-black mb-2">Quick Response</h3>
-              <p className="text-minimal-gray">We respond to all inquiries within 24 hours</p>
+              <h3 className="text-xl font-semibold text-gray-300 mb-2">Quick Response</h3>
+              <p className="text-gray-400">We respond to all inquiries within 24 hours</p>
             </div>
             
             <div className="text-center">
@@ -339,8 +339,8 @@ const BookNowPage = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
-              <h3 className="text-xl font-semibold text-minimal-black mb-2">Professional Service</h3>
-              <p className="text-minimal-gray">Licensed artists with years of experience</p>
+              <h3 className="text-xl font-semibold text-gray-300 mb-2">Professional Service</h3>
+              <p className="text-gray-400">Licensed artists with years of experience</p>
             </div>
             
             <div className="text-center">
@@ -349,8 +349,8 @@ const BookNowPage = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                 </svg>
               </div>
-              <h3 className="text-xl font-semibold text-minimal-black mb-2">Custom Designs</h3>
-              <p className="text-minimal-gray">Unique artwork tailored to your vision</p>
+              <h3 className="text-xl font-semibold text-gray-300 mb-2">Custom Designs</h3>
+              <p className="text-gray-400">Unique artwork tailored to your vision</p>
             </div>
           </div>
         </div>

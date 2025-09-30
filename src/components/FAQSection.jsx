@@ -43,14 +43,14 @@ export default function FAQSection() {
       {faqs.map((faq, idx) => (
         <div key={idx}>
           <button
-            className={`w-full flex justify-between items-center border border-gray-700 rounded-lg px-8 py-5 text-left text-2xl font-serif text-white bg-black transition-colors duration-200 focus:outline-none ${openIndex === idx ? "border-white" : "border-gray-700"}`}
+            className={`w-full flex justify-between items-center border border-soft-grey rounded-lg px-8 py-5 text-left text-2xl font-serif text-charcoal-text bg-deep-charcoal transition-colors duration-200 focus:outline-none ${openIndex === idx ? "border-accent-gold" : "border-soft-grey"}`}
             onClick={() => handleToggle(idx)}
           >
             <span>{faq.question}</span>
             <span className="ml-4 text-3xl font-bold">{openIndex === idx ? "–" : "+"}</span>
           </button>
           {openIndex === idx && faq.answer && (
-            <div className="bg-black px-8 pt-4 pb-2 text-xl font-serif text-white animate-fade-in border-l-2 border-yellow-400">
+            <div className="bg-deep-charcoal px-8 pt-4 pb-2 text-xl font-serif text-charcoal-text animate-fade-in border-l-2 border-accent-gold">
               {faq.answer}
             </div>
           )}

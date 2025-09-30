@@ -171,9 +171,9 @@ const TattooGalleriesPage = () => {
       </section>
 
       {/* Call to Action */}
-      <section className="py-20 bg-gray-900">
+      <section className="py-20 bg-light-charcoal">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Create Your Masterpiece?</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-300 mb-6">Ready to Create Your Masterpiece?</h2>
           <p className="text-lg text-gray-400 mb-8 max-w-2xl mx-auto">
             Contact us today to schedule a consultation and discuss your custom tattoo design.
           </p>

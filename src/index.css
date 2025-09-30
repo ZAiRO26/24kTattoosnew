@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -20,29 +21,29 @@ a:hover {
 }
 
 body {
-  font-family: 'Inter', sans-serif;
-  background-color: #ffffff;
-  color: #000000;
+  font-family: 'Playfair Display', serif;
+  background-color: #fafafa;
+  color: #2a2a2a;
   line-height: 1.6;
   font-weight: 400;
 }
 
-/* Custom scrollbar - minimalistic */
+/* Custom scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f8f9fa;
+  background: #f5f5f5; /* warm-grey */
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #000000;
-  border-radius: 3px;
+  background: #4a4a4a; /* soft-grey */
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #333333;
+  background: #3a3a3a; /* light-charcoal */
 }
 
 /* Smooth scrolling */
@@ -66,61 +67,57 @@ html {
   animation: fadeInUp 0.6s ease-out;
 }
 
-/* Clean button styles */
+/* Button styles */
 .btn-minimal {
-  background: #000000;
-  color: #ffffff;
-  border: 1px solid #000000;
+  background-color: #2a2a2a; /* soothing-charcoal */
+  color: #fafafa; /* elegant-white */
+  border: 1px solid #2a2a2a;
   padding: 12px 24px;
+  border-radius: 4px;
   font-weight: 500;
   transition: all 0.3s ease;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  font-size: 14px;
 }
 
 .btn-minimal:hover {
-  background: #ffffff;
-  color: #000000;
-  border: 1px solid #000000;
+  background-color: #d4af37; /* accent-gold */
+  color: #2a2a2a; /* soothing-charcoal */
+  border-color: #d4af37;
 }
 
 .btn-outline {
-  background: transparent;
-  color: #000000;
-  border: 1px solid #000000;
+  background-color: transparent;
+  color: #2a2a2a; /* soothing-charcoal */
+  border: 1px solid #2a2a2a;
   padding: 12px 24px;
+  border-radius: 4px;
   font-weight: 500;
   transition: all 0.3s ease;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  font-size: 14px;
 }
 
 .btn-outline:hover {
-  background: #000000;
-  color: #ffffff;
+  background-color: #2a2a2a; /* soothing-charcoal */
+  color: #fafafa; /* elegant-white */
 }
 
 /* Typography */
 .text-minimal {
-  color: #000000;
+  color: #2a2a2a; /* soothing-charcoal */
   font-weight: 400;
   line-height: 1.6;
 }
 
 .text-minimal-light {
-  color: #666666;
+  color: #4a4a4a; /* soft-grey */
   font-weight: 300;
 }
 
 /* Clean borders */
 .border-minimal {
-  border: 1px solid #e5e5e5;
+  border: 1px solid #e0e0e0; /* soft-gray */
 }
 
 .border-minimal-dark {
-  border: 1px solid #000000;
+  border: 1px solid #2a2a2a; /* soothing-charcoal */
 }
 
 /* Spacing utilities */

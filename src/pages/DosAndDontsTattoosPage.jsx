@@ -92,10 +92,10 @@ const DosAndDontsTattoosPage = () => (
     </section>
 
     {/* CTA */}
-    <section className="py-16 bg-minimal-white">
+    <section className="py-16 bg-light-charcoal">
       <div className="max-w-4xl mx-auto px-6 text-center">
-        <h2 className="text-3xl font-bold text-minimal-black mb-6">Ready for Your Next Piece?</h2>
-        <p className="text-lg text-minimal-gray mb-8">Have questions about aftercare or planning your tattoo? We're here to help.</p>
+        <h2 className="text-3xl font-bold text-gray-300 mb-6">Ready for Your Next Piece?</h2>
+        <p className="text-lg text-gray-400 mb-8">Have questions about aftercare or planning your tattoo? We're here to help.</p>
         <Link to="/book-now" className="bg-minimal-black text-white px-8 py-4 font-medium inline-flex items-center justify-center hover:bg-minimal-dark-gray transition-colors duration-200">
           BOOK CONSULTATION
           <ArrowRight className="w-4 h-4 ml-2" />

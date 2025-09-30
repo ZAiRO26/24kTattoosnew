@@ -17,7 +17,7 @@ export default function HeroSlider() {
   }, []);
 
   return (
-    <section className="relative w-full h-screen flex items-center justify-center bg-minimal-white overflow-hidden">
+    <section className="relative w-full h-screen flex items-center justify-center bg-warm-white overflow-hidden">
       {/* Background Images */}
       {images.map((img, idx) => (
         <img
@@ -33,29 +33,29 @@ export default function HeroSlider() {
       ))}
       
       {/* Overlay */}
-      <div className="absolute inset-0 bg-black/20 z-20"></div>
+      <div className="absolute inset-0 bg-luxury-dark/30 z-20"></div>
       
       {/* Content */}
       <div className="relative z-30 flex flex-col items-center justify-center w-full h-full text-center px-4 sm:px-6">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-white mb-3 sm:mb-4 tracking-wide">
+          <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-charcoal-text mb-3 sm:mb-4 tracking-wide">
             24K Tattoo Hair & oddities
           </h2>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-white mb-4 sm:mb-6 tracking-tight leading-tight">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-charcoal-text mb-4 sm:mb-6 tracking-tight leading-tight">
             We are a Professional Tattoo Studio & Academy
           </h1>
-          <p className="text-lg sm:text-xl md:text-2xl text-white/90 mb-6 sm:mb-8 font-light px-4">
+          <p className="text-lg sm:text-xl md:text-2xl text-soft-grey mb-6 sm:mb-8 font-light px-4">
             Focused on Realism, Micro Realism, Fine Line
           </p>
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4">
             <button 
-              className="bg-white text-black px-6 sm:px-8 py-3 sm:py-4 font-medium hover:bg-gray-100 transition-colors duration-200 text-sm sm:text-base min-h-[48px] flex items-center justify-center"
+              className="bg-accent-gold text-luxury-dark px-6 sm:px-8 py-3 sm:py-4 font-medium hover:bg-accent-gold-dark hover:text-warm-white transition-colors duration-200 text-sm sm:text-base min-h-[48px] flex items-center justify-center"
               onClick={() => window.location.href = '/book-now'}
             >
               BOOK TATTOO APPOINTMENT
             </button>
             <button 
-              className="border border-white text-white px-6 sm:px-8 py-3 sm:py-4 font-medium hover:bg-white hover:text-black transition-colors duration-200 text-sm sm:text-base min-h-[48px] flex items-center justify-center"
+              className="border border-accent-gold text-accent-gold px-6 sm:px-8 py-3 sm:py-4 font-medium hover:bg-accent-gold hover:text-luxury-dark transition-colors duration-200 text-sm sm:text-base min-h-[48px] flex items-center justify-center"
               onClick={() => window.location.href = '/styles'}
             >
               VIEW OUR WORK
@@ -71,7 +71,7 @@ export default function HeroSlider() {
             key={idx}
             onClick={() => setCurrent(idx)}
             className={`w-3 h-3 sm:w-4 sm:h-4 rounded-full transition-colors duration-300 touch-manipulation ${
-              current === idx ? 'bg-white' : 'bg-white/40'
+              current === idx ? 'bg-accent-gold' : 'bg-accent-gold/40'
             }`}
             aria-label={`Go to slide ${idx + 1}`}
           />

@@ -62,7 +62,7 @@ const TattooStylesPage = () => {
                   <p className="text-minimal-gray mb-4">{style.description}</p>
                   <Link
                     to="/locations"
-                    className="bg-minimal-black hover:bg-minimal-dark-gray text-white px-6 py-2 rounded-lg font-semibold inline-flex items-center"
+                    className="bg-accent-gold hover:bg-gold-dark text-luxury-dark px-6 py-2 rounded-lg font-semibold inline-flex items-center"
                   >
                     Book {style.name}
                     <ArrowRight className="ml-2" size={16} />
@@ -75,13 +75,13 @@ const TattooStylesPage = () => {
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-minimal-light-gray">
+      <section className="py-20 bg-light-charcoal">
         <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-minimal-black mb-6">Ready to Choose Your Style?</h2>
-          <p className="text-lg text-minimal-gray mb-8">Book a consultation and we’ll help refine your idea, placement, and sizing.</p>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-300 mb-6">Ready to Choose Your Style?</h2>
+          <p className="text-lg text-gray-400 mb-8">Book a consultation and we'll help refine your idea, placement, and sizing.</p>
           <Link
             to="/book-now"
-            className="bg-minimal-black hover:bg-minimal-dark-gray text-white px-8 py-4 rounded-lg font-semibold inline-flex items-center justify-center"
+            className="bg-accent-gold hover:bg-gold-dark text-luxury-dark px-8 py-4 rounded-lg font-semibold inline-flex items-center justify-center"
           >
             BOOK CONSULTATION
             <ArrowRight className="ml-2" size={18} />

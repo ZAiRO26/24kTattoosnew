@@ -207,24 +207,24 @@ const PiercingServicesPage = () => {
       </section>
 
       {/* Booking Section */}
-      <section className="py-16 bg-minimal-light-gray">
+      <section className="py-16 bg-light-charcoal">
         <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-3xl font-bold text-minimal-black mb-6">
+          <h2 className="text-3xl font-bold text-gray-300 mb-6">
             Book Your Piercing Appointment
           </h2>
-          <p className="text-lg text-minimal-gray mb-8">
+          <p className="text-lg text-gray-400 mb-8">
             Schedule your piercing with our professional piercers
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href="/book-now"
-              className="bg-minimal-black text-white px-8 py-4 font-medium hover:bg-minimal-dark-gray transition-colors duration-200"
+              className="bg-accent-gold text-luxury-dark px-8 py-4 font-medium hover:bg-gold-dark transition-colors duration-200"
             >
               BOOK PIERCING APPOINTMENT
             </a>
             <a
               href="/dos-and-donts"
-              className="border border-minimal-black text-minimal-black px-8 py-4 font-medium hover:bg-minimal-black hover:text-white transition-colors duration-200"
+              className="border border-accent-gold text-accent-gold px-8 py-4 font-medium hover:bg-accent-gold hover:text-luxury-dark transition-colors duration-200"
             >
               VIEW AFTERCARE GUIDE
             </a>
