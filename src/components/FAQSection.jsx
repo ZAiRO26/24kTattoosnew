@@ -4,7 +4,7 @@ const faqs = [
   {
     question: "HOW CAN I BOOK AN APPOINTMENT?",
     answer:
-      "To book an appointment at Elysium Studios, fill out the form below and a member of our team will contact you immediately to talk through your tattoo idea.",
+      "To book an appointment at 24K Tattoo Hair & Oddities, fill out the form below and a member of our team will contact you immediately to talk through your tattoo idea.",
   },
   {
     question: "WHAT’S THE STUDIO’S ADDRESS?",
@@ -25,9 +25,9 @@ const faqs = [
     answer: "",
   },
   {
-    question: "I’M COMING FROM OUT OF TOWN. WHERE SHOULD I STAY?",
+    question: "I'M COMING FROM OUT OF TOWN. WHERE SHOULD I STAY?",
     answer:
-      "Elysium Studios is centrally located in downtown Grand Junction with many hotel & AirBnB options. Give us a call if you have questions about accommodations during your visit.",
+      "24K Tattoo Hair & Oddities is centrally located in the heart of hyderabad with many hotel & AirBnB options. Give us a call if you have questions about accommodations during your visit.",
   },
 ];
 

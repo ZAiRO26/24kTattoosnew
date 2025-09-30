@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { FaFacebookF, FaInstagram, FaWhatsapp, FaYoutube, FaArrowUp } from 'react-icons/fa';
 
 const Footer = () => {
@@ -35,24 +36,24 @@ const Footer = () => {
           <div>
             <h3 className="text-xl font-bold mb-4">Quick Links</h3>
             <ul className="space-y-2">
-              <li><a href="#" className="hover:underline">Home</a></li>
-              <li><a href="#" className="hover:underline">About Us</a></li>
-              <li><a href="/styles" className="hover:underline">Styles</a></li>
-              <li><a href="/hair-and-piercing" className="hover:underline">Hair and Piercing</a></li>
-              <li><a href="/dos-and-donts" className="hover:underline">Do's and Don'ts</a></li>
-              <li><a href="#" className="hover:underline">Contact us</a></li>
+              <li><Link to="/" className="hover:underline">Home</Link></li>
+              <li><Link to="/about/our-story" className="hover:underline">About Us</Link></li>
+              <li><Link to="/styles" className="hover:underline">Styles</Link></li>
+              <li><Link to="/hair-services" className="hover:underline">Hair and Piercing</Link></li>
+              <li><Link to="/dos-and-donts" className="hover:underline">Do's and Don'ts</Link></li>
+              <li><Link to="/book-now" className="hover:underline">Contact us</Link></li>
             </ul>
           </div>
           {/* Styles */}
           <div>
-            <h3 className="text-xl font-bold mb-4"><a href="/styles" className="hover:underline">Styles</a></h3>
+            <h3 className="text-xl font-bold mb-4"><Link to="/styles" className="hover:underline">Styles</Link></h3>
             <ul className="space-y-2">
-              <li><a href="/styles" className="hover:underline">Cover ups</a></li>
-              <li><a href="/styles" className="hover:underline">Black & grey</a></li>
-              <li><a href="/styles" className="hover:underline">Colour</a></li>
-              <li><a href="/styles" className="hover:underline">Portraits & Realistic</a></li>
-              <li><a href="/styles" className="hover:underline">Micro /minimalist tattoo</a></li>
-              <li><a href="/styles" className="hover:underline">Customised</a></li>
+              <li><Link to="/styles" className="hover:underline">Cover ups</Link></li>
+              <li><Link to="/styles" className="hover:underline">Black & grey</Link></li>
+              <li><Link to="/styles" className="hover:underline">Colour</Link></li>
+              <li><Link to="/styles" className="hover:underline">Portraits & Realistic</Link></li>
+              <li><Link to="/styles" className="hover:underline">Micro /minimalist tattoo</Link></li>
+              <li><Link to="/styles" className="hover:underline">Customised</Link></li>
             </ul>
           </div>
           {/* Contact Us */}
@@ -61,8 +62,8 @@ const Footer = () => {
             <ul className="space-y-2 text-base">
               <li><span className="font-semibold">24K Tattoo Hair & oddities</span></li>
               <li>Road no 1, entry, near Nagarjuna Circle Road, opp. Mpm Times Square mall, Banjara Hills, near Florists, Hyderabad 500034</li>
-              <li>+91-8178687129</li>
-              <li>email@example.com</li>
+              <li><a href="tel:+918178687129" className="hover:underline">+91-8178687129</a></li>
+              <li><a href="https://maps.app.goo.gl/7nRm6BdhYTs7rP2w7" target="_blank" rel="noopener noreferrer" className="hover:underline">View on Google Maps</a></li>
             </ul>
           </div>
         </div>

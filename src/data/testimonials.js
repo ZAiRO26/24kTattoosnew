@@ -18,7 +18,7 @@ export const testimonials = [
   {
     name: "Emma Williams",
     rating: 5,
-    text: "Luna's fine line work is incredible. My geometric forearm piece turned out better than I could have imagined. Highly recommend 24K Tattoos!",
+    text: "Luna's fine line work is incredible. My geometric forearm piece turned out better than I could have imagined. Highly recommend 24K Tattoo Hair & oddities!",
     tattoo: "Fine line geometric design",
     artist: "Luna Zhang",
     location: "Ballard"

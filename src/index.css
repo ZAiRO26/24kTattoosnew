@@ -128,8 +128,57 @@ html {
   padding: 80px 0;
 }
 
+@media (max-width: 768px) {
+  .section-padding {
+    padding: 40px 0;
+  }
+}
+
 .container-minimal {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
+}
+
+@media (max-width: 640px) {
+  .container-minimal {
+    padding: 0 16px;
+  }
+}
+
+/* Mobile-first responsive utilities */
+.mobile-text-center {
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .mobile-text-center {
+    text-align: left;
+  }
+}
+
+/* Touch-friendly button sizes */
+@media (max-width: 768px) {
+  .btn-minimal,
+  .btn-outline {
+    padding: 14px 28px;
+    font-size: 16px;
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+/* Improved mobile scrolling */
+@media (max-width: 768px) {
+  body {
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Hide scrollbar on mobile for cleaner look */
+  ::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+  }
 }

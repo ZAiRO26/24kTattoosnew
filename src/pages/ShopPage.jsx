@@ -57,7 +57,7 @@ const ShopPage = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-4xl md:text-6xl font-bold mb-6 gradient-text">
-              24K Tattoos Online Shop
+              24K Tattoo Hair & oddities Online Shop
             </h1>
             <p className="text-xl text-gray-400 max-w-3xl mx-auto">
               A haven for tattoo enthusiasts and art lovers alike. Discover our collection of tattoo art, prints, posters, and unique merchandise.
@@ -73,10 +73,10 @@ const ShopPage = () => {
             <div>
               <h2 className="text-3xl md:text-4xl font-bold mb-6">Tattoo Art & Merchandise</h2>
               <p className="text-lg text-gray-400 mb-6">
-                24K Tattoos' online shop is a haven for tattoo enthusiasts and art lovers alike. With an extensive collection of tattoo art, tattoo prints, and tattoo posters, customers can adorn their walls with stunning and intricate designs.
+                24K Tattoo Hair & oddities' online shop is a haven for tattoo enthusiasts and art lovers alike. With an extensive collection of tattoo art, tattoo prints, and tattoo posters, customers can adorn their walls with stunning and intricate designs.
               </p>
               <p className="text-lg text-gray-400 mb-8">
-                The shop also offers a wide range of tattoo-inspired merchandise, including t-shirts, prints, memorabilia, dragon shirts, and other unique items, perfect for those looking to show off their love for body art. For collectors, 24K Tattoos also offers limited edition, signed, and frameable fine art prints, allowing customers to own a piece of tattoo history.
+                The shop also offers a wide range of tattoo-inspired merchandise, including t-shirts, prints, memorabilia, dragon shirts, and other unique items, perfect for those looking to show off their love for body art. For collectors, 24K Tattoo Hair & oddities also offers limited edition, signed, and frameable fine art prints, allowing customers to own a piece of tattoo history.
               </p>
               <div className="flex items-center space-x-4">
                 <ShoppingCart className="text-red-400" size={24} />

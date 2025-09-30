@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { Menu, X, ChevronDown } from 'lucide-react'
 
@@ -8,6 +8,32 @@ const Header = () => {
   const [activeDropdown, setActiveDropdown] = useState(null)
   const [dropdownTimeout, setDropdownTimeout] = useState(null)
   const location = useLocation()
+  const mobileMenuRef = useRef(null)
+
+  // Close mobile menu when clicking outside or on links
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (isMenuOpen && mobileMenuRef.current && !mobileMenuRef.current.contains(event.target)) {
+        setIsMenuOpen(false)
+      }
+    }
+
+    const handleTouchOutside = (event) => {
+      if (isMenuOpen && mobileMenuRef.current && !mobileMenuRef.current.contains(event.target)) {
+        setIsMenuOpen(false)
+      }
+    }
+
+    if (isMenuOpen) {
+      document.addEventListener('mousedown', handleClickOutside)
+      document.addEventListener('touchstart', handleTouchOutside)
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+      document.removeEventListener('touchstart', handleTouchOutside)
+    }
+  }, [isMenuOpen])
 
   const navigationItems = [
     { name: 'Home', path: '/' },
@@ -53,7 +79,19 @@ const Header = () => {
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center">
+          <Link 
+            to="/" 
+            className="flex items-center"
+            onClick={(e) => {
+              if (location.pathname === '/') {
+                e.preventDefault();
+                window.scrollTo({
+                  top: 0,
+                  behavior: 'smooth'
+                });
+              }
+            }}
+          >
             <img 
               src="/assets/logo1.PNG" 
               alt="24K Tattoo Hair & Oddities Logo" 
@@ -74,7 +112,16 @@ const Header = () => {
                           ? 'text-minimal-black border-b border-minimal-black pb-1' 
                           : 'text-minimal-gray hover:text-minimal-black'
                       }`}
-                      onClick={() => setActiveDropdown(null)}
+                      onClick={(e) => {
+                        if (isActive(item.path)) {
+                          e.preventDefault();
+                          window.scrollTo({
+                            top: 0,
+                            behavior: 'smooth'
+                          });
+                        }
+                        setActiveDropdown(null);
+                      }}
                       onMouseEnter={() => {
                         if (dropdownTimeout) clearTimeout(dropdownTimeout)
                         setActiveDropdown(item.name)
@@ -120,6 +167,15 @@ const Header = () => {
                         ? 'text-minimal-black border-b border-minimal-black pb-1' 
                         : 'text-minimal-gray hover:text-minimal-black'
                     }`}
+                    onClick={(e) => {
+                      if (isActive(item.path)) {
+                        e.preventDefault();
+                        window.scrollTo({
+                          top: 0,
+                          behavior: 'smooth'
+                        });
+                      }
+                    }}
                   >
                     {item.name}
                   </Link>
@@ -140,8 +196,9 @@ const Header = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className="lg:hidden p-2"
+            className="lg:hidden p-2 touch-manipulation"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -149,28 +206,37 @@ const Header = () => {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="lg:hidden border-t border-minimal-border bg-white">
-            <div className="px-6 py-4 space-y-4">
+          <div ref={mobileMenuRef} className="lg:hidden border-t border-minimal-border bg-white">
+            <div className="px-6 py-4 space-y-4 max-h-[calc(100vh-80px)] overflow-y-auto">
               {navigationItems.map((item) => (
                 <div key={item.name}>
                   <Link
                     to={item.path}
-                    className={`block text-sm font-medium transition-colors ${
+                    className={`block text-base font-medium transition-colors py-2 touch-manipulation ${
                       isActive(item.path) 
                         ? 'text-minimal-black' 
                         : 'text-minimal-gray hover:text-minimal-black'
                     }`}
-                    onClick={() => setIsMenuOpen(false)}
+                    onClick={(e) => {
+                      if (isActive(item.path)) {
+                        e.preventDefault();
+                        window.scrollTo({
+                          top: 0,
+                          behavior: 'smooth'
+                        });
+                      }
+                      setIsMenuOpen(false);
+                    }}
                   >
                     {item.name}
                   </Link>
                   {item.dropdown && (
-                    <div className="ml-4 space-y-1">
+                    <div className="ml-4 space-y-2 mt-2">
                       {item.dropdown.map((subItem) => (
                         <Link
                           key={subItem.name}
                           to={subItem.path}
-                          className="block text-sm text-minimal-gray hover:text-minimal-black transition-colors"
+                          className="block text-sm text-minimal-gray hover:text-minimal-black transition-colors py-2 touch-manipulation"
                           onClick={() => setIsMenuOpen(false)}
                         >
                           {subItem.name}
@@ -183,7 +249,7 @@ const Header = () => {
               <div className="pt-4 space-y-3">
                 <Link
                   to="/book-now"
-                  className="block w-full bg-minimal-black text-white px-4 py-2 text-sm font-medium text-center hover:bg-minimal-dark-gray transition-colors duration-200"
+                  className="block w-full bg-minimal-black text-white px-4 py-3 text-base font-medium text-center hover:bg-minimal-dark-gray transition-colors duration-200 min-h-[48px] flex items-center justify-center touch-manipulation"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   BOOK TATTOO APPOINTMENT

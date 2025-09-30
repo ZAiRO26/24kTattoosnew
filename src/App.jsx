@@ -5,11 +5,10 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
 import Header from './components/Header'
 import Footer from './components/Footer'
+import ScrollToTop from './components/ScrollToTop'
+import ScrollRestoration from './components/ScrollRestoration'
+import MobileTestHelper from './components/MobileTestHelper'
 
-import TattooArtistsPage from './pages/TattooArtistsPage'
-import TattooAftercarePage from './pages/TattooAftercarePage'
-import TattooPoliciesPage from './pages/TattooPoliciesPage'
-// Removed old piercing pages
 import BookNowPage from './pages/BookNowPage';
 import DosAndDontsPage from './pages/DosAndDontsPage';
 import HairServicesPage from './pages/HairServicesPage';
@@ -23,6 +22,7 @@ import DosAndDontsTattoosPage from './pages/DosAndDontsTattoosPage';
 import DosAndDontsPiercingsPage from './pages/DosAndDontsPiercingsPage';
 import DosAndDontsFAQPage from './pages/DosAndDontsFAQPage';
 import DosAndDontsPoliciesPage from './pages/DosAndDontsPoliciesPage';
+import ServicesPage from './pages/ServicesPage';
 
 
 
@@ -168,16 +168,14 @@ function App() {
     <Router>
       <div className="min-h-screen bg-minimal-white text-minimal-black flex flex-col">
         <Header />
+        <ScrollRestoration />
         <div className="flex-1">
           <Routes>
             <Route path="/" element={<HomePage />} />
-            {/* Removed tattoos pages; redirect old URLs to /styles */}
+            {/* Redirect old URLs to /styles */}
             <Route path="/tattoos" element={<TattooStylesPage />} />
             <Route path="/tattoos/galleries" element={<TattooStylesPage />} />
             <Route path="/styles" element={<TattooStylesPage />} />
-            <Route path="/tattoos/artists" element={<TattooArtistsPage />} />
-            <Route path="/tattoos/aftercare" element={<TattooAftercarePage />} />
-            <Route path="/tattoos/policies" element={<TattooPoliciesPage />} />
             {/* Redirect legacy piercing URLs to Do's and Don'ts/Piercings */}
             <Route path="/piercings" element={<DosAndDontsPiercingsPage />} />
             <Route path="/piercings/jewelry" element={<DosAndDontsPiercingsPage />} />
@@ -187,8 +185,10 @@ function App() {
             <Route path="/book-now" element={<BookNowPage />} />
             <Route path="/dos-and-donts" element={<DosAndDontsPage />} />
             <Route path="/hair-services" element={<HairServicesPage />} />
+            <Route path="/hair-and-piercing" element={<ServicesPage />} />
             <Route path="/piercing-services" element={<PiercingServicesPage />} />
             <Route path="/press-socials" element={<PressSocialsPage />} />
+            <Route path="/about" element={<OurStoryPage />} />
             <Route path="/about/our-story" element={<OurStoryPage />} />
             <Route path="/about/artist" element={<AboutArtistPage />} />
             <Route path="/about/studio" element={<StudioPage />} />
@@ -199,6 +199,8 @@ function App() {
           </Routes>
         </div>
         <Footer />
+        <ScrollToTop />
+        <MobileTestHelper />
       </div>
     </Router>
   )

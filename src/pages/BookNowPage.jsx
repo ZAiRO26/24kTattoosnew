@@ -127,7 +127,7 @@ const BookNowPage = () => {
             <div>
               <div className="mb-6">
                 <h3 className="text-2xl font-bold text-minimal-black mb-2">
-                  We speak English!
+                  Start Your Tattoo Journey
                 </h3>
                 <p className="text-minimal-gray">
                   Fill out the form below and we'll get back to you within 24 hours.
@@ -221,27 +221,88 @@ const BookNowPage = () => {
             Find Us
           </h2>
           
-          {/* Embedded Map Placeholder */}
-          <div className="bg-minimal-white border border-minimal-border rounded-lg overflow-hidden shadow-lg">
-            <div className="aspect-video bg-gradient-to-br from-minimal-light-gray to-minimal-border flex items-center justify-center">
-              <div className="text-center">
-                <MapPin className="w-16 h-16 text-minimal-gray mx-auto mb-4" />
-                <h3 className="text-xl font-semibold text-minimal-black mb-2">
-                  24K Tattoo Hair & Oddities
-                </h3>
-                <p className="text-minimal-gray mb-4">
-                  Hyderabad, Telangana, India
-                </p>
+          {/* Interactive Google Maps */}
+          <div className="bg-minimal-white border border-minimal-border rounded-lg overflow-hidden shadow-lg mb-8">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.6234567890123!2d78.4465695!3d17.4251569!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb9734f08aec33%3A0x6342c84f3483e2c1!2s24K%20Tattoo%20Hair%20%26%20oddities!5e0!3m2!1sen!2sus!4v1699999999999!5m2!1sen!2sus"
+              width="100%"
+              height="450"
+              style={{ border: 0 }}
+              allowFullScreen=""
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="24K Tattoo Hair & Oddities Location"
+            ></iframe>
+          </div>
+
+          {/* Location Cards */}
+          <div className="grid md:grid-cols-2 gap-6 mb-8">
+            {/* Main Location */}
+            <div className="bg-minimal-white border border-minimal-border rounded-lg p-6 shadow-lg">
+              <div className="flex items-start mb-4">
+                <MapPin className="text-minimal-black mr-3 mt-1" size={24} />
+                <div>
+                  <h3 className="text-xl font-semibold text-minimal-black mb-2">
+                    24K Tattoo Hair & Oddities
+                  </h3>
+                  <p className="text-minimal-gray mb-4">
+                    Hyderabad, Telangana, India<br />
+                    <span className="text-sm">Coordinates: 17.4251569, 78.4487585</span>
+                  </p>
+                </div>
+              </div>
+              
+              <div className="flex flex-col sm:flex-row gap-3">
                 <a 
-                  href="https://maps.google.com" 
+                  href="https://www.google.com/maps/place/24K+Tattoo+Hair+%26+oddities/@17.4251569,78.4487585,17z/data=!3m1!4b1!4m6!3m5!1s0x3bcb9734f08aec33:0x6342c84f3483e2c1!8m2!3d17.4251569!4d78.4487585!16s%2Fg%2F11hcyvd_z3?entry=ttu&g_ep=EgoyMDI1MDkyNC4wIKXMDSoASAFQAw%3D%3D" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="inline-flex items-center bg-minimal-black text-white px-6 py-3 rounded-lg hover:bg-minimal-dark-gray transition-colors"
+                  className="flex-1 inline-flex items-center justify-center bg-minimal-black text-white px-4 py-3 rounded-lg hover:bg-minimal-dark-gray transition-colors text-sm font-medium"
                 >
                   <MapPin className="w-4 h-4 mr-2" />
-                  View on Google Maps
-                  <ArrowRight className="w-4 h-4 ml-2" />
+                  Get Directions
                 </a>
+                <a 
+                  href="tel:+919876543210"
+                  className="flex-1 inline-flex items-center justify-center border border-minimal-black text-minimal-black px-4 py-3 rounded-lg hover:bg-minimal-light-gray transition-colors text-sm font-medium"
+                >
+                  <Phone className="w-4 h-4 mr-2" />
+                  Call Now
+                </a>
+              </div>
+            </div>
+
+            {/* Studio Hours & Contact */}
+            <div className="bg-minimal-white border border-minimal-border rounded-lg p-6 shadow-lg">
+              <div className="flex items-start mb-4">
+                <Clock className="text-minimal-black mr-3 mt-1" size={24} />
+                <div>
+                  <h3 className="text-xl font-semibold text-minimal-black mb-2">
+                    Studio Hours
+                  </h3>
+                </div>
+              </div>
+              
+              <div className="space-y-2 text-minimal-black mb-4">
+                <div className="flex justify-between">
+                  <span>Monday - Saturday</span>
+                  <span className="font-medium">12:00 PM - 8:00 PM</span>
+                </div>
+                <div className="flex justify-between">
+                  <span>Sunday</span>
+                  <span className="font-medium">12:00 PM - 6:00 PM</span>
+                </div>
+              </div>
+
+              <div className="pt-4 border-t border-minimal-border">
+                <div className="flex items-center text-minimal-gray mb-2">
+                  <Mail className="w-4 h-4 mr-2" />
+                  <span className="text-sm">24ktattoos@gmail.com</span>
+                </div>
+                <div className="flex items-center text-minimal-gray">
+                  <Phone className="w-4 h-4 mr-2" />
+                  <span className="text-sm">+91 98765 43210</span>
+                </div>
               </div>
             </div>
           </div>

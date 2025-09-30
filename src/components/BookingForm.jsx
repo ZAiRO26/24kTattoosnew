@@ -71,7 +71,7 @@ const BookingForm = () => {
         </div>
         <h3 className="text-2xl font-bold text-green-400 mb-2">Booking Request Sent!</h3>
         <p className="text-gray-300">
-          Thank you for choosing 24K Tattoos. We'll contact you within 24 hours to confirm your appointment.
+          Thank you for choosing 24K Tattoo Hair & oddities. We'll contact you within 24 hours to confirm your appointment.
         </p>
       </div>
     )

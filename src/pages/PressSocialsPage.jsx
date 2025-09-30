@@ -4,13 +4,13 @@ import { Newspaper, Instagram, Facebook, Youtube, Link as ExternalLink, ArrowRig
 const PressSocialsPage = () => {
   const pressItems = [
     {
-      outlet: 'Seattle Times',
-      title: '24K Tattoos: Elevating Body Art in Seattle',
+      outlet: 'Hyderabad Times',
+      title: '24K Tattoo Hair & oddities: Elevating Body Art in Hyderabad',
       url: '#'
     },
     {
       outlet: 'Ink Magazine',
-      title: 'Minimalist Mastery: Inside 24K Tattoos',
+      title: 'Minimalist Mastery: Inside 24K Tattoo Hair & oddities',
       url: '#'
     },
     {
@@ -23,7 +23,7 @@ const PressSocialsPage = () => {
   const socials = [
     { name: 'Instagram', icon: <Instagram className="w-5 h-5" />, url: '#'},
     { name: 'Facebook', icon: <Facebook className="w-5 h-5" />, url: '#'},
-    { name: 'Pinterest', icon: <ExternalLink className="w-5 h-5" />, url: 'http://pinterest.com/seattletattooer/'},
+    { name: 'Pinterest', icon: <ExternalLink className="w-5 h-5" />, url: 'http://pinterest.com/hyderabadtattooer/'},
     { name: 'YouTube', icon: <Youtube className="w-5 h-5" />, url: '#'}
   ]
 
