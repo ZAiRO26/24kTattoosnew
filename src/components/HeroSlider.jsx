@@ -38,7 +38,7 @@ export default function HeroSlider() {
       {/* Content */}
       <div className="relative z-30 flex flex-col items-center justify-center w-full h-full text-center px-4 sm:px-6">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-charcoal-text mb-2 sm:mb-3 tracking-wide leading-none whitespace-nowrap" style={{fontFamily: 'Garamond, serif'}}>
+          <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-charcoal-text mb-2 sm:mb-3 tracking-wide leading-none whitespace-nowrap" style={{fontFamily: 'Cinzel, serif'}}>
             24K Tattoo Hair & Oddities
           </h1>
           <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-charcoal-text mb-2 sm:mb-3 tracking-wide leading-none whitespace-nowrap">
