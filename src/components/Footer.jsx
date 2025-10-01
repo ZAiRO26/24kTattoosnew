@@ -73,7 +73,7 @@ const Footer = () => {
         </div>
       </div>
       {/* Floating Action Buttons */}
-      <div className="fixed left-8 bottom-24 flex flex-col gap-4 z-50">
+      <div className="fixed left-8 bottom-8 flex flex-col gap-4 z-50">
         <a
           href="https://wa.me/918178687129"
           target="_blank"

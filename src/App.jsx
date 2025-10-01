@@ -2,12 +2,12 @@ import FAQSection from './components/FAQSection';
 import HeroSlider from './components/HeroSlider';
 import React from 'react'
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
+import { motion, useScroll, useTransform } from 'framer-motion';
 
 import Header from './components/Header'
 import Footer from './components/Footer'
 import ScrollToTop from './components/ScrollToTop'
 import ScrollRestoration from './components/ScrollRestoration'
-import MobileTestHelper from './components/MobileTestHelper'
 
 import BookNowPage from './pages/BookNowPage';
 import DosAndDontsPage from './pages/DosAndDontsPage';
@@ -27,145 +27,420 @@ import TattooAcademyPage from './pages/TattooAcademyPage';
 import ShortTermCoursesPage from './pages/ShortTermCoursesPage';
 import BasicTattooCoursesPage from './pages/BasicTattooCoursesPage';
 import ProTattooCoursesPage from './pages/ProTattooCoursesPage';
+import CoverUpsPage from './pages/CoverUpsPage';
+import BlackGreyPage from './pages/BlackGreyPage';
+import ColourPage from './pages/ColourPage';
+import PortraitsRealisticPage from './pages/PortraitsRealisticPage';
+import MicroMinimalistPage from './pages/MicroMinimalistPage';
+import CustomisedTattooPage from './pages/CustomisedTattooPage';
 
 
 
 // Redesigned HomePage matching the Ganga Tattoo Studio minimalistic design
 const HomePage = () => {
+  const { scrollY } = useScroll();
+  
+  // Enhanced parallax transforms for bidirectional scrolling
+  const workSectionY = useTransform(scrollY, [0, 2000], [0, -100]);
+  const academySectionY = useTransform(scrollY, [500, 2500], [0, -150]);
+  const servicesSectionY = useTransform(scrollY, [1000, 3000], [0, -100]);
+  const aboutSectionY = useTransform(scrollY, [1500, 3500], [0, -120]);
+  const contactSectionY = useTransform(scrollY, [2000, 4000], [0, -80]);
+  
   return (
     <div className="pt-0 bg-minimal-white text-minimal-black">
       {/* Hero Section with Slider */}
       <HeroSlider />
 
       {/* Work Section */}
-      <section className="py-20 bg-minimal-white">
+      <motion.section 
+        className="py-20 bg-minimal-white"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: false, margin: "-100px" }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        style={{ y: workSectionY }}
+      >
         <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-minimal-black mb-6">
+          <motion.div 
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
+            <motion.h2 
+              className="text-4xl md:text-5xl font-bold text-minimal-black mb-6"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+            >
               Work
-            </h2>
-            <p className="text-lg text-minimal-gray max-w-3xl mx-auto">
+            </motion.h2>
+            <motion.p 
+              className="text-lg text-minimal-gray max-w-3xl mx-auto"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
+            >
               Browse our most recent projects below and enjoy our professional tattoo studio work with love for every detail.
-            </p>
-          </div>
+            </motion.p>
+          </motion.div>
           
           {/* Work Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-12">
+          <motion.div 
+            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-12"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+          >
             {[...Array(12)].map((_, i) => (
-              <div key={i} className="aspect-square bg-minimal-light-gray overflow-hidden group cursor-pointer">
+              <motion.div 
+                key={i} 
+                className="aspect-square bg-minimal-light-gray overflow-hidden group cursor-pointer"
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ 
+                  duration: 0.5, 
+                  delay: i * 0.1, 
+                  ease: "easeOut" 
+                }}
+                whileHover={{ 
+                  scale: 1.05,
+                  transition: { duration: 0.3 }
+                }}
+              >
                 <img 
                   src={`/work-${i+1}.jpg`} 
                   alt={`Work ${i+1}`}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
           
-          <div className="text-center">
-            <button className="btn-outline">
+          <motion.div 
+            className="text-center"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
+          >
+            <motion.button 
+              className="btn-outline"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
               VIEW FULL GALLERY
-            </button>
-          </div>
+            </motion.button>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Academy Section */}
-      <section className="py-20" style={{backgroundColor: '#B8B8B8'}}>
+      <motion.section 
+        className="py-20" 
+        style={{backgroundColor: '#B8B8B8'}}
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: false, margin: "-100px" }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        style={{ 
+          backgroundColor: '#B8B8B8',
+          y: academySectionY
+        }}
+      >
         <div className="max-w-6xl mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+          <motion.div 
+            className="grid lg:grid-cols-2 gap-16 items-center"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+            >
+              <motion.h2 
+                className="text-4xl md:text-5xl font-bold text-gray-900 mb-6"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
+              >
                 Start learning with us
-              </h2>
-              <p className="text-lg text-gray-600 mb-8">
+              </motion.h2>
+              <motion.p 
+                className="text-lg text-gray-600 mb-8"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.6, ease: "easeOut" }}
+              >
                 Get the possibility of tattooing in 24K Tattoo Studio
-              </p>
-              <Link 
-                to="/tattoo-academy"
+              </motion.p>
+              <motion.div
                 className="bg-accent-gold text-deep-charcoal px-8 py-4 font-semibold hover:bg-gold-dark transition-colors duration-200"
+                component={Link}
+                to="/tattoo-academy"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.8, ease: "easeOut" }}
               >
                 DISCOVER OUR ACADEMY
-              </Link>
-            </div>
-            <div className="aspect-video bg-white border border-gray-200">
+              </motion.div>
+            </motion.div>
+            <motion.div 
+              className="aspect-video bg-white border border-gray-200"
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+            >
               <div className="w-full h-full flex items-center justify-center">
-                <div className="text-center">
-                  <div className="w-16 h-16 bg-accent-gold rounded-full mx-auto mb-4 flex items-center justify-center">
+                <motion.div 
+                  className="text-center"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 0.6, ease: "easeOut" }}
+                >
+                  <motion.div 
+                    className="w-16 h-16 bg-accent-gold rounded-full mx-auto mb-4 flex items-center justify-center"
+                    whileHover={{ scale: 1.1, rotate: 5 }}
+                    transition={{ duration: 0.3 }}
+                  >
                     <svg className="w-8 h-8 text-deep-charcoal" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
                     </svg>
-                  </div>
-                  <p className="text-gray-600">Academy Preview</p>
-                </div>
+                  </motion.div>
+                  <motion.p 
+                    className="text-gray-600"
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: 0.8, ease: "easeOut" }}
+                  >
+                    Academy Preview
+                  </motion.p>
+                </motion.div>
               </div>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Services Section */}
-      <section className="py-20 bg-light-charcoal">
+      <motion.section 
+        className="py-20 bg-light-charcoal"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: false, margin: "-100px" }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        style={{ 
+          y: servicesSectionY
+        }}
+      >
         <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-300 mb-6">
+          <motion.div 
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
+            <motion.h2 
+              className="text-4xl md:text-5xl font-bold text-gray-300 mb-6"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+            >
               Do you want a tattoo?
-            </h2>
-            <p className="text-lg text-gray-400 mb-8">
+            </motion.h2>
+            <motion.p 
+              className="text-lg text-gray-400 mb-8"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
+            >
               Professional tattoo services with personalized attention
-            </p>
-            <button 
+            </motion.p>
+            <motion.button 
               className="bg-accent-gold text-deep-charcoal px-8 py-4 font-semibold hover:bg-gold-dark transition-colors duration-200"
               onClick={() => window.location.href = '/book-now'}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.6, ease: "easeOut" }}
             >
               BOOK TATTOO APPOINTMENT
-            </button>
-          </div>
+            </motion.button>
+          </motion.div>
           
           {/* Services Grid */}
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-accent-gold rounded-full mx-auto mb-6 flex items-center justify-center">
+          <motion.div 
+            className="grid md:grid-cols-3 gap-8"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+          >
+            <motion.div 
+              className="text-center"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
+            >
+              <motion.div 
+                className="w-16 h-16 bg-accent-gold rounded-full mx-auto mb-6 flex items-center justify-center"
+                whileHover={{ scale: 1.1, rotate: 5 }}
+                transition={{ duration: 0.3 }}
+              >
                 <svg className="w-8 h-8 text-deep-charcoal" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
-              </div>
-              <h3 className="text-xl font-semibold text-gray-300 mb-4">Custom Design</h3>
-              <p className="text-gray-400">Unique artwork tailored to your vision and style preferences</p>
-            </div>
+              </motion.div>
+              <motion.h3 
+                className="text-xl font-semibold text-gray-300 mb-4"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: 0.6, ease: "easeOut" }}
+              >
+                Custom Design
+              </motion.h3>
+              <motion.p 
+                className="text-gray-400"
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: 0.8, ease: "easeOut" }}
+              >
+                Unique artwork tailored to your vision and style preferences
+              </motion.p>
+            </motion.div>
             
-            <div className="text-center">
-              <div className="w-16 h-16 bg-accent-gold rounded-full mx-auto mb-6 flex items-center justify-center">
+            <motion.div 
+              className="text-center"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.6, ease: "easeOut" }}
+            >
+              <motion.div 
+                className="w-16 h-16 bg-accent-gold rounded-full mx-auto mb-6 flex items-center justify-center"
+                whileHover={{ scale: 1.1, rotate: 5 }}
+                transition={{ duration: 0.3 }}
+              >
                 <svg className="w-8 h-8 text-deep-charcoal" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
-              </div>
-              <h3 className="text-xl font-semibold text-gray-300 mb-4">Professional Quality</h3>
-              <p className="text-gray-400">Licensed artists with years of experience and attention to detail</p>
-            </div>
+              </motion.div>
+              <motion.h3 
+                className="text-xl font-semibold text-gray-300 mb-4"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: 0.8, ease: "easeOut" }}
+              >
+                Professional Quality
+              </motion.h3>
+              <motion.p 
+                className="text-gray-400"
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: 1.0, ease: "easeOut" }}
+              >
+                Licensed artists with years of experience and attention to detail
+              </motion.p>
+            </motion.div>
             
-            <div className="text-center">
-              <div className="w-16 h-16 bg-accent-gold rounded-full mx-auto mb-6 flex items-center justify-center">
+            <motion.div 
+              className="text-center"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.8, ease: "easeOut" }}
+            >
+              <motion.div 
+                className="w-16 h-16 bg-accent-gold rounded-full mx-auto mb-6 flex items-center justify-center"
+                whileHover={{ scale: 1.1, rotate: 5 }}
+                transition={{ duration: 0.3 }}
+              >
                 <svg className="w-8 h-8 text-deep-charcoal" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
-              </div>
-              <h3 className="text-xl font-semibold text-gray-300 mb-4">Quick Response</h3>
-              <p className="text-gray-400">We respond to all inquiries within 24 hours</p>
-            </div>
-          </div>
+              </motion.div>
+              <motion.h3 
+                className="text-xl font-semibold text-gray-300 mb-4"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: 1.0, ease: "easeOut" }}
+              >
+                Quick Response
+              </motion.h3>
+              <motion.p 
+                className="text-gray-400"
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: 1.2, ease: "easeOut" }}
+              >
+                We respond to all inquiries within 24 hours
+              </motion.p>
+            </motion.div>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
 
       {/* FAQ Section */}
-      <section className="py-20 bg-deep-charcoal">
+      <motion.section 
+        className="py-20 bg-deep-charcoal"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: false, margin: "-100px" }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        style={{ 
+          y: aboutSectionY
+        }}
+      >
         <div className="max-w-4xl mx-auto px-6">
-          <h2 className="text-4xl md:text-5xl font-bold text-charcoal-text mb-12 text-center">
+          <motion.h2 
+            className="text-4xl md:text-5xl font-bold text-charcoal-text mb-12 text-center"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+          >
             Frequently Asked Questions
-          </h2>
-          <FAQSection />
+          </motion.h2>
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+          >
+            <FAQSection />
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
     </div>
   )
 }
@@ -183,6 +458,12 @@ function App() {
             <Route path="/tattoos" element={<TattooStylesPage />} />
             <Route path="/tattoos/galleries" element={<TattooStylesPage />} />
             <Route path="/styles" element={<TattooStylesPage />} />
+            <Route path="/styles/cover-ups" element={<CoverUpsPage />} />
+            <Route path="/styles/black-grey" element={<BlackGreyPage />} />
+            <Route path="/styles/colour" element={<ColourPage />} />
+            <Route path="/styles/portraits-realistic" element={<PortraitsRealisticPage />} />
+            <Route path="/styles/micro-minimalist" element={<MicroMinimalistPage />} />
+            <Route path="/styles/customised-tattoo" element={<CustomisedTattooPage />} />
             {/* Redirect legacy piercing URLs to Do's and Don'ts/Piercings */}
             <Route path="/piercings" element={<DosAndDontsPiercingsPage />} />
             <Route path="/piercings/jewelry" element={<DosAndDontsPiercingsPage />} />
@@ -214,7 +495,6 @@ function App() {
         </div>
         <Footer />
         <ScrollToTop />
-        <MobileTestHelper />
       </div>
     </Router>
   )
