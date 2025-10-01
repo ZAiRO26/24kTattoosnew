@@ -1,7 +1,7 @@
 import FAQSection from './components/FAQSection';
 import HeroSlider from './components/HeroSlider';
 import React from 'react'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
 
 import Header from './components/Header'
 import Footer from './components/Footer'
@@ -23,6 +23,10 @@ import DosAndDontsPiercingsPage from './pages/DosAndDontsPiercingsPage';
 import DosAndDontsFAQPage from './pages/DosAndDontsFAQPage';
 import DosAndDontsPoliciesPage from './pages/DosAndDontsPoliciesPage';
 import ServicesPage from './pages/ServicesPage';
+import TattooAcademyPage from './pages/TattooAcademyPage';
+import ShortTermCoursesPage from './pages/ShortTermCoursesPage';
+import BasicTattooCoursesPage from './pages/BasicTattooCoursesPage';
+import ProTattooCoursesPage from './pages/ProTattooCoursesPage';
 
 
 
@@ -77,9 +81,12 @@ const HomePage = () => {
               <p className="text-lg text-gray-600 mb-8">
                 Get the possibility of tattooing in 24K Tattoo Studio
               </p>
-              <button className="bg-accent-gold text-deep-charcoal px-8 py-4 font-semibold hover:bg-gold-dark transition-colors duration-200">
+              <Link 
+                to="/tattoo-academy"
+                className="bg-accent-gold text-deep-charcoal px-8 py-4 font-semibold hover:bg-gold-dark transition-colors duration-200"
+              >
                 DISCOVER OUR ACADEMY
-              </button>
+              </Link>
             </div>
             <div className="aspect-video bg-white border border-gray-200">
               <div className="w-full h-full flex items-center justify-center">
@@ -196,6 +203,13 @@ function App() {
             <Route path="/dos-and-donts/piercings" element={<DosAndDontsPiercingsPage />} />
             <Route path="/dos-and-donts/faq" element={<DosAndDontsFAQPage />} />
             <Route path="/dos-and-donts/policies" element={<DosAndDontsPoliciesPage />} />
+            <Route path="/tattoo-academy" element={<TattooAcademyPage />} />
+            <Route path="/tattoo-academy/short-term-courses" element={<ShortTermCoursesPage />} />
+            <Route path="/tattoo-academy/basic-courses" element={<BasicTattooCoursesPage />} />
+            <Route path="/tattoo-academy/pro-courses" element={<ProTattooCoursesPage />} />
+            {/* Legacy route redirects */}
+            <Route path="/tattoo-academy/basic-tattoo-courses" element={<BasicTattooCoursesPage />} />
+            <Route path="/tattoo-academy/pro-tattoo-courses" element={<ProTattooCoursesPage />} />
           </Routes>
         </div>
         <Footer />

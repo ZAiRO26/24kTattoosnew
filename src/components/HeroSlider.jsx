@@ -38,12 +38,15 @@ export default function HeroSlider() {
       {/* Content */}
       <div className="relative z-30 flex flex-col items-center justify-center w-full h-full text-center px-4 sm:px-6">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-charcoal-text mb-3 sm:mb-4 tracking-wide">
-            24K Tattoo Hair & oddities
-          </h2>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-charcoal-text mb-4 sm:mb-6 tracking-tight leading-tight">
-            We are a Professional Tattoo Studio & Academy
+          <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-charcoal-text mb-2 sm:mb-3 tracking-wide leading-none whitespace-nowrap" style={{fontFamily: 'Garamond, serif'}}>
+            24K Tattoo Hair & Oddities
           </h1>
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-charcoal-text mb-2 sm:mb-3 tracking-wide leading-none whitespace-nowrap">
+            We are a Professional Tattoo Studio
+          </h2>
+          <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-charcoal-text mb-4 sm:mb-6 tracking-wide leading-none whitespace-nowrap">
+            Since 2005
+          </h3>
           <p className="text-lg sm:text-xl md:text-2xl text-soft-grey mb-6 sm:mb-8 font-light px-4">
             Focused on Realism, Micro Realism, Fine Line
           </p>

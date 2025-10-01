@@ -50,15 +50,6 @@ const Header = () => {
     { name: 'Home', path: '/' },
     { name: 'Styles', path: '/styles' },
     {
-      name: 'About Us',
-      path: '/about',
-      dropdown: [
-        { name: 'Our story', path: '/about/our-story' },
-        { name: 'About artist', path: '/about/artist' },
-        { name: 'Studio', path: '/about/studio' }
-      ]
-    },
-    {
       name: 'Hair and Piercing',
       path: '/hair-and-piercing',
       dropdown: [
@@ -76,8 +67,26 @@ const Header = () => {
         { name: 'FAQ', path: '/dos-and-donts/faq' }
       ]
     },
-    { name: 'Contact us', path: '/book-now' },
-    { name: 'Press & Socials', path: '/press-socials' }
+    {
+      name: 'Tattoo Academy',
+      path: '/tattoo-academy',
+      dropdown: [
+        { name: 'Short Term Courses', path: '/tattoo-academy/short-term-courses' },
+        { name: 'Basic Tattoo Courses', path: '/tattoo-academy/basic-courses' },
+        { name: 'Pro Tattoo courses', path: '/tattoo-academy/pro-courses' }
+      ]
+    },
+    {
+      name: 'About Us',
+      path: '/about',
+      dropdown: [
+        { name: 'Our story', path: '/about/our-story' },
+        { name: 'About Artist', path: '/about/artist' },
+        { name: 'Studio', path: '/about/studio' },
+        { name: 'Press & Socials', path: '/press-socials' }
+      ]
+    },
+    { name: 'Contact us', path: '/book-now' }
   ]
 
   const isActive = (path) => {
@@ -124,7 +133,7 @@ const Header = () => {
                           : 'text-charcoal hover:text-luxury-dark'
                       }`}
                       onClick={(e) => {
-                        if (isActive(item.path)) {
+                        if (location.pathname === item.path) {
                           e.preventDefault();
                           window.scrollTo({
                             top: 0,
@@ -179,7 +188,7 @@ const Header = () => {
                         : 'text-charcoal hover:text-luxury-dark'
                     }`}
                     onClick={(e) => {
-                      if (isActive(item.path)) {
+                      if (location.pathname === item.path) {
                         e.preventDefault();
                         window.scrollTo({
                           top: 0,

@@ -1,19 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>/</loc></url>
-  <url><loc>/styles</loc></url>
-  <url><loc>/book-now</loc></url>
-  <url><loc>/hair-services</loc></url>
-  <url><loc>/piercing-services</loc></url>
-  <url><loc>/press-socials</loc></url>
-  <url><loc>/about/our-story</loc></url>
-  <url><loc>/about/artist</loc></url>
-  <url><loc>/about/studio</loc></url>
-  <url><loc>/dos-and-donts</loc></url>
-  <url><loc>/dos-and-donts/tattoos</loc></url>
-  <url><loc>/dos-and-donts/piercings</loc></url>
-  <url><loc>/dos-and-donts/faq</loc></url>
-  <url><loc>/dos-and-donts/policies</loc></url>
+  <url><loc>https://24ktattoos.com/</loc><priority>1.0</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://24ktattoos.com/styles</loc><priority>0.9</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://24ktattoos.com/book-now</loc><priority>0.9</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://24ktattoos.com/hair-services</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://24ktattoos.com/piercing-services</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://24ktattoos.com/hair-and-piercing</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://24ktattoos.com/press-socials</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://24ktattoos.com/about</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://24ktattoos.com/about/our-story</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://24ktattoos.com/about/artist</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://24ktattoos.com/about/studio</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://24ktattoos.com/dos-and-donts</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://24ktattoos.com/dos-and-donts/tattoos</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://24ktattoos.com/dos-and-donts/piercings</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://24ktattoos.com/dos-and-donts/faq</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://24ktattoos.com/dos-and-donts/policies</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://24ktattoos.com/tattoo-academy</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://24ktattoos.com/tattoo-academy/short-term-courses</loc><priority>0.6</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://24ktattoos.com/tattoo-academy/basic-courses</loc><priority>0.6</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://24ktattoos.com/tattoo-academy/pro-courses</loc><priority>0.6</priority><changefreq>monthly</changefreq></url>
 </urlset>
 
 
