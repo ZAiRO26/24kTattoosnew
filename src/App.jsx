@@ -1,38 +1,41 @@
 import FAQSection from './components/FAQSection';
 import HeroSlider from './components/HeroSlider';
-import React from 'react'
+import React, { useEffect, Suspense, lazy } from 'react'
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
 import { motion, useScroll, useTransform } from 'framer-motion';
+import { ThemeProvider } from './contexts/ThemeContext';
+import { initializeCrossBrowserSupport } from './utils/crossBrowserSupport';
+import { initializeMobileOptimizations } from './utils/mobileOptimizations';
 
 import Header from './components/Header'
 import Footer from './components/Footer'
-import ScrollToTop from './components/ScrollToTop'
 import ScrollRestoration from './components/ScrollRestoration'
 
-import BookNowPage from './pages/BookNowPage';
-import DosAndDontsPage from './pages/DosAndDontsPage';
-import HairServicesPage from './pages/HairServicesPage';
-import PiercingServicesPage from './pages/PiercingServicesPage';
-import PressSocialsPage from './pages/PressSocialsPage';
-import TattooStylesPage from './pages/TattooStylesPage';
-import OurStoryPage from './pages/OurStoryPage';
-import AboutArtistPage from './pages/AboutArtistPage';
-import StudioPage from './pages/StudioPage';
-import DosAndDontsTattoosPage from './pages/DosAndDontsTattoosPage';
-import DosAndDontsPiercingsPage from './pages/DosAndDontsPiercingsPage';
-import DosAndDontsFAQPage from './pages/DosAndDontsFAQPage';
-import DosAndDontsPoliciesPage from './pages/DosAndDontsPoliciesPage';
-import ServicesPage from './pages/ServicesPage';
-import TattooAcademyPage from './pages/TattooAcademyPage';
-import ShortTermCoursesPage from './pages/ShortTermCoursesPage';
-import BasicTattooCoursesPage from './pages/BasicTattooCoursesPage';
-import ProTattooCoursesPage from './pages/ProTattooCoursesPage';
-import CoverUpsPage from './pages/CoverUpsPage';
-import BlackGreyPage from './pages/BlackGreyPage';
-import ColourPage from './pages/ColourPage';
-import PortraitsRealisticPage from './pages/PortraitsRealisticPage';
-import MicroMinimalistPage from './pages/MicroMinimalistPage';
-import CustomisedTattooPage from './pages/CustomisedTattooPage';
+// Lazy load page components for better performance
+const BookNowPage = lazy(() => import('./pages/BookNowPage'));
+const DosAndDontsPage = lazy(() => import('./pages/DosAndDontsPage'));
+const HairServicesPage = lazy(() => import('./pages/HairServicesPage'));
+const PiercingServicesPage = lazy(() => import('./pages/PiercingServicesPage'));
+const PressSocialsPage = lazy(() => import('./pages/PressSocialsPage'));
+const TattooStylesPage = lazy(() => import('./pages/TattooStylesPage'));
+const OurStoryPage = lazy(() => import('./pages/OurStoryPage'));
+const AboutArtistPage = lazy(() => import('./pages/AboutArtistPage'));
+const StudioPage = lazy(() => import('./pages/StudioPage'));
+const DosAndDontsTattoosPage = lazy(() => import('./pages/DosAndDontsTattoosPage'));
+const DosAndDontsPiercingsPage = lazy(() => import('./pages/DosAndDontsPiercingsPage'));
+const DosAndDontsFAQPage = lazy(() => import('./pages/DosAndDontsFAQPage'));
+const DosAndDontsPoliciesPage = lazy(() => import('./pages/DosAndDontsPoliciesPage'));
+const ServicesPage = lazy(() => import('./pages/ServicesPage'));
+const TattooAcademyPage = lazy(() => import('./pages/TattooAcademyPage'));
+const ShortTermCoursesPage = lazy(() => import('./pages/ShortTermCoursesPage'));
+const BasicTattooCoursesPage = lazy(() => import('./pages/BasicTattooCoursesPage'));
+const ProTattooCoursesPage = lazy(() => import('./pages/ProTattooCoursesPage'));
+const CoverUpsPage = lazy(() => import('./pages/CoverUpsPage'));
+const BlackGreyPage = lazy(() => import('./pages/BlackGreyPage'));
+const ColourPage = lazy(() => import('./pages/ColourPage'));
+const PortraitsRealisticPage = lazy(() => import('./pages/PortraitsRealisticPage'));
+const MicroMinimalistPage = lazy(() => import('./pages/MicroMinimalistPage'));
+const CustomisedTattooPage = lazy(() => import('./pages/CustomisedTattooPage'));
 
 
 
@@ -48,13 +51,13 @@ const HomePage = () => {
   const contactSectionY = useTransform(scrollY, [2000, 4000], [0, -80]);
   
   return (
-    <div className="pt-0 bg-minimal-white text-minimal-black">
+    <div className="pt-0 bg-minimal-white dark:bg-soothing-charcoal text-minimal-black dark:text-charcoal-text transition-colors duration-300">
       {/* Hero Section with Slider */}
       <HeroSlider />
 
       {/* Work Section */}
       <motion.section 
-        className="py-20 bg-minimal-white"
+        className="py-20 bg-minimal-white dark:bg-soothing-charcoal transition-colors duration-300"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: false, margin: "-100px" }}
@@ -70,7 +73,7 @@ const HomePage = () => {
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
             <motion.h2 
-              className="text-4xl md:text-5xl font-bold text-minimal-black mb-6"
+              className="text-4xl md:text-5xl font-bold text-minimal-black dark:text-charcoal-text mb-6 transition-colors duration-300"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -79,7 +82,7 @@ const HomePage = () => {
               Work
             </motion.h2>
             <motion.p 
-              className="text-lg text-minimal-gray max-w-3xl mx-auto"
+              className="text-lg text-minimal-gray dark:text-gray-300 max-w-3xl mx-auto transition-colors duration-300"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -144,15 +147,14 @@ const HomePage = () => {
       {/* Academy Section */}
       <motion.section 
         className="py-20" 
-        style={{backgroundColor: '#B8B8B8'}}
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: false, margin: "-100px" }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
         style={{ 
           backgroundColor: '#B8B8B8',
           y: academySectionY
         }}
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: false, margin: "-100px" }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
       >
         <div className="max-w-6xl mx-auto px-6">
           <motion.div 
@@ -446,57 +448,73 @@ const HomePage = () => {
 }
 
 function App() {
+  // Initialize cross-browser support and mobile optimizations on app load
+  useEffect(() => {
+    initializeCrossBrowserSupport();
+    initializeMobileOptimizations();
+  }, []);
+
   return (
-    <Router>
-      <div className="min-h-screen bg-minimal-white text-minimal-black flex flex-col">
-        <Header />
-        <ScrollRestoration />
-        <div className="flex-1">
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            {/* Redirect old URLs to /styles */}
-            <Route path="/tattoos" element={<TattooStylesPage />} />
-            <Route path="/tattoos/galleries" element={<TattooStylesPage />} />
-            <Route path="/styles" element={<TattooStylesPage />} />
-            <Route path="/styles/cover-ups" element={<CoverUpsPage />} />
-            <Route path="/styles/black-grey" element={<BlackGreyPage />} />
-            <Route path="/styles/colour" element={<ColourPage />} />
-            <Route path="/styles/portraits-realistic" element={<PortraitsRealisticPage />} />
-            <Route path="/styles/micro-minimalist" element={<MicroMinimalistPage />} />
-            <Route path="/styles/customised-tattoo" element={<CustomisedTattooPage />} />
-            {/* Redirect legacy piercing URLs to Do's and Don'ts/Piercings */}
-            <Route path="/piercings" element={<DosAndDontsPiercingsPage />} />
-            <Route path="/piercings/jewelry" element={<DosAndDontsPiercingsPage />} />
-            <Route path="/piercings/aftercare" element={<DosAndDontsPiercingsPage />} />
-            <Route path="/piercings/pricing" element={<DosAndDontsPiercingsPage />} />
-            <Route path="/piercings/policies" element={<DosAndDontsPoliciesPage />} />
-            <Route path="/book-now" element={<BookNowPage />} />
-            <Route path="/dos-and-donts" element={<DosAndDontsPage />} />
-            <Route path="/hair-services" element={<HairServicesPage />} />
-            <Route path="/hair-and-piercing" element={<ServicesPage />} />
-            <Route path="/piercing-services" element={<PiercingServicesPage />} />
-            <Route path="/press-socials" element={<PressSocialsPage />} />
-            <Route path="/about" element={<OurStoryPage />} />
-            <Route path="/about/our-story" element={<OurStoryPage />} />
-            <Route path="/about/artist" element={<AboutArtistPage />} />
-            <Route path="/about/studio" element={<StudioPage />} />
-            <Route path="/dos-and-donts/tattoos" element={<DosAndDontsTattoosPage />} />
-            <Route path="/dos-and-donts/piercings" element={<DosAndDontsPiercingsPage />} />
-            <Route path="/dos-and-donts/faq" element={<DosAndDontsFAQPage />} />
-            <Route path="/dos-and-donts/policies" element={<DosAndDontsPoliciesPage />} />
-            <Route path="/tattoo-academy" element={<TattooAcademyPage />} />
-            <Route path="/tattoo-academy/short-term-courses" element={<ShortTermCoursesPage />} />
-            <Route path="/tattoo-academy/basic-courses" element={<BasicTattooCoursesPage />} />
-            <Route path="/tattoo-academy/pro-courses" element={<ProTattooCoursesPage />} />
-            {/* Legacy route redirects */}
-            <Route path="/tattoo-academy/basic-tattoo-courses" element={<BasicTattooCoursesPage />} />
-            <Route path="/tattoo-academy/pro-tattoo-courses" element={<ProTattooCoursesPage />} />
-          </Routes>
+    <ThemeProvider>
+      <Router>
+        <div className="min-h-screen bg-minimal-white dark:bg-soothing-charcoal text-minimal-black dark:text-charcoal-text flex flex-col transition-colors duration-300">
+          <Header />
+          <ScrollRestoration />
+          <div className="flex-1">
+            <Suspense fallback={
+              <div className="min-h-screen flex items-center justify-center bg-minimal-white dark:bg-soothing-charcoal">
+                <div className="text-center">
+                  <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-minimal-black dark:border-charcoal-text mx-auto mb-4"></div>
+                  <p className="text-minimal-gray dark:text-charcoal-text">Loading...</p>
+                </div>
+              </div>
+            }>
+              <Routes>
+              <Route path="/" element={<HomePage />} />
+              {/* Redirect old URLs to /styles */}
+              <Route path="/tattoos" element={<TattooStylesPage />} />
+              <Route path="/tattoos/galleries" element={<TattooStylesPage />} />
+              <Route path="/styles" element={<TattooStylesPage />} />
+              <Route path="/styles/cover-ups" element={<CoverUpsPage />} />
+              <Route path="/styles/black-grey" element={<BlackGreyPage />} />
+              <Route path="/styles/colour" element={<ColourPage />} />
+              <Route path="/styles/portraits-realistic" element={<PortraitsRealisticPage />} />
+              <Route path="/styles/micro-minimalist" element={<MicroMinimalistPage />} />
+              <Route path="/styles/customised-tattoo" element={<CustomisedTattooPage />} />
+              {/* Redirect legacy piercing URLs to Do's and Don'ts/Piercings */}
+              <Route path="/piercings" element={<DosAndDontsPiercingsPage />} />
+              <Route path="/piercings/jewelry" element={<DosAndDontsPiercingsPage />} />
+              <Route path="/piercings/aftercare" element={<DosAndDontsPiercingsPage />} />
+              <Route path="/piercings/pricing" element={<DosAndDontsPiercingsPage />} />
+              <Route path="/piercings/policies" element={<DosAndDontsPoliciesPage />} />
+              <Route path="/book-now" element={<BookNowPage />} />
+              <Route path="/dos-and-donts" element={<DosAndDontsPage />} />
+              <Route path="/hair-services" element={<HairServicesPage />} />
+              <Route path="/hair-and-piercing" element={<ServicesPage />} />
+              <Route path="/piercing-services" element={<PiercingServicesPage />} />
+              <Route path="/press-socials" element={<PressSocialsPage />} />
+              <Route path="/about" element={<OurStoryPage />} />
+              <Route path="/about/our-story" element={<OurStoryPage />} />
+              <Route path="/about/artist" element={<AboutArtistPage />} />
+              <Route path="/about/studio" element={<StudioPage />} />
+              <Route path="/dos-and-donts/tattoos" element={<DosAndDontsTattoosPage />} />
+              <Route path="/dos-and-donts/piercings" element={<DosAndDontsPiercingsPage />} />
+              <Route path="/dos-and-donts/faq" element={<DosAndDontsFAQPage />} />
+              <Route path="/dos-and-donts/policies" element={<DosAndDontsPoliciesPage />} />
+              <Route path="/tattoo-academy" element={<TattooAcademyPage />} />
+              <Route path="/tattoo-academy/short-term-courses" element={<ShortTermCoursesPage />} />
+              <Route path="/tattoo-academy/basic-courses" element={<BasicTattooCoursesPage />} />
+              <Route path="/tattoo-academy/pro-courses" element={<ProTattooCoursesPage />} />
+              {/* Legacy route redirects */}
+              <Route path="/tattoo-academy/basic-tattoo-courses" element={<BasicTattooCoursesPage />} />
+              <Route path="/tattoo-academy/pro-tattoo-courses" element={<ProTattooCoursesPage />} />
+            </Routes>
+            </Suspense>
+          </div>
+          <Footer />
         </div>
-        <Footer />
-        <ScrollToTop />
-      </div>
-    </Router>
+      </Router>
+    </ThemeProvider>
   )
 }
 

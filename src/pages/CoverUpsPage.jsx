@@ -1,6 +1,7 @@
 import React from 'react'
 import { ArrowRight, CheckCircle, Star } from 'lucide-react'
 import { Link } from 'react-router-dom'
+import OptimizedImage from '../components/OptimizedImage'
 
 const CoverUpsPage = () => {
   // Sample cover-up tattoo images - in a real implementation, these would be actual studio work
@@ -165,13 +166,25 @@ const CoverUpsPage = () => {
               <div key={item.id} className="bg-white border border-minimal-border rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
                 <div className="grid grid-cols-2">
                   <div className="relative">
-                    <img src={item.before} alt="Before cover-up" className="w-full h-48 object-cover" />
+                    <OptimizedImage 
+                      src={item.before} 
+                      alt="Before cover-up" 
+                      className="w-full h-48 object-cover"
+                      loading="lazy"
+                      sizes="(max-width: 768px) 50vw, 25vw"
+                    />
                     <div className="absolute bottom-2 left-2 bg-red-600 text-white px-2 py-1 rounded text-sm font-semibold">
                       Before
                     </div>
                   </div>
                   <div className="relative">
-                    <img src={item.after} alt="After cover-up" className="w-full h-48 object-cover" />
+                    <OptimizedImage 
+                      src={item.after} 
+                      alt="After cover-up" 
+                      className="w-full h-48 object-cover"
+                      loading="lazy"
+                      sizes="(max-width: 768px) 50vw, 25vw"
+                    />
                     <div className="absolute bottom-2 right-2 bg-green-600 text-white px-2 py-1 rounded text-sm font-semibold">
                       After
                     </div>

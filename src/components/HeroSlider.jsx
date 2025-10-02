@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 const images = [
   "/tattoo-hero-1.jpg",
@@ -9,6 +10,9 @@ const images = [
 
 export default function HeroSlider() {
   const [current, setCurrent] = useState(0);
+  const [isBookingNavigating, setIsBookingNavigating] = useState(false);
+  const [isViewWorkNavigating, setIsViewWorkNavigating] = useState(false);
+  const navigate = useNavigate();
 
   // Parallax scroll effects - Enhanced for bidirectional scrolling
   const { scrollY } = useScroll();
@@ -109,18 +113,68 @@ export default function HeroSlider() {
             transition={{ duration: 0.8, delay: 1, ease: "easeOut" }}
           >
             <motion.button 
-              className="bg-accent-gold text-luxury-dark px-6 sm:px-8 py-3 sm:py-4 font-medium hover:bg-accent-gold-dark hover:text-warm-white transition-colors duration-200 text-sm sm:text-base min-h-[48px] flex items-center justify-center"
-              onClick={() => window.location.href = '/book-now'}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              className="bg-accent-gold text-luxury-dark px-6 sm:px-8 py-3 sm:py-4 font-medium hover:bg-accent-gold-dark hover:text-warm-white transition-colors duration-200 text-sm sm:text-base min-h-[48px] flex items-center justify-center relative overflow-hidden"
+              onClick={async () => {
+                setIsBookingNavigating(true);
+                // Add a delay for the diagonal animation to be visible
+                await new Promise(resolve => setTimeout(resolve, 700));
+                window.location.href = '/book-now';
+              }}
+              whileHover={{ 
+                scale: 1.08,
+                rotateX: 5,
+                rotateY: 5,
+                boxShadow: "0 20px 40px rgba(212, 175, 55, 0.4)",
+                background: "linear-gradient(135deg, #d4af37 0%, #f4d03f  50%, #d4af37 100%)",
+                transition: { duration: 0.3, ease: "easeOut" }
+              }}
+              whileTap={{ 
+                scale: 0.96,
+                rotateX: -2,
+                rotateY: -2,
+                transition: { duration: 0.1 }
+              }}
+              animate={isBookingNavigating ? { 
+                x: [0, 120, 280, 500, 800],
+                y: [0, -60, -140, -250, -400],
+                rotate: [0, 8, 18, 30, 45],
+                scale: [1, 1.2, 1.5, 1.9, 2.5],
+                opacity: [1, 0.8, 0.6, 0.3, 0]
+              } : {}}
+              transition={{ 
+                duration: 0.7, 
+                ease: [0.25, 0.46, 0.45, 0.94],
+                type: "tween"
+              }}
+              style={{
+                transformStyle: "preserve-3d",
+                perspective: "1000px"
+              }}
             >
               BOOK TATTOO APPOINTMENT
             </motion.button>
             <motion.button 
               className="border border-accent-gold text-accent-gold px-6 sm:px-8 py-3 sm:py-4 font-medium hover:bg-accent-gold hover:text-luxury-dark transition-colors duration-200 text-sm sm:text-base min-h-[48px] flex items-center justify-center"
-              onClick={() => window.location.href = '/styles'}
+              onClick={async () => {
+                setIsViewWorkNavigating(true);
+                // Add a small delay for the animation to be visible
+                await new Promise(resolve => setTimeout(resolve, 800));
+                navigate('/styles', { state: { fromHero: true } });
+              }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              animate={isViewWorkNavigating ? { 
+                x: [0, -20, 100, 300, 800],
+                y: [0, -5, -15, -25, -40],
+                scale: [1, 1.05, 1.1, 1.2, 0.8],
+                opacity: [1, 0.9, 0.7, 0.4, 0],
+                rotateZ: [0, -5, -10, -15, -20]
+              } : {}}
+              transition={{ 
+                duration: 0.8, 
+                ease: [0.25, 0.46, 0.45, 0.94],
+                times: [0, 0.2, 0.5, 0.8, 1]
+              }}
             >
               VIEW OUR WORK
             </motion.button>

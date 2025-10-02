@@ -2,8 +2,11 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { Menu, X, ChevronDown, ChevronUp } from 'lucide-react'
+import ThemeToggle from './ThemeToggle'
+import { useTheme } from '../contexts/ThemeContext'
 
 const Header = () => {
+  const { isDarkMode } = useTheme()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [activeDropdown, setActiveDropdown] = useState(null)
   const [dropdownTimeout, setDropdownTimeout] = useState(null)
@@ -27,12 +30,17 @@ const Header = () => {
       }
     }
 
+    // Prevent body scroll when mobile menu is open
     if (isMenuOpen) {
+      document.body.style.overflow = 'hidden'
       document.addEventListener('mousedown', handleClickOutside)
       document.addEventListener('touchstart', handleTouchOutside)
+    } else {
+      document.body.style.overflow = 'unset'
     }
 
     return () => {
+      document.body.style.overflow = 'unset'
       document.removeEventListener('mousedown', handleClickOutside)
       document.removeEventListener('touchstart', handleTouchOutside)
     }
@@ -95,9 +103,9 @@ const Header = () => {
   }
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-warm-white border-b border-soft-gray">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white dark:bg-deep-charcoal border-b border-soft-gray dark:border-gray-600 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center h-20">
           {/* Logo */}
           <Link 
             to="/" 
@@ -113,14 +121,15 @@ const Header = () => {
             }}
           >
             <img 
-              src="/assets/logo1.PNG" 
+              src={isDarkMode ? "/assets/logo1.PNG" : "/assets/logo2.PNG"}
               alt="24K Tattoo Hair & Oddities Logo" 
               className="h-16 w-auto object-contain"
+              key={isDarkMode ? 'dark-logo' : 'light-logo'}
             />
           </Link>
           
           {/* Desktop Nav */}
-          <div className="hidden lg:flex items-center space-x-8 ml-20">
+          <div className="hidden lg:flex items-center space-x-8 flex-1 justify-center">
             {navigationItems.map((item) => (
               <div key={item.name} className="relative group">
                 {item.dropdown ? (
@@ -129,8 +138,8 @@ const Header = () => {
                       to={item.path}
                       className={`text-sm font-medium tracking-wide transition-colors duration-200 flex items-center gap-1 ${
                         isActive(item.path) 
-                          ? 'text-luxury-dark border-b border-accent-gold pb-1' 
-                          : 'text-charcoal hover:text-luxury-dark'
+                          ? 'text-luxury-dark dark:text-accent-gold border-b border-accent-gold pb-1' 
+                          : 'text-charcoal dark:text-gray-300 hover:text-luxury-dark dark:hover:text-accent-gold'
                       }`}
                       onClick={(e) => {
                         if (location.pathname === item.path) {
@@ -155,7 +164,7 @@ const Header = () => {
                       <ChevronDown size={16} />
                     </Link>
                     <div
-                      className={`absolute left-1/2 -translate-x-1/2 top-full mt-3 w-56 bg-warm-white border border-soft-gray rounded-lg shadow-xl z-50 flex flex-col space-y-1 py-2 transition-all duration-200 ${
+                      className={`absolute left-1/2 -translate-x-1/2 top-full mt-3 w-56 bg-white dark:bg-deep-charcoal border border-soft-gray dark:border-gray-600 rounded-lg shadow-xl z-50 flex flex-col space-y-1 py-2 transition-all duration-200 ${
                         activeDropdown === item.name ? 'block' : 'hidden'
                       } group-hover:block`}
                       onMouseEnter={() => {
@@ -205,29 +214,37 @@ const Header = () => {
           </div>
 
           {/* Right side buttons */}
-          <div className="hidden lg:flex items-center space-x-4">
+          <div className="hidden lg:flex items-center space-x-3 ml-auto">
             <Link
               to="/book-now"
-              className="bg-accent-gold text-luxury-dark px-6 py-2 text-sm font-medium hover:bg-gold-dark hover:text-warm-white transition-colors duration-200"
+              className="bg-accent-gold text-luxury-dark px-6 py-2 text-sm font-medium hover:bg-gold-dark hover:text-warm-white transition-colors duration-200 rounded"
             >
               BOOK TATTOO APPOINTMENT
             </Link>
+            <div className="ml-3">
+              <ThemeToggle />
+            </div>
           </div>
 
           {/* Mobile Menu Button */}
           <button
-            className="lg:hidden p-2 touch-manipulation"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="lg:hidden p-3 touch-manipulation ml-auto relative z-50 hover:bg-gray-100 rounded-full transition-colors"
+            onClick={() => {
+              setIsMenuOpen(!isMenuOpen)
+              if (isMenuOpen) {
+                setMobileDropdowns({})
+              }
+            }}
             aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           >
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            {isMenuOpen ? <X size={24} className="text-charcoal" /> : <Menu size={24} className="text-charcoal" />}
           </button>
         </div>
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div ref={mobileMenuRef} className="lg:hidden border-t border-soft-gray bg-warm-white">
-            <div className="px-6 py-4 space-y-4 max-h-[calc(100vh-80px)] overflow-y-auto">
+          <div ref={mobileMenuRef} className="lg:hidden border-t border-soft-gray bg-white">
+            <div className="px-6 py-4 space-y-4 max-h-[calc(100vh-120px)] overflow-y-auto">
               {navigationItems.map((item) => (
                 <div key={item.name}>
                   {item.dropdown ? (
@@ -291,6 +308,9 @@ const Header = () => {
                 </div>
               ))}
               <div className="pt-4 space-y-3">
+                <div className="flex justify-center mb-3">
+                  <ThemeToggle />
+                </div>
                 <Link
                   to="/book-now"
                   className="block w-full bg-accent-gold text-luxury-dark px-4 py-3 text-base font-medium text-center hover:bg-gold-dark hover:text-warm-white transition-colors duration-200 min-h-[48px] flex items-center justify-center touch-manipulation"
