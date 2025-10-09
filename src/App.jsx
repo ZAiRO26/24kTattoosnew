@@ -1,6 +1,6 @@
 import FAQSection from './components/FAQSection';
 import HeroSlider from './components/HeroSlider';
-import React, { useEffect, Suspense, lazy } from 'react'
+import React, { useEffect, Suspense, lazy, useState } from 'react'
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ThemeProvider } from './contexts/ThemeContext';
@@ -36,12 +36,77 @@ const ColourPage = lazy(() => import('./pages/ColourPage'));
 const PortraitsRealisticPage = lazy(() => import('./pages/PortraitsRealisticPage'));
 const MicroMinimalistPage = lazy(() => import('./pages/MicroMinimalistPage'));
 const CustomisedTattooPage = lazy(() => import('./pages/CustomisedTattooPage'));
+const GalleryPage = lazy(() => import('./pages/GalleryPage'));
 
 
 
 // Redesigned HomePage matching the Ganga Tattoo Studio minimalistic design
 const HomePage = () => {
   const { scrollY } = useScroll();
+  
+  // Work images from the home-page-work folder
+  const workImages = [
+    {
+      id: 1,
+      image: '/assets/home-page-work/IMG_0882.jpeg',
+      title: 'Professional Tattoo Work 1'
+    },
+    {
+      id: 2,
+      image: '/assets/home-page-work/IMG_0912.jpeg',
+      title: 'Professional Tattoo Work 2'
+    },
+    {
+      id: 3,
+      image: '/assets/home-page-work/IMG_1195.jpeg',
+      title: 'Professional Tattoo Work 3'
+    },
+    {
+      id: 4,
+      image: '/assets/home-page-work/IMG_2362.jpeg',
+      title: 'Professional Tattoo Work 4'
+    },
+    {
+      id: 5,
+      image: '/assets/home-page-work/IMG_3250.jpeg',
+      title: 'Professional Tattoo Work 5'
+    },
+    {
+      id: 6,
+      image: '/assets/home-page-work/IMG_4050.jpeg',
+      title: 'Professional Tattoo Work 6'
+    },
+    {
+      id: 7,
+      image: '/assets/home-page-work/IMG_4430.jpeg',
+      title: 'Professional Tattoo Work 7'
+    },
+    {
+      id: 8,
+      image: '/assets/home-page-work/IMG_4513.jpeg',
+      title: 'Professional Tattoo Work 8'
+    },
+    {
+      id: 9,
+      image: '/assets/home-page-work/IMG_4537.jpeg',
+      title: 'Professional Tattoo Work 9'
+    },
+    {
+      id: 10,
+      image: '/assets/home-page-work/IMG_4950.jpeg',
+      title: 'Professional Tattoo Work 10'
+    },
+    {
+      id: 11,
+      image: '/assets/home-page-work/IMG_6062.jpeg',
+      title: 'Professional Tattoo Work 11'
+    },
+    {
+      id: 12,
+      image: '/assets/home-page-work/IMG_6385.jpeg',
+      title: 'Professional Tattoo Work 12'
+    }
+  ];
   
   // Optimized parallax transforms with reduced values to prevent gaps
   const workSectionY = useTransform(scrollY, [0, 2000], [0, -50]);
@@ -100,16 +165,16 @@ const HomePage = () => {
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
           >
-            {[...Array(12)].map((_, i) => (
+            {workImages.map((item, index) => (
               <motion.div 
-                key={i} 
-                className="aspect-square bg-minimal-light-gray overflow-hidden group cursor-pointer"
+                key={item.id} 
+                className="aspect-square bg-minimal-light-gray overflow-hidden group"
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ 
                   duration: 0.5, 
-                  delay: i * 0.1, 
+                  delay: index * 0.1, 
                   ease: "easeOut" 
                 }}
                 whileHover={{ 
@@ -118,8 +183,8 @@ const HomePage = () => {
                 }}
               >
                 <img 
-                  src={`/work-${i+1}.jpg`} 
-                  alt={`Work ${i+1}`}
+                  src={item.image} 
+                  alt={item.title}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
               </motion.div>
@@ -137,6 +202,7 @@ const HomePage = () => {
               className="btn-outline"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              onClick={() => window.location.href = '/styles/gallery'}
             >
               VIEW FULL GALLERY
             </motion.button>
@@ -443,6 +509,7 @@ const HomePage = () => {
           </motion.div>
         </div>
       </motion.section>
+      
     </div>
   )
 }
@@ -481,6 +548,7 @@ function App() {
               <Route path="/styles/portraits-realistic" element={<PortraitsRealisticPage />} />
               <Route path="/styles/micro-minimalist" element={<MicroMinimalistPage />} />
               <Route path="/styles/customised-tattoo" element={<CustomisedTattooPage />} />
+              <Route path="/styles/gallery" element={<GalleryPage />} />
               {/* Redirect legacy piercing URLs to Do's and Don'ts/Piercings */}
               <Route path="/piercings" element={<DosAndDontsPiercingsPage />} />
               <Route path="/piercings/jewelry" element={<DosAndDontsPiercingsPage />} />

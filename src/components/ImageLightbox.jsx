@@ -1,18 +1,27 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, X } from 'lucide-react';
 
 const ImageLightbox = ({ images, selectedImage, setSelectedImage, onClose }) => {
-  if (selectedImage === null) return null;
+  const [touchStart, setTouchStart] = useState(null);
+  const [touchEnd, setTouchEnd] = useState(null);
 
-  const handleNext = (e) => {
-    e?.stopPropagation();
-    setSelectedImage((prev) => (prev + 1) % images.length);
+  // Safety checks
+  if (selectedImage === null || selectedImage === undefined) return null;
+  if (!images || !Array.isArray(images) || images.length === 0) return null;
+  if (selectedImage < 0 || selectedImage >= images.length) return null;
+
+  const currentImage = images[selectedImage];
+  if (!currentImage) return null;
+
+  const handleNext = () => {
+    const nextIndex = (selectedImage + 1) % images.length;
+    setSelectedImage(nextIndex);
   };
 
-  const handlePrev = (e) => {
-    e?.stopPropagation();
-    setSelectedImage((prev) => (prev - 1 + images.length) % images.length);
+  const handlePrev = () => {
+    const prevIndex = (selectedImage - 1 + images.length) % images.length;
+    setSelectedImage(prevIndex);
   };
 
   const handleKeyDown = (e) => {
@@ -21,16 +30,33 @@ const ImageLightbox = ({ images, selectedImage, setSelectedImage, onClose }) => 
     if (e.key === 'Escape') onClose();
   };
 
-  React.useEffect(() => {
-    // Prevent body scroll when lightbox is open
+  const handleTouchStart = (e) => {
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > 50;
+    const isRightSwipe = distance < -50;
+
+    if (isLeftSwipe) handleNext();
+    if (isRightSwipe) handlePrev();
+  };
+
+  useEffect(() => {
+    document.addEventListener('keydown', handleKeyDown);
     document.body.style.overflow = 'hidden';
-    window.addEventListener('keydown', handleKeyDown);
     
     return () => {
+      document.removeEventListener('keydown', handleKeyDown);
       document.body.style.overflow = 'unset';
-      window.removeEventListener('keydown', handleKeyDown);
     };
-  }, []);
+  }, [selectedImage])
 
   return (
     <AnimatePresence>
@@ -38,61 +64,67 @@ const ImageLightbox = ({ images, selectedImage, setSelectedImage, onClose }) => 
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-[9999] p-4"
+        className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50"
         onClick={onClose}
-        style={{ 
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          zIndex: 9999
-        }}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
       >
-        <motion.img
-          key={selectedImage}
-          src={images[selectedImage].image}
-          alt={images[selectedImage].title}
-          drag="x"
-          dragConstraints={{ left: 0, right: 0 }}
-          onDragEnd={(event, info) => {
-            if (info.offset.x > 100) {
-              handlePrev();
-            } else if (info.offset.x < -100) {
-              handleNext();
-            }
-          }}
+        <motion.div
           initial={{ scale: 0.8, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           exit={{ scale: 0.8, opacity: 0 }}
-          className="max-w-[95vw] max-h-[85vh] md:max-w-[90vw] md:max-h-[90vh] object-contain select-none"
+          className="relative max-w-full max-h-full p-4"
           onClick={(e) => e.stopPropagation()}
-          style={{ touchAction: 'pan-x' }}
-        />
-
-        <button
-          onClick={handlePrev}
-          className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/40 p-2 md:p-3 rounded-full text-white z-10 touch-manipulation"
-          style={{ touchAction: 'manipulation' }}
         >
-          <ChevronLeft size={24} className="md:w-8 md:h-8" />
-        </button>
+          {/* Close button */}
+          <button
+            onClick={onClose}
+            className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-white bg-opacity-20 hover:bg-opacity-30 text-white rounded-full p-2 transition-all duration-200 z-10"
+            style={{
+              minWidth: '48px',
+              minHeight: '48px'
+            }}
+          >
+            <X size={24} />
+          </button>
 
-        <button
-          onClick={handleNext}
-          className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/40 p-2 md:p-3 rounded-full text-white z-10 touch-manipulation"
-          style={{ touchAction: 'manipulation' }}
-        >
-          <ChevronRight size={24} className="md:w-8 md:h-8" />
-        </button>
+          {/* Image */}
+          <img
+            src={currentImage.image}
+            alt={currentImage.title || 'Gallery Image'}
+            className="max-w-full max-h-full object-contain"
+            style={{
+              maxWidth: 'calc(100vw - 32px)',
+              maxHeight: 'calc(100vh - 120px)'
+            }}
+          />
 
-        <button
-          onClick={onClose}
-          className="absolute top-2 md:top-4 right-2 md:right-4 bg-white/20 hover:bg-white/40 p-2 md:p-3 rounded-full text-white z-10 touch-manipulation"
-          style={{ touchAction: 'manipulation' }}
-        >
-          <X size={20} className="md:w-6 md:h-6" />
-        </button>
+          {/* Navigation buttons */}
+          {images.length > 1 && (
+            <>
+              <button
+                onClick={handlePrev}
+                className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-20 hover:bg-opacity-30 text-white rounded-full p-3 transition-all duration-200"
+                style={{ minWidth: '48px', minHeight: '48px' }}
+              >
+                <ChevronLeft size={24} />
+              </button>
+              <button
+                onClick={handleNext}
+                className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-20 hover:bg-opacity-30 text-white rounded-full p-3 transition-all duration-200"
+                style={{ minWidth: '48px', minHeight: '48px' }}
+              >
+                <ChevronRight size={24} />
+              </button>
+            </>
+          )}
+
+          {/* Image counter */}
+          <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black bg-opacity-50 text-white px-3 py-1 rounded-full text-sm">
+            {selectedImage + 1} / {images.length}
+          </div>
+        </motion.div>
       </motion.div>
     </AnimatePresence>
   );

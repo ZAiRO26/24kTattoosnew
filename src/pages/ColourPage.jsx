@@ -1,10 +1,22 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
+import { motion } from 'framer-motion';
+import { Fancybox } from '@fancyapps/ui';
+import '@fancyapps/ui/dist/fancybox/fancybox.css';
 import { ArrowRight, CheckCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import ImageLightbox from '../components/ImageLightbox'; // Import the lightbox component
 
 const ColourPage = () => {
-  const [selectedImage, setSelectedImage] = useState(null);
+
+  // Initialize Fancybox
+  useEffect(() => {
+    Fancybox.bind('[data-fancybox="gallery"]', {
+      // Options
+    });
+
+    return () => {
+      Fancybox.destroy();
+    };
+  }, []);
 
   // Sample colour tattoo images
   const colourGallery = [
@@ -111,7 +123,7 @@ const ColourPage = () => {
             <div className="flex justify-center">
               <Link
                 to="/book-now"
-                className="bg-accent-gold hover:bg-gold-dark text-luxury-dark px-8 py-4 rounded-lg font-semibold inline-flex items-center"
+                className="bg-accent-gold hover:bg-gold-dark text-luxury-dark px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold inline-flex items-center justify-center text-sm sm:text-base w-full sm:w-auto max-w-xs sm:max-w-none mx-auto transition-all duration-300"
               >
                 Book Colour Tattoo
                 <ArrowRight className="ml-2" size={18} />
@@ -141,7 +153,7 @@ const ColourPage = () => {
             </div>
             <div className="relative">
               <img 
-                src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=600&h=600&fit=crop" 
+                src="/assets/Color.jpeg" 
                 alt="Colorful Tattoo Example" 
                 className="rounded-lg shadow-lg"
               />
@@ -192,14 +204,20 @@ const ColourPage = () => {
             {colourGallery.map((item, index) => (
               <div 
                 key={item.id} 
-                className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 cursor-pointer"
-                onClick={() => setSelectedImage(index)}
+                className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col"
               >
-                <img 
-                  src={item.image} 
-                  alt={item.title}
-                  className="w-full h-64 object-cover"
-                />
+                <a 
+                  href={item.image}
+                  data-fancybox="gallery"
+                  data-caption={item.title}
+                  className="flex-1 flex items-center justify-center"
+                >
+                  <img 
+                    src={item.image} 
+                    alt={item.title}
+                    className="w-full h-64 object-cover object-center cursor-pointer hover:scale-105 transition-transform duration-300"
+                  />
+                </a>
               </div>
             ))}
           </div>
@@ -254,28 +272,22 @@ const ColourPage = () => {
 
       {/* CTA */}
       <section className="py-20 bg-light-charcoal">
-        <div className="max-w-4xl mx-auto px-6 text-center">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-300 mb-6">Ready to Add Some Color?</h2>
           <p className="text-lg text-gray-400 mb-8">
             Book a consultation to explore color options and let our artists create a vibrant masterpiece that reflects your style.
           </p>
-          <Link
-            to="/book-now"
-            className="bg-accent-gold hover:bg-gold-dark text-luxury-dark px-8 py-4 rounded-lg font-semibold inline-flex items-center justify-center"
-          >
-            BOOK COLOUR CONSULTATION
-            <ArrowRight className="ml-2" size={18} />
-          </Link>
+          <div className="flex justify-center">
+            <Link
+              to="/book-now"
+              className="bg-accent-gold hover:bg-gold-dark text-luxury-dark px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold inline-flex items-center justify-center text-sm sm:text-base w-full sm:w-auto max-w-xs sm:max-w-none mx-auto transition-all duration-300"
+            >
+              BOOK COLOUR CONSULTATION
+              <ArrowRight className="ml-2" size={18} />
+            </Link>
+          </div>
         </div>
       </section>
-
-      {/* ImageLightbox Component */}
-      <ImageLightbox 
-        images={colourGallery}
-        selectedImage={selectedImage}
-        setSelectedImage={setSelectedImage}
-        onClose={() => setSelectedImage(null)}
-      />
     </div>
   );
 };

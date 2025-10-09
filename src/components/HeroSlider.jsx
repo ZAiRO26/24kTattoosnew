@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 
 const images = [
@@ -14,15 +14,6 @@ export default function HeroSlider() {
   const [isViewWorkNavigating, setIsViewWorkNavigating] = useState(false);
   const navigate = useNavigate();
 
-  // Parallax scroll effects - Reduced values to prevent gaps
-  const { scrollY } = useScroll();
-  const backgroundY = useTransform(scrollY, [0, 1000], [0, -100]);
-  const backgroundYReverse = useTransform(scrollY, [0, 1000], [0, 50]);
-  const overlayOpacity = useTransform(scrollY, [0, 300, 600, 1000], [0.3, 0.6, 0.4, 0.3]);
-  const contentOpacity = useTransform(scrollY, [0, 200, 600, 1000], [1, 0.4, 0.6, 1]);
-  const contentScale = useTransform(scrollY, [0, 500, 1000], [1, 0.98, 1]);
-  const textY = useTransform(scrollY, [0, 500], [0, -25]);
-
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrent((prev) => (prev + 1) % images.length);
@@ -33,43 +24,53 @@ export default function HeroSlider() {
   return (
     <motion.section 
       className="relative w-full h-screen flex items-center justify-center bg-warm-white overflow-hidden"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1.2, ease: "easeOut" }}
     >
-      {/* Background Images */}
+      {/* Background Images with Framer Motion Effects */}
       {images.map((img, idx) => (
         <motion.img
           key={img}
           src={img}
           alt={`Hero Slide ${idx + 1}`}
-          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
-            current === idx ? 'opacity-100 z-10' : 'opacity-0 z-0'
+          className={`absolute inset-0 w-full h-full object-cover ${
+            current === idx ? 'z-10' : 'z-0'
           }`}
-          style={{
-            transitionProperty: 'opacity',
-            y: backgroundY
+          initial={{ opacity: 0, scale: 1.1 }}
+          animate={{ 
+            opacity: current === idx ? 1 : 0,
+            scale: current === idx ? 1 : 1.05
+          }}
+          transition={{ 
+            opacity: { duration: 1, ease: "easeInOut" },
+            scale: { duration: 8, ease: "easeOut" }
           }}
           loading={idx === 0 ? "eager" : "lazy"}
         />
       ))}
       
-      {/* Overlay */}
+      {/* Animated Overlay */}
       <motion.div 
         className="absolute inset-0 bg-luxury-dark/30 z-20"
-        style={{ opacity: overlayOpacity }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.5, ease: "easeOut" }}
       ></motion.div>
       
-      {/* Content */}
+      {/* Content with Enhanced Framer Motion */}
       <motion.div 
         className="relative z-30 flex flex-col items-center justify-center w-full h-full text-center px-4 sm:px-6"
-        initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, ease: "easeOut" }}
-        style={{ 
-          opacity: contentOpacity,
-          scale: contentScale,
-          y: textY
-        }}
+        initial={{ opacity: 0, y: 100, scale: 0.9 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        transition={{ duration: 1.2, delay: 0.3, ease: "easeOut" }}
       >
-        <div className="max-w-4xl mx-auto">
+        <motion.div 
+          className="max-w-4xl mx-auto"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 0.6, ease: "easeOut" }}
+        >
           <motion.h1 
             className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-white mb-2 sm:mb-3 tracking-normal leading-tight font-light" 
             style={{fontFamily: 'Cinzel, serif', letterSpacing: '0.02em'}}
@@ -106,102 +107,79 @@ export default function HeroSlider() {
           >
             Focused on Realism, Micro Realism, Fine Line
           </motion.p>
+          
+          {/* Buttons */}
           <motion.div 
-            className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4"
-            initial={{ opacity: 0, y: 20 }}
+            className="flex flex-col sm:flex-row gap-4 sm:gap-6 items-center justify-center"
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1, ease: "easeOut" }}
+            transition={{ duration: 0.8, delay: 1.0, ease: "easeOut" }}
           >
-            <motion.button 
-              className="bg-accent-gold text-luxury-dark px-6 sm:px-8 py-3 sm:py-4 font-medium hover:bg-accent-gold-dark hover:text-warm-white transition-colors duration-200 text-sm sm:text-base min-h-[48px] flex items-center justify-center relative overflow-hidden"
-              onClick={async () => {
+            <motion.button
+              onClick={() => {
                 setIsBookingNavigating(true);
-                // Add a delay for the diagonal animation to be visible
-                await new Promise(resolve => setTimeout(resolve, 700));
-                window.location.href = '/book-now';
+                setTimeout(() => {
+                  navigate('/book-now');
+                }, 300);
+              }}
+              className="bg-accent-gold text-luxury-dark px-8 py-3 text-sm sm:text-base font-semibold hover:bg-gold-dark hover:text-warm-white transition-all duration-300 rounded-sm tracking-wide min-w-[200px] sm:min-w-[220px] touch-manipulation"
+              initial={{ x: -100, opacity: 0 }}
+              animate={{ x: 0, opacity: isBookingNavigating ? 0.7 : 1 }}
+              transition={{ 
+                x: { duration: 0.6, ease: "easeOut" },
+                opacity: { duration: 0.3, ease: "easeInOut" }
               }}
               whileHover={{ 
-                scale: 1.08,
-                rotateX: 5,
-                rotateY: 5,
-                boxShadow: "0 20px 40px rgba(212, 175, 55, 0.4)",
-                background: "linear-gradient(135deg, #d4af37 0%, #f4d03f  50%, #d4af37 100%)",
+                scale: 1.05,
+                x: 10,
+                boxShadow: "0px 10px 30px rgba(255, 215, 0, 0.3)",
                 transition: { duration: 0.3, ease: "easeOut" }
               }}
               whileTap={{ 
-                scale: 0.96,
-                rotateX: -2,
-                rotateY: -2,
+                scale: 0.98,
+                x: 5,
                 transition: { duration: 0.1 }
               }}
-              animate={isBookingNavigating ? { 
-                x: [0, 120, 280, 500, 800],
-                y: [0, -60, -140, -250, -400],
-                rotate: [0, 8, 18, 30, 45],
-                scale: [1, 1.2, 1.5, 1.9, 2.5],
-                opacity: [1, 0.8, 0.6, 0.3, 0]
-              } : {}}
-              transition={{ 
-                duration: 0.7, 
-                ease: [0.25, 0.46, 0.45, 0.94],
-                type: "tween"
-              }}
-              style={{
-                transformStyle: "preserve-3d",
-                perspective: "1000px"
-              }}
+              disabled={isBookingNavigating}
             >
               BOOK TATTOO APPOINTMENT
             </motion.button>
-            <motion.button 
-              className="border border-accent-gold text-accent-gold px-6 sm:px-8 py-3 sm:py-4 font-medium hover:bg-accent-gold hover:text-luxury-dark transition-colors duration-200 text-sm sm:text-base min-h-[48px] flex items-center justify-center"
-              onClick={async () => {
+            
+            <motion.button
+              onClick={() => {
                 setIsViewWorkNavigating(true);
-                // Add a small delay for the animation to be visible
-                await new Promise(resolve => setTimeout(resolve, 800));
-                navigate('/styles', { state: { fromHero: true } });
+                setTimeout(() => {
+                  navigate('/styles');
+                }, 300);
               }}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              animate={isViewWorkNavigating ? { 
-                x: [0, -20, 100, 300, 800],
-                y: [0, -5, -15, -25, -40],
-                scale: [1, 1.05, 1.1, 1.2, 0.8],
-                opacity: [1, 0.9, 0.7, 0.4, 0],
-                rotateZ: [0, -5, -10, -15, -20]
-              } : {}}
+              className="border-2 border-accent-gold text-accent-gold px-8 py-3 text-sm sm:text-base font-semibold hover:bg-accent-gold hover:text-luxury-dark transition-all duration-300 rounded-sm tracking-wide min-w-[200px] sm:min-w-[220px] touch-manipulation"
+              initial={{ x: 100, opacity: 0 }}
+              animate={{ x: 0, opacity: isViewWorkNavigating ? 0.7 : 1 }}
               transition={{ 
-                duration: 0.8, 
-                ease: [0.25, 0.46, 0.45, 0.94],
-                times: [0, 0.2, 0.5, 0.8, 1]
+                x: { duration: 0.6, ease: "easeOut", delay: 0.2 },
+                opacity: { duration: 0.3, ease: "easeInOut" }
               }}
+              whileHover={{ 
+                scale: 1.05,
+                x: -10,
+                boxShadow: "0px 10px 30px rgba(255, 215, 0, 0.2)",
+                borderColor: "#FFD700",
+                transition: { duration: 0.3, ease: "easeOut" }
+              }}
+              whileTap={{ 
+                scale: 0.98,
+                x: -5,
+                transition: { duration: 0.1 }
+              }}
+              disabled={isViewWorkNavigating}
             >
               VIEW OUR WORK
             </motion.button>
           </motion.div>
-        </div>
+        </motion.div>
       </motion.div>
       
-      {/* Navigation Dots */}
-      <motion.div 
-        className="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 flex gap-2 sm:gap-3 z-30"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 1.2, ease: "easeOut" }}
-      >
-        {images.map((_, idx) => (
-          <motion.button
-            key={idx}
-            onClick={() => setCurrent(idx)}
-            className={`w-3 h-3 sm:w-4 sm:h-4 rounded-full transition-colors duration-300 touch-manipulation ${
-              current === idx ? 'bg-accent-gold' : 'bg-accent-gold/40'
-            }`}
-            aria-label={`Go to slide ${idx + 1}`}
-            whileHover={{ scale: 1.2 }}
-            whileTap={{ scale: 0.9 }}
-          />
-        ))}
-      </motion.div>
+
     </motion.section>
   );
 }

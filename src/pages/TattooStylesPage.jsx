@@ -19,7 +19,7 @@ const styles = [
   {
     name: 'Colour',
     description: 'Vibrant color palettes and smooth blends for bold, eye-catching pieces.',
-    image: '/assets/color.jpeg',
+    image: '/assets/Color.jpeg',
     route: '/styles/colour'
   },
   {
@@ -39,6 +39,12 @@ const styles = [
     description: 'Fully custom designs tailored to your story, style, and placement.',
     image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&h=400&fit=crop',
     route: '/styles/customised-tattoo'
+  },
+  {
+    name: 'Gallery',
+    description: 'Explore our complete collection of tattoo artistry and diverse styles.',
+    image: 'https://images.unsplash.com/photo-1590736969955-71cc94901144?w=600&h=400&fit=crop',
+    route: '/styles/gallery'
   }
 ]
 
