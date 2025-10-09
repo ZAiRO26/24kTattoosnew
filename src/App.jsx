@@ -43,37 +43,37 @@ const CustomisedTattooPage = lazy(() => import('./pages/CustomisedTattooPage'));
 const HomePage = () => {
   const { scrollY } = useScroll();
   
-  // Enhanced parallax transforms for bidirectional scrolling
-  const workSectionY = useTransform(scrollY, [0, 2000], [0, -100]);
-  const academySectionY = useTransform(scrollY, [500, 2500], [0, -150]);
-  const servicesSectionY = useTransform(scrollY, [1000, 3000], [0, -100]);
-  const aboutSectionY = useTransform(scrollY, [1500, 3500], [0, -120]);
-  const contactSectionY = useTransform(scrollY, [2000, 4000], [0, -80]);
+  // Optimized parallax transforms with reduced values to prevent gaps
+  const workSectionY = useTransform(scrollY, [0, 2000], [0, -50]);
+  const academySectionY = useTransform(scrollY, [500, 2500], [0, -75]);
+  const servicesSectionY = useTransform(scrollY, [1000, 3000], [0, -50]);
+  const aboutSectionY = useTransform(scrollY, [1500, 3500], [0, -60]);
+  const contactSectionY = useTransform(scrollY, [2000, 4000], [0, -40]);
   
   return (
     <div className="pt-0 bg-minimal-white dark:bg-soothing-charcoal text-minimal-black dark:text-charcoal-text transition-colors duration-300">
       {/* Hero Section with Slider */}
       <HeroSlider />
 
-      {/* Work Section */}
+      {/* Work Section - Reduced padding */}
       <motion.section 
-        className="py-20 bg-minimal-white dark:bg-soothing-charcoal transition-colors duration-300"
+        className="py-6 md:py-8 lg:py-10 bg-minimal-white dark:bg-soothing-charcoal transition-colors duration-300"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: false, margin: "-100px" }}
         transition={{ duration: 0.8, ease: "easeOut" }}
         style={{ y: workSectionY }}
       >
-        <div className="max-w-6xl mx-auto px-6">
+        <div className="max-w-6xl mx-auto px-4 md:px-6">
           <motion.div 
-            className="text-center mb-16"
+            className="text-center mb-8 md:mb-10"
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
             <motion.h2 
-              className="text-4xl md:text-5xl font-bold text-minimal-black dark:text-charcoal-text mb-6 transition-colors duration-300"
+              className="text-3xl md:text-4xl lg:text-5xl font-bold text-minimal-black dark:text-charcoal-text mb-4 md:mb-6 transition-colors duration-300"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -82,7 +82,7 @@ const HomePage = () => {
               Work
             </motion.h2>
             <motion.p 
-              className="text-lg text-minimal-gray dark:text-gray-300 max-w-3xl mx-auto transition-colors duration-300"
+              className="text-base md:text-lg text-minimal-gray dark:text-gray-300 max-w-3xl mx-auto transition-colors duration-300"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -92,9 +92,9 @@ const HomePage = () => {
             </motion.p>
           </motion.div>
           
-          {/* Work Grid */}
+          {/* Work Grid - Reduced gap and margin */}
           <motion.div 
-            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-12"
+            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4 lg:gap-6 mb-6 md:mb-8"
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
@@ -144,9 +144,9 @@ const HomePage = () => {
         </div>
       </motion.section>
 
-      {/* Academy Section */}
+      {/* Academy Section - Reduced padding */}
       <motion.section 
-        className="py-20" 
+        className="py-6 md:py-8 lg:py-10" 
         style={{ 
           backgroundColor: '#B8B8B8',
           y: academySectionY
@@ -156,9 +156,9 @@ const HomePage = () => {
         viewport={{ once: false, margin: "-100px" }}
         transition={{ duration: 0.8, ease: "easeOut" }}
       >
-        <div className="max-w-6xl mx-auto px-6">
+        <div className="max-w-6xl mx-auto px-4 md:px-6">
           <motion.div 
-            className="grid lg:grid-cols-2 gap-16 items-center"
+            className="grid lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-center"
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -171,7 +171,7 @@ const HomePage = () => {
               transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
             >
               <motion.h2 
-                className="text-4xl md:text-5xl font-bold text-gray-900 mb-6"
+                className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 md:mb-6"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -180,7 +180,7 @@ const HomePage = () => {
                 Start learning with us
               </motion.h2>
               <motion.p 
-                className="text-lg text-gray-600 mb-8"
+                className="text-base md:text-lg text-gray-600 mb-6 md:mb-8"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -242,9 +242,9 @@ const HomePage = () => {
         </div>
       </motion.section>
 
-      {/* Services Section */}
+      {/* Services Section - Reduced padding */}
       <motion.section 
-        className="py-20 bg-light-charcoal"
+        className="py-6 md:py-8 lg:py-10 bg-light-charcoal"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: false, margin: "-100px" }}
@@ -253,16 +253,16 @@ const HomePage = () => {
           y: servicesSectionY
         }}
       >
-        <div className="max-w-6xl mx-auto px-6">
+        <div className="max-w-6xl mx-auto px-4 md:px-6">
           <motion.div 
-            className="text-center mb-16"
+            className="text-center mb-8 md:mb-12"
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
             <motion.h2 
-              className="text-4xl md:text-5xl font-bold text-gray-300 mb-6"
+              className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-300 mb-4 md:mb-6"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -271,7 +271,7 @@ const HomePage = () => {
               Do you want a tattoo?
             </motion.h2>
             <motion.p 
-              className="text-lg text-gray-400 mb-8"
+              className="text-base md:text-lg text-gray-400 mb-6 md:mb-8"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -293,9 +293,9 @@ const HomePage = () => {
             </motion.button>
           </motion.div>
           
-          {/* Services Grid */}
+          {/* Services Grid - Reduced gap */}
           <motion.div 
-            className="grid md:grid-cols-3 gap-8"
+            className="grid md:grid-cols-3 gap-4 md:gap-6 lg:gap-8"
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -412,9 +412,9 @@ const HomePage = () => {
         </div>
       </motion.section>
 
-      {/* FAQ Section */}
+      {/* FAQ Section - Reduced padding */}
       <motion.section 
-        className="py-20 bg-deep-charcoal"
+        className="py-6 md:py-8 lg:py-10 bg-deep-charcoal"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: false, margin: "-100px" }}
@@ -423,9 +423,9 @@ const HomePage = () => {
           y: aboutSectionY
         }}
       >
-        <div className="max-w-4xl mx-auto px-6">
+        <div className="max-w-4xl mx-auto px-4 md:px-6">
           <motion.h2 
-            className="text-4xl md:text-5xl font-bold text-charcoal-text mb-12 text-center"
+            className="text-3xl md:text-4xl lg:text-5xl font-bold text-charcoal-text mb-8 md:mb-12 text-center"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}

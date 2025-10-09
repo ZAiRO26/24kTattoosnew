@@ -19,7 +19,7 @@ const styles = [
   {
     name: 'Colour',
     description: 'Vibrant color palettes and smooth blends for bold, eye-catching pieces.',
-    image: 'https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=600&h=400&fit=crop',
+    image: '/assets/color.jpeg',
     route: '/styles/colour'
   },
   {

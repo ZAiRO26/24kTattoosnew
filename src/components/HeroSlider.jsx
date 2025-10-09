@@ -14,14 +14,14 @@ export default function HeroSlider() {
   const [isViewWorkNavigating, setIsViewWorkNavigating] = useState(false);
   const navigate = useNavigate();
 
-  // Parallax scroll effects - Enhanced for bidirectional scrolling
+  // Parallax scroll effects - Reduced values to prevent gaps
   const { scrollY } = useScroll();
-  const backgroundY = useTransform(scrollY, [0, 1000], [0, -200]);
-  const backgroundYReverse = useTransform(scrollY, [0, 1000], [0, 100]);
-  const overlayOpacity = useTransform(scrollY, [0, 300, 600, 1000], [0.3, 0.7, 0.5, 0.3]);
-  const contentOpacity = useTransform(scrollY, [0, 200, 600, 1000], [1, 0.3, 0.5, 1]);
-  const contentScale = useTransform(scrollY, [0, 500, 1000], [1, 0.95, 1]);
-  const textY = useTransform(scrollY, [0, 500], [0, -50]);
+  const backgroundY = useTransform(scrollY, [0, 1000], [0, -100]);
+  const backgroundYReverse = useTransform(scrollY, [0, 1000], [0, 50]);
+  const overlayOpacity = useTransform(scrollY, [0, 300, 600, 1000], [0.3, 0.6, 0.4, 0.3]);
+  const contentOpacity = useTransform(scrollY, [0, 200, 600, 1000], [1, 0.4, 0.6, 1]);
+  const contentScale = useTransform(scrollY, [0, 500, 1000], [1, 0.98, 1]);
+  const textY = useTransform(scrollY, [0, 500], [0, -25]);
 
   useEffect(() => {
     const interval = setInterval(() => {

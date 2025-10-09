@@ -1,41 +1,79 @@
-import React from 'react'
-import { ArrowRight, CheckCircle, Star } from 'lucide-react'
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react';
+import { ArrowRight, CheckCircle } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import ImageLightbox from '../components/ImageLightbox'; // Import the lightbox component
 
 const ColourPage = () => {
+  const [selectedImage, setSelectedImage] = useState(null);
+
   // Sample colour tattoo images
   const colourGallery = [
     {
       id: 1,
-      image: 'https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=400&h=400&fit=crop',
+      image: '/assets/color/A84C67DA-34CC-4FCB-BBBF-D7A473E85609.jpeg',
       title: 'Vibrant Floral Design'
     },
     {
       id: 2,
-      image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=400&fit=crop',
+      image: '/assets/color/IMG_2547.jpeg',
       title: 'Colorful Portrait Art'
     },
     {
       id: 3,
-      image: 'https://images.unsplash.com/photo-1590736969955-71cc94901144?w=400&h=400&fit=crop',
+      image: '/assets/color/IMG_2606.jpeg',
       title: 'Rainbow Geometric'
     },
     {
       id: 4,
-      image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=400&fit=crop',
+      image: '/assets/color/IMG_3185.jpeg',
       title: 'Watercolor Style'
     },
     {
       id: 5,
-      image: 'https://images.unsplash.com/photo-1565058379802-bbe93b2f703a?w=400&h=400&fit=crop',
+      image: '/assets/color/IMG_3250.jpeg',
       title: 'Bold Color Splash'
     },
     {
       id: 6,
-      image: 'https://images.unsplash.com/photo-1611501275019-9b5cda994e8d?w=400&h=400&fit=crop',
+      image: '/assets/color/IMG_4857.jpeg',
       title: 'Tropical Paradise'
+    },
+    {
+      id: 7,
+      image: '/assets/color/IMG_4950.jpeg',
+      title: 'Abstract Color Blend'
+    },
+    {
+      id: 8,
+      image: '/assets/color/IMG_4995.jpeg',
+      title: 'Modern Color Work'
+    },
+    {
+      id: 9,
+      image: '/assets/color/IMG_6691.jpeg',
+      title: 'Vivid Animal Portrait'
+    },
+    {
+      id: 10,
+      image: '/assets/color/IMG_9622.jpeg',
+      title: 'Bright & Bold'
+    },
+    {
+      id: 11,
+      image: '/assets/color/IMG_9631.jpeg',
+      title: 'Color Realism'
+    },
+    {
+      id: 12,
+      image: '/assets/color/IMG_9766.jpeg',
+      title: 'Surreal Color Design'
+    },
+    {
+      id: 13,
+      image: '/assets/color/IMG_9789.jpeg',
+      title: 'Dynamic Color Flow'
     }
-  ]
+  ];
 
   const specialties = [
     {
@@ -58,7 +96,7 @@ const ColourPage = () => {
       title: 'Long-lasting Vibrancy',
       description: 'Proper technique and aftercare ensure your colors stay bright and beautiful for years to come.'
     }
-  ]
+  ];
 
   return (
     <div className="pt-16 bg-minimal-white text-minimal-black min-h-screen">
@@ -151,16 +189,17 @@ const ColourPage = () => {
           </div>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {colourGallery.map((item) => (
-              <div key={item.id} className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+            {colourGallery.map((item, index) => (
+              <div 
+                key={item.id} 
+                className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 cursor-pointer"
+                onClick={() => setSelectedImage(index)}
+              >
                 <img 
                   src={item.image} 
                   alt={item.title}
                   className="w-full h-64 object-cover"
                 />
-                <div className="p-4">
-                  <h3 className="text-lg font-semibold text-minimal-black">{item.title}</h3>
-                </div>
               </div>
             ))}
           </div>
@@ -229,8 +268,16 @@ const ColourPage = () => {
           </Link>
         </div>
       </section>
+
+      {/* ImageLightbox Component */}
+      <ImageLightbox 
+        images={colourGallery}
+        selectedImage={selectedImage}
+        setSelectedImage={setSelectedImage}
+        onClose={() => setSelectedImage(null)}
+      />
     </div>
-  )
-}
+  );
+};
 
 export default ColourPage
