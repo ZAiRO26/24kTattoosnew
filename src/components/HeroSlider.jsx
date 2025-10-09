@@ -120,14 +120,25 @@ export default function HeroSlider() {
                 setIsBookingNavigating(true);
                 setTimeout(() => {
                   navigate('/book-now');
-                }, 300);
+                  // Reset state after navigation
+                  setTimeout(() => {
+                    setIsBookingNavigating(false);
+                  }, 100);
+                }, 600);
               }}
               className="bg-accent-gold text-luxury-dark px-8 py-3 text-sm sm:text-base font-semibold hover:bg-gold-dark hover:text-warm-white transition-all duration-300 rounded-sm tracking-wide min-w-[200px] sm:min-w-[220px] touch-manipulation"
               initial={{ x: -100, opacity: 0 }}
-              animate={{ x: 0, opacity: isBookingNavigating ? 0.7 : 1 }}
+              animate={{ 
+                x: isBookingNavigating ? -400 : 0, 
+                opacity: isBookingNavigating ? 0 : 1,
+                rotate: isBookingNavigating ? -15 : 0,
+                scale: isBookingNavigating ? 0.8 : 1
+              }}
               transition={{ 
-                x: { duration: 0.6, ease: "easeOut" },
-                opacity: { duration: 0.3, ease: "easeInOut" }
+                x: { duration: 1, ease: "easeInOut" },
+                opacity: { duration: 0.8, ease: "easeInOut" },
+                rotate: { duration: 0.8, ease: "easeOut" },
+                scale: { duration: 0.8, ease: "easeOut" }
               }}
               whileHover={{ 
                 scale: 1.05,
@@ -137,7 +148,6 @@ export default function HeroSlider() {
               }}
               whileTap={{ 
                 scale: 0.98,
-                x: 5,
                 transition: { duration: 0.1 }
               }}
               disabled={isBookingNavigating}
@@ -150,14 +160,25 @@ export default function HeroSlider() {
                 setIsViewWorkNavigating(true);
                 setTimeout(() => {
                   navigate('/styles');
-                }, 300);
+                  // Reset state after navigation
+                  setTimeout(() => {
+                    setIsViewWorkNavigating(false);
+                  }, 100);
+                }, 600);
               }}
               className="border-2 border-accent-gold text-accent-gold px-8 py-3 text-sm sm:text-base font-semibold hover:bg-accent-gold hover:text-luxury-dark transition-all duration-300 rounded-sm tracking-wide min-w-[200px] sm:min-w-[220px] touch-manipulation"
               initial={{ x: 100, opacity: 0 }}
-              animate={{ x: 0, opacity: isViewWorkNavigating ? 0.7 : 1 }}
+              animate={{ 
+                x: isViewWorkNavigating ? 400 : 0, 
+                opacity: isViewWorkNavigating ? 0 : 1,
+                rotate: isViewWorkNavigating ? 15 : 0,
+                scale: isViewWorkNavigating ? 0.8 : 1
+              }}
               transition={{ 
-                x: { duration: 0.6, ease: "easeOut", delay: 0.2 },
-                opacity: { duration: 0.3, ease: "easeInOut" }
+                x: { duration: 1, ease: "easeInOut", delay: 0.2 },
+                opacity: { duration: 0.8, ease: "easeInOut" },
+                rotate: { duration: 0.8, ease: "easeOut" },
+                scale: { duration: 0.8, ease: "easeOut" }
               }}
               whileHover={{ 
                 scale: 1.05,
@@ -168,7 +189,6 @@ export default function HeroSlider() {
               }}
               whileTap={{ 
                 scale: 0.98,
-                x: -5,
                 transition: { duration: 0.1 }
               }}
               disabled={isViewWorkNavigating}

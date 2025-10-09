@@ -198,6 +198,55 @@ a:hover {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  /* Mobile optimization */
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+.btn-minimal:active {
+  transform: scale(0.98);
+}
+
+/* Mobile form input optimization */
+input, select, textarea, button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 8px;
+  font-size: 16px; /* Prevents zoom on iOS */
+}
+
+/* Mobile touch optimization */
+@media (max-width: 768px) {
+  input, select, textarea {
+    font-size: 16px !important; /* Prevents zoom on focus */
+  }
+  
+  button, a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Prevent horizontal scroll */
+  body {
+    overflow-x: hidden;
+    max-width: 100vw;
+  }
+  
+  /* Better mobile spacing */
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+/* Close the missing media query brace */
+@media (max-width: 768px) {
+  /* Additional mobile styles to ensure proper closure */
+}
+
+/* Button minimal styles */
+.btn-minimal {
   /* Prevent text selection */
   user-select: none;
   -webkit-user-select: none;
