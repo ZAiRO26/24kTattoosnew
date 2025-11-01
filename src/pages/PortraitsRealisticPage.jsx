@@ -1,39 +1,53 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { ArrowRight, CheckCircle, Star } from 'lucide-react'
 import { Link } from 'react-router-dom'
+import { motion } from 'framer-motion'
+import { Fancybox } from '@fancyapps/ui'
+import '@fancyapps/ui/dist/fancybox/fancybox.css'
 
 const PortraitsRealisticPage = () => {
+  // Initialize Fancybox
+  useEffect(() => {
+    Fancybox.bind('[data-fancybox="portrait-gallery"]', {
+      Toolbar: {
+        display: {
+          left: ["infobar"],
+          middle: ["zoomIn", "zoomOut", "toggle1to1", "rotateCCW", "rotateCW", "flipX", "flipY"],
+          right: ["slideshow", "thumbs", "close"]
+        }
+      }
+    })
+
+    return () => {
+      Fancybox.destroy()
+    }
+  }, [])
+
   // Sample portrait/realistic tattoo images
   const portraitGallery = [
     {
       id: 1,
-      image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=400&fit=crop',
-      title: 'Photorealistic Portrait'
+      image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=400&fit=crop'
     },
     {
       id: 2,
-      image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=400&fit=crop',
-      title: 'Detailed Face Study'
+      image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=400&fit=crop'
     },
     {
       id: 3,
-      image: 'https://images.unsplash.com/photo-1590736969955-71cc94901144?w=400&h=400&fit=crop',
-      title: 'Realistic Animal Portrait'
+      image: 'https://images.unsplash.com/photo-1590736969955-71cc94901144?w=400&h=400&fit=crop'
     },
     {
       id: 4,
-      image: 'https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=400&h=400&fit=crop',
-      title: 'Hyperrealistic Eye'
+      image: 'https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=400&h=400&fit=crop'
     },
     {
       id: 5,
-      image: 'https://images.unsplash.com/photo-1565058379802-bbe93b2f703a?w=400&h=400&fit=crop',
-      title: 'Memorial Portrait'
+      image: 'https://images.unsplash.com/photo-1565058379802-bbe93b2f703a?w=400&h=400&fit=crop'
     },
     {
       id: 6,
-      image: 'https://images.unsplash.com/photo-1611501275019-9b5cda994e8d?w=400&h=400&fit=crop',
-      title: 'Celebrity Portrait'
+      image: 'https://images.unsplash.com/photo-1611501275019-9b5cda994e8d?w=400&h=400&fit=crop'
     }
   ]
 
@@ -73,7 +87,7 @@ const PortraitsRealisticPage = () => {
             <div className="flex justify-center">
               <Link
                 to="/book-now"
-                className="bg-accent-gold hover:bg-gold-dark text-luxury-dark px-8 py-4 rounded-lg font-semibold inline-flex items-center"
+                className="bg-accent-gold hover:bg-gold-dark text-luxury-dark px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold inline-flex items-center justify-center text-sm sm:text-base w-full sm:w-auto max-w-xs sm:max-w-none mx-auto transition-all duration-300"
               >
                 Book Portrait Tattoo
                 <ArrowRight className="ml-2" size={18} />
@@ -152,16 +166,29 @@ const PortraitsRealisticPage = () => {
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {portraitGallery.map((item) => (
-              <div key={item.id} className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
-                <img 
-                  src={item.image} 
-                  alt={item.title}
-                  className="w-full h-64 object-cover"
-                />
-                <div className="p-4">
-                  <h3 className="text-lg font-semibold text-minimal-black">{item.title}</h3>
-                </div>
-              </div>
+              <motion.div 
+                key={item.id} 
+                className="group cursor-pointer"
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.3 }}
+              >
+                <a
+                  href={item.image}
+                  data-fancybox="portrait-gallery"
+                  className="block relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
+                >
+                  <img 
+                    src={item.image} 
+                    alt="Portrait tattoo"
+                    className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300 flex items-center justify-center">
+                    <div className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <span className="text-sm font-medium">View Full Size</span>
+                    </div>
+                  </div>
+                </a>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -215,18 +242,20 @@ const PortraitsRealisticPage = () => {
 
       {/* CTA */}
       <section className="py-20 bg-light-charcoal">
-        <div className="max-w-4xl mx-auto px-6 text-center">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-300 mb-6">Ready for a Realistic Masterpiece?</h2>
           <p className="text-lg text-gray-400 mb-8">
             Book a consultation to discuss your portrait vision and let our artists create a photorealistic tribute that captures every detail.
           </p>
-          <Link
-            to="/book-now"
-            className="bg-accent-gold hover:bg-gold-dark text-luxury-dark px-8 py-4 rounded-lg font-semibold inline-flex items-center justify-center"
-          >
-            BOOK PORTRAIT CONSULTATION
-            <ArrowRight className="ml-2" size={18} />
-          </Link>
+          <div className="flex justify-center">
+            <Link
+              to="/book-now"
+              className="bg-accent-gold hover:bg-gold-dark text-luxury-dark px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold inline-flex items-center justify-center text-sm sm:text-base w-full sm:w-auto max-w-xs sm:max-w-none mx-auto transition-all duration-300"
+            >
+              BOOK PORTRAIT CONSULTATION
+              <ArrowRight className="ml-2" size={18} />
+            </Link>
+          </div>
         </div>
       </section>
     </div>

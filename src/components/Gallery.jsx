@@ -20,13 +20,14 @@ const Gallery = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
           {galleryImages.map((img, idx) => (
             <div key={idx} className="relative group overflow-hidden rounded-lg">
               <img 
                 src={img} 
                 alt={`Gallery ${idx + 1}`}
-                className="w-full h-64 object-cover transition-transform group-hover:scale-110 duration-300"
+                className="w-full h-48 sm:h-56 md:h-64 object-cover transition-transform group-hover:scale-110 duration-300"
+                loading="lazy"
               />
               <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300"></div>
             </div>

@@ -2,11 +2,8 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { Menu, X, ChevronDown, ChevronUp } from 'lucide-react'
-import ThemeToggle from './ThemeToggle'
-import { useTheme } from '../contexts/ThemeContext'
 
 const Header = () => {
-  const { isDarkMode } = useTheme()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [activeDropdown, setActiveDropdown] = useState(null)
   const [dropdownTimeout, setDropdownTimeout] = useState(null)
@@ -103,7 +100,7 @@ const Header = () => {
   }
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white dark:bg-deep-charcoal border-b border-soft-gray dark:border-gray-600 transition-colors duration-300">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-soft-gray transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex items-center h-20">
           {/* Logo */}
@@ -121,10 +118,9 @@ const Header = () => {
             }}
           >
             <img 
-              src={isDarkMode ? "/assets/logo1.PNG" : "/assets/logo2.PNG"}
+              src="/assets/logo2.PNG"
               alt="24K Tattoo Hair & Oddities Logo" 
               className="h-16 w-auto object-contain"
-              key={isDarkMode ? 'dark-logo' : 'light-logo'}
             />
           </Link>
           
@@ -138,8 +134,8 @@ const Header = () => {
                       to={item.path}
                       className={`text-sm font-medium tracking-wide transition-colors duration-200 flex items-center gap-1 ${
                         isActive(item.path) 
-                          ? 'text-luxury-dark dark:text-accent-gold border-b border-accent-gold pb-1' 
-                          : 'text-charcoal dark:text-gray-300 hover:text-luxury-dark dark:hover:text-accent-gold'
+                          ? 'text-luxury-dark border-b border-accent-gold pb-1' 
+                          : 'text-charcoal hover:text-luxury-dark'
                       }`}
                       onClick={(e) => {
                         if (location.pathname === item.path) {
@@ -164,7 +160,7 @@ const Header = () => {
                       <ChevronDown size={16} />
                     </Link>
                     <div
-                      className={`absolute left-1/2 -translate-x-1/2 top-full mt-3 w-56 bg-white dark:bg-deep-charcoal border border-soft-gray dark:border-gray-600 rounded-lg shadow-xl z-50 flex flex-col space-y-1 py-2 transition-all duration-200 ${
+                      className={`absolute left-1/2 -translate-x-1/2 top-full mt-3 w-56 bg-white border border-soft-gray rounded-lg shadow-xl z-50 flex flex-col space-y-1 py-2 transition-all duration-200 ${
                         activeDropdown === item.name ? 'block' : 'hidden'
                       } group-hover:block`}
                       onMouseEnter={() => {
@@ -221,9 +217,6 @@ const Header = () => {
             >
               BOOK TATTOO APPOINTMENT
             </Link>
-            <div className="ml-3">
-              <ThemeToggle />
-            </div>
           </div>
 
           {/* Mobile Menu Button */}
@@ -290,14 +283,7 @@ const Header = () => {
                           ? 'text-luxury-dark' 
                           : 'text-charcoal hover:text-luxury-dark'
                       }`}
-                      onClick={(e) => {
-                        if (isActive(item.path)) {
-                          e.preventDefault();
-                          window.scrollTo({
-                            top: 0,
-                            behavior: 'smooth'
-                          });
-                        }
+                      onClick={() => {
                         setIsMenuOpen(false);
                         setMobileDropdowns({});
                       }}
@@ -308,9 +294,6 @@ const Header = () => {
                 </div>
               ))}
               <div className="pt-4 space-y-3">
-                <div className="flex justify-center mb-3">
-                  <ThemeToggle />
-                </div>
                 <Link
                   to="/book-now"
                   className="block w-full bg-accent-gold text-luxury-dark px-4 py-3 text-base font-medium text-center hover:bg-gold-dark hover:text-warm-white transition-colors duration-200 min-h-[48px] flex items-center justify-center touch-manipulation"

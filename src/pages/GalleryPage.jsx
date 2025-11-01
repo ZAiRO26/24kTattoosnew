@@ -23,103 +23,147 @@ const GalleryPage = () => {
   const galleryImages = [
     {
       id: 1,
-      image: '/assets/gallery/230b0218-5244-40bd-b3f5-d9d88e5cdf39.jpeg',
-      title: 'Artistic Masterpiece'
+      image: '/assets/gallery/A84C67DA-34CC-4FCB-BBBF-D7A473E85609.jpg'
     },
     {
       id: 2,
-      image: '/assets/gallery/665FE432-C169-4489-AEED-76F6DF5ADB29.jpeg',
-      title: 'Creative Expression'
+      image: '/assets/gallery/D6739A60-E4CF-47DD-BE23-D76475C2FC23.jpg'
     },
     {
       id: 3,
-      image: '/assets/gallery/D6739A60-E4CF-47DD-BE23-D76475C2FC23.jpeg',
-      title: 'Detailed Artwork'
+      image: '/assets/gallery/IMG_0882.jpg'
     },
     {
       id: 4,
-      image: '/assets/gallery/IMG_0882.jpeg',
-      title: 'Professional Design'
+      image: '/assets/gallery/IMG_0912.jpg'
     },
     {
       id: 5,
-      image: '/assets/gallery/IMG_0912.jpeg',
-      title: 'Stunning Visual'
+      image: '/assets/gallery/IMG_0923.jpg'
     },
     {
       id: 6,
-      image: '/assets/gallery/IMG_1195.jpeg',
-      title: 'Expert Craftsmanship'
+      image: '/assets/gallery/IMG_1195.jpg'
     },
     {
       id: 7,
-      image: '/assets/gallery/IMG_2362.jpeg',
-      title: 'Unique Style'
+      image: '/assets/gallery/IMG_1214.jpg'
     },
     {
       id: 8,
-      image: '/assets/gallery/IMG_3250.jpeg',
-      title: 'Bold Statement'
+      image: '/assets/gallery/IMG_1220.jpg'
     },
     {
       id: 9,
-      image: '/assets/gallery/IMG_4050.jpeg',
-      title: 'Artistic Vision'
+      image: '/assets/gallery/IMG_1368.jpg'
     },
     {
       id: 10,
-      image: '/assets/gallery/IMG_4430.jpeg',
-      title: 'Creative Work'
+      image: '/assets/gallery/IMG_1376.jpg'
     },
     {
       id: 11,
-      image: '/assets/gallery/IMG_4513.jpeg',
-      title: 'Detailed Piece'
+      image: '/assets/gallery/IMG_1788.jpg'
     },
     {
       id: 12,
-      image: '/assets/gallery/IMG_4537.jpeg',
-      title: 'Professional Art'
+      image: '/assets/gallery/IMG_2362.jpg'
     },
     {
       id: 13,
-      image: '/assets/gallery/IMG_4950.jpeg',
-      title: 'Stunning Design'
+      image: '/assets/gallery/IMG_3037.jpg'
     },
     {
       id: 14,
-      image: '/assets/gallery/IMG_6062.jpeg',
-      title: 'Masterful Work'
+      image: '/assets/gallery/IMG_3548.jpg'
     },
     {
       id: 15,
-      image: '/assets/gallery/IMG_6385.jpeg',
-      title: 'Creative Excellence'
+      image: '/assets/gallery/IMG_4041.jpg'
     },
     {
       id: 16,
-      image: '/assets/gallery/IMG_6883.jpeg',
-      title: 'Artistic Beauty'
+      image: '/assets/gallery/IMG_4430.jpg'
     },
     {
       id: 17,
-      image: '/assets/gallery/IMG_8052.jpeg',
-      title: 'Professional Quality'
+      image: '/assets/gallery/IMG_6019.jpg'
     },
     {
       id: 18,
-      image: '/assets/gallery/IMG_8914.jpeg',
-      title: 'Unique Creation'
+      image: '/assets/gallery/IMG_6732.jpg'
     },
     {
       id: 19,
-      image: '/assets/gallery/IMG_9238.jpeg',
-      title: 'Expert Design'
+      image: '/assets/gallery/IMG_6908.jpg'
     },
     {
       id: 20,
-      image: '/assets/gallery/IMG_9766.jpeg',
-      title: 'Artistic Innovation'
+      image: '/assets/gallery/IMG_7216.jpg'
+    },
+    {
+      id: 21,
+      image: '/assets/gallery/IMG_7238.jpg'
+    },
+    {
+      id: 22,
+      image: '/assets/gallery/IMG_7277.jpg'
+    },
+    {
+      id: 23,
+      image: '/assets/gallery/IMG_7280.jpg'
+    },
+    {
+      id: 24,
+      image: '/assets/gallery/IMG_7294.jpg'
+    },
+    {
+      id: 25,
+      image: '/assets/gallery/IMG_7327.jpg'
+    },
+    {
+      id: 26,
+      image: '/assets/gallery/IMG_7357.jpg'
+    },
+    {
+      id: 27,
+      image: '/assets/gallery/IMG_7361.jpg'
+    },
+    {
+      id: 28,
+      image: '/assets/gallery/IMG_7362.jpg'
+    },
+    {
+      id: 29,
+      image: '/assets/gallery/IMG_7490.jpg'
+    },
+    {
+      id: 30,
+      image: '/assets/gallery/IMG_7583.jpg'
+    },
+    {
+      id: 31,
+      image: '/assets/gallery/IMG_7690.jpg'
+    },
+    {
+      id: 32,
+      image: '/assets/gallery/IMG_7691.jpg'
+    },
+    {
+      id: 33,
+      image: '/assets/gallery/IMG_7823.jpg'
+    },
+    {
+      id: 34,
+      image: '/assets/gallery/IMG_7824.jpg'
+    },
+    {
+      id: 35,
+      image: '/assets/gallery/IMG_7852.jpg'
+    },
+    {
+      id: 36,
+      image: '/assets/gallery/IMG_7893.jpg'
     }
   ];
 
@@ -245,12 +289,11 @@ const GalleryPage = () => {
                 <a 
                   href={item.image}
                   data-fancybox="gallery"
-                  data-caption={item.title}
                   className="flex-1 flex items-center justify-center"
                 >
                   <OptimizedImage 
                     src={item.image} 
-                    alt={item.title}
+                    alt="Gallery artwork"
                     className="w-full h-48 sm:h-56 md:h-64 object-cover object-center group-hover:scale-105 transition-transform duration-300 cursor-pointer"
                     loading="lazy"
                     sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"

@@ -1,46 +1,84 @@
-import React from 'react'
-import { ArrowRight, CheckCircle, Star } from 'lucide-react'
-import { Link } from 'react-router-dom'
-import OptimizedImage from '../components/OptimizedImage'
+import React, { useEffect } from 'react';
+import { motion } from 'framer-motion';
+import { Fancybox } from '@fancyapps/ui';
+import '@fancyapps/ui/dist/fancybox/fancybox.css';
+import { ArrowRight, CheckCircle } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import OptimizedImage from '../components/OptimizedImage';
 
 const CoverUpsPage = () => {
-  // Sample cover-up tattoo images - in a real implementation, these would be actual studio work
+
+  // Initialize Fancybox
+  useEffect(() => {
+    Fancybox.bind('[data-fancybox="gallery"]', {
+      // Options
+    });
+
+    return () => {
+      Fancybox.destroy();
+    };
+  }, []);
+  // Cover-up tattoo images from studio assets
   const coverUpGallery = [
     {
       id: 1,
-      before: 'https://images.unsplash.com/photo-1565058379802-bbe93b2f703a?w=400&h=400&fit=crop',
-      after: 'https://images.unsplash.com/photo-1611501275019-9b5cda994e8d?w=400&h=400&fit=crop',
-      title: 'Floral Cover-Up Transformation'
+      before: '/assets/Cover ups/IMG_0138.jpg',
+      after: '/assets/Cover ups/IMG_0149.jpg'
     },
     {
       id: 2,
-      before: 'https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=400&h=400&fit=crop',
-      after: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=400&fit=crop',
-      title: 'Geometric Pattern Cover-Up'
+      before: '/assets/Cover ups/IMG_0170.jpg',
+      after: '/assets/Cover ups/IMG_0180.jpg'
     },
     {
       id: 3,
-      before: 'https://images.unsplash.com/photo-1590736969955-71cc94901144?w=400&h=400&fit=crop',
-      after: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=400&fit=crop',
-      title: 'Portrait Cover-Up Masterpiece'
+      before: '/assets/Cover ups/IMG_1419.jpg',
+      after: '/assets/Cover ups/IMG_1422.jpg'
     },
     {
       id: 4,
-      before: 'https://images.unsplash.com/photo-1565058379802-bbe93b2f703a?w=400&h=400&fit=crop',
-      after: 'https://images.unsplash.com/photo-1611501275019-9b5cda994e8d?w=400&h=400&fit=crop',
-      title: 'Mandala Cover-Up Design'
+      before: '/assets/Cover ups/IMG_1641.jpg',
+      after: '/assets/Cover ups/IMG_1650.jpg'
     },
     {
       id: 5,
-      before: 'https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=400&h=400&fit=crop',
-      after: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=400&fit=crop',
-      title: 'Realistic Animal Cover-Up'
+      before: '/assets/Cover ups/IMG_2317.jpg',
+      after: '/assets/Cover ups/IMG_2319.jpg'
     },
     {
       id: 6,
-      before: 'https://images.unsplash.com/photo-1590736969955-71cc94901144?w=400&h=400&fit=crop',
-      after: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=400&fit=crop',
-      title: 'Abstract Art Cover-Up'
+      before: '/assets/Cover ups/IMG_3157.jpg',
+      after: '/assets/Cover ups/IMG_3169.jpg'
+    },
+    {
+      id: 7,
+      before: '/assets/Cover ups/IMG_3725.jpg',
+      after: '/assets/Cover ups/IMG_3730.jpg'
+    },
+    {
+      id: 8,
+      before: '/assets/Cover ups/IMG_3896.jpg',
+      after: '/assets/Cover ups/IMG_3904.jpg'
+    },
+    {
+      id: 9,
+      before: '/assets/Cover ups/IMG_3911.jpg',
+      after: '/assets/Cover ups/IMG_3962.jpg'
+    },
+    {
+      id: 10,
+      before: '/assets/Cover ups/IMG_4458.jpg',
+      after: '/assets/Cover ups/IMG_4475.jpg'
+    },
+    {
+      id: 11,
+      before: '/assets/Cover ups/IMG_5607.jpg',
+      after: '/assets/Cover ups/IMG_5617.jpg'
+    },
+    {
+      id: 12,
+      before: '/assets/Cover ups/IMG_5644.jpg',
+      after: '/assets/Cover ups/IMG_5646.jpg'
     }
   ]
 
@@ -80,9 +118,9 @@ const CoverUpsPage = () => {
             <div className="flex justify-center">
               <Link
                 to="/book-now"
-                className="bg-accent-gold hover:bg-gold-dark text-luxury-dark px-8 py-4 rounded-lg font-semibold inline-flex items-center"
+                className="bg-accent-gold hover:bg-gold-dark text-luxury-dark px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold inline-flex items-center justify-center text-sm sm:text-base w-full sm:w-auto max-w-xs sm:max-w-none mx-auto transition-all duration-300"
               >
-                Book Cover Up Consultation
+                Book Cover-Up Consultation
                 <ArrowRight className="ml-2" size={18} />
               </Link>
             </div>
@@ -162,43 +200,41 @@ const CoverUpsPage = () => {
           </div>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {coverUpGallery.map((item) => (
-              <div key={item.id} className="bg-white border border-minimal-border rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
+            {coverUpGallery.map((item, index) => (
+              <div 
+                key={item.id} 
+                className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col"
+              >
                 <div className="grid grid-cols-2">
                   <div className="relative">
-                    <OptimizedImage 
-                      src={item.before} 
-                      alt="Before cover-up" 
-                      className="w-full h-48 object-cover"
-                      loading="lazy"
-                      sizes="(max-width: 768px) 50vw, 25vw"
-                    />
-                    <div className="absolute bottom-2 left-2 bg-red-600 text-white px-2 py-1 rounded text-sm font-semibold">
-                      Before
-                    </div>
+                    <a 
+                      href={item.before}
+                      data-fancybox="gallery"
+                      className="block"
+                    >
+                      <OptimizedImage 
+                        src={item.before} 
+                        alt="Cover-up transformation" 
+                        className="w-full h-48 object-cover cursor-pointer hover:scale-105 transition-transform duration-300"
+                        loading="lazy"
+                        sizes="(max-width: 768px) 50vw, 25vw"
+                      />
+                    </a>
                   </div>
                   <div className="relative">
-                    <OptimizedImage 
-                      src={item.after} 
-                      alt="After cover-up" 
-                      className="w-full h-48 object-cover"
-                      loading="lazy"
-                      sizes="(max-width: 768px) 50vw, 25vw"
-                    />
-                    <div className="absolute bottom-2 right-2 bg-green-600 text-white px-2 py-1 rounded text-sm font-semibold">
-                      After
-                    </div>
-                  </div>
-                </div>
-                <div className="p-4">
-                  <h3 className="text-lg font-bold text-minimal-black mb-2">{item.title}</h3>
-                  <div className="flex items-center">
-                    <Star className="w-4 h-4 text-accent-gold fill-current" />
-                    <Star className="w-4 h-4 text-accent-gold fill-current" />
-                    <Star className="w-4 h-4 text-accent-gold fill-current" />
-                    <Star className="w-4 h-4 text-accent-gold fill-current" />
-                    <Star className="w-4 h-4 text-accent-gold fill-current" />
-                    <span className="ml-2 text-sm text-minimal-gray">Transformation Complete</span>
+                    <a 
+                      href={item.after}
+                      data-fancybox="gallery"
+                      className="block"
+                    >
+                      <OptimizedImage 
+                        src={item.after} 
+                        alt="Cover-up transformation" 
+                        className="w-full h-48 object-cover cursor-pointer hover:scale-105 transition-transform duration-300"
+                        loading="lazy"
+                        sizes="(max-width: 768px) 50vw, 25vw"
+                      />
+                    </a>
                   </div>
                 </div>
               </div>
@@ -255,32 +291,26 @@ const CoverUpsPage = () => {
 
       {/* CTA Section */}
       <section className="py-20 bg-light-charcoal">
-        <div className="max-w-4xl mx-auto px-6 text-center">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-300 mb-6">
             Ready to Transform Your Tattoo?
           </h2>
           <p className="text-lg text-gray-400 mb-8">
             Book a consultation with our cover-up specialists and discover how we can transform your unwanted tattoo into a masterpiece.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex justify-center">
             <Link
               to="/book-now"
-              className="bg-accent-gold hover:bg-gold-dark text-luxury-dark px-8 py-4 rounded-lg font-semibold inline-flex items-center justify-center"
+              className="bg-accent-gold hover:bg-gold-dark text-luxury-dark px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold inline-flex items-center justify-center text-sm sm:text-base w-full sm:w-auto max-w-xs sm:max-w-none mx-auto transition-all duration-300"
             >
               BOOK COVER-UP CONSULTATION
               <ArrowRight className="ml-2" size={18} />
             </Link>
-            <a
-              href="tel:+919876543210"
-              className="border border-accent-gold text-accent-gold hover:bg-accent-gold hover:text-luxury-dark px-8 py-4 rounded-lg font-semibold transition-colors duration-200"
-            >
-              CALL US NOW
-            </a>
           </div>
         </div>
       </section>
     </div>
-  )
-}
+  );
+};
 
-export default CoverUpsPage
+export default CoverUpsPage;

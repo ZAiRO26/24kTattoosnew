@@ -9,7 +9,7 @@ const LoadingSpinner = ({ size = 'medium', className = '' }) => {
 
   return (
     <div className={`flex items-center justify-center ${className}`}>
-      <div className={`animate-spin rounded-full border-b-2 border-minimal-black dark:border-charcoal-text ${sizeClasses[size]}`}>
+      <div className={`animate-spin rounded-full border-b-2 border-minimal-black ${sizeClasses[size]}`}>
         <span className="sr-only">Loading...</span>
       </div>
     </div>

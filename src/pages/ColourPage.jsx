@@ -18,72 +18,103 @@ const ColourPage = () => {
     };
   }, []);
 
-  // Sample colour tattoo images
+  // Sample colour tattoo images - Updated with new images and removed titles
   const colourGallery = [
     {
       id: 1,
-      image: '/assets/color/A84C67DA-34CC-4FCB-BBBF-D7A473E85609.jpeg',
-      title: 'Vibrant Floral Design'
+      image: '/assets/color/IMG_1530.jpg'
     },
     {
       id: 2,
-      image: '/assets/color/IMG_2547.jpeg',
-      title: 'Colorful Portrait Art'
+      image: '/assets/color/IMG_2061.jpg'
     },
     {
       id: 3,
-      image: '/assets/color/IMG_2606.jpeg',
-      title: 'Rainbow Geometric'
+      image: '/assets/color/IMG_2139.jpg'
     },
     {
       id: 4,
-      image: '/assets/color/IMG_3185.jpeg',
-      title: 'Watercolor Style'
+      image: '/assets/color/IMG_2872.jpg'
     },
     {
       id: 5,
-      image: '/assets/color/IMG_3250.jpeg',
-      title: 'Bold Color Splash'
+      image: '/assets/color/IMG_3031.jpg'
     },
     {
       id: 6,
-      image: '/assets/color/IMG_4857.jpeg',
-      title: 'Tropical Paradise'
+      image: '/assets/color/IMG_3043.jpg'
     },
     {
       id: 7,
-      image: '/assets/color/IMG_4950.jpeg',
-      title: 'Abstract Color Blend'
+      image: '/assets/color/IMG_3067.jpg'
     },
     {
       id: 8,
-      image: '/assets/color/IMG_4995.jpeg',
-      title: 'Modern Color Work'
+      image: '/assets/color/IMG_3252.jpg'
     },
     {
       id: 9,
-      image: '/assets/color/IMG_6691.jpeg',
-      title: 'Vivid Animal Portrait'
+      image: '/assets/color/IMG_3358.jpg'
     },
     {
       id: 10,
-      image: '/assets/color/IMG_9622.jpeg',
-      title: 'Bright & Bold'
+      image: '/assets/color/IMG_3457.jpg'
     },
     {
       id: 11,
-      image: '/assets/color/IMG_9631.jpeg',
-      title: 'Color Realism'
+      image: '/assets/color/IMG_4050.jpg'
     },
     {
       id: 12,
-      image: '/assets/color/IMG_9766.jpeg',
-      title: 'Surreal Color Design'
+      image: '/assets/color/IMG_4513.jpg'
     },
     {
       id: 13,
-      image: '/assets/color/IMG_9789.jpeg',
-      title: 'Dynamic Color Flow'
+      image: '/assets/color/IMG_4537.jpg'
+    },
+    {
+      id: 14,
+      image: '/assets/color/IMG_4819.jpg'
+    },
+    {
+      id: 15,
+      image: '/assets/color/IMG_5138.jpg'
+    },
+    {
+      id: 16,
+      image: '/assets/color/IMG_6385.jpg'
+    },
+    {
+      id: 17,
+      image: '/assets/color/IMG_6579.jpg'
+    },
+    {
+      id: 18,
+      image: '/assets/color/IMG_6691.jpg'
+    },
+    {
+      id: 19,
+      image: '/assets/color/IMG_6815.jpg'
+    },
+    {
+      id: 20,
+      image: '/assets/color/IMG_6908.jpg'
+    },
+    {
+      id: 21,
+      image: '/assets/color/IMG_7228.jpg'
+    },
+    {
+      id: 22,
+      image: '/assets/color/IMG_7385.jpg'
+    },
+    {
+      id: 23,
+      image: '/assets/color/IMG_7455.jpg'
+    },
+    {
+      id: 24,
+      image: '/assets/color/IMG_7474.jpg'
     }
   ];
 
@@ -209,12 +240,11 @@ const ColourPage = () => {
                 <a 
                   href={item.image}
                   data-fancybox="gallery"
-                  data-caption={item.title}
                   className="flex-1 flex items-center justify-center"
                 >
                   <img 
                     src={item.image} 
-                    alt={item.title}
+                    alt="Color tattoo artwork"
                     className="w-full h-64 object-cover object-center cursor-pointer hover:scale-105 transition-transform duration-300"
                   />
                 </a>

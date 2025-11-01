@@ -3,23 +3,58 @@ import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 
 const images = [
-  "/tattoo-hero-1.jpg",
-  "/tattoo-hero-2.jpg",
-  "/tattoo-hero-3.jpg"
+  "/assets/Hero-images/1.jpg",
+  "/assets/Hero-images/2.jpg",
+  "/assets/Hero-images/7B71F933-1C39-4849-A678-CDB103FA5547.jpg",
+  "/assets/Hero-images/A84C67DA-34CC-4FCB-BBBF-D7A473E85609.jpg",
+  "/assets/Hero-images/C498B419-CF97-461F-BB4E-75DF15C4CDB1.jpg",
+  "/assets/Hero-images/IMG_2061.jpg",
+  "/assets/Hero-images/IMG_3358.jpg",
+  "/assets/Hero-images/IMG_7028.jpg",
+  "/assets/Hero-images/IMG_7218.jpg",
+  "/assets/Hero-images/IMG_7492.jpg",
+  "/assets/Hero-images/IMG_7691.jpg",
+  "/assets/Hero-images/IMG_8794.jpg"
 ];
 
 export default function HeroSlider() {
   const [current, setCurrent] = useState(0);
   const [isBookingNavigating, setIsBookingNavigating] = useState(false);
   const [isViewWorkNavigating, setIsViewWorkNavigating] = useState(false);
+  const [loadedImages, setLoadedImages] = useState(new Set());
+  const [failedImages, setFailedImages] = useState(new Set());
   const navigate = useNavigate();
 
+  // Preload images and handle errors
   useEffect(() => {
+    const preloadImages = () => {
+      images.forEach((src, index) => {
+        const img = new Image();
+        img.onload = () => {
+          setLoadedImages(prev => new Set([...prev, index]));
+        };
+        img.onerror = () => {
+          console.warn(`Failed to load image: ${src}`);
+          setFailedImages(prev => new Set([...prev, index]));
+        };
+        img.src = src;
+      });
+    };
+
+    preloadImages();
+  }, []);
+
+  // Filter out failed images for the slideshow
+  const validImages = images.filter((_, index) => !failedImages.has(index));
+
+  useEffect(() => {
+    if (validImages.length === 0) return;
+    
     const interval = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % images.length);
+      setCurrent((prev) => (prev + 1) % validImages.length);
     }, 4000);
     return () => clearInterval(interval);
-  }, []);
+  }, [validImages.length]);
 
   return (
     <motion.section 
@@ -29,26 +64,46 @@ export default function HeroSlider() {
       transition={{ duration: 1.2, ease: "easeOut" }}
     >
       {/* Background Images with Framer Motion Effects */}
-      {images.map((img, idx) => (
-        <motion.img
-          key={img}
-          src={img}
-          alt={`Hero Slide ${idx + 1}`}
-          className={`absolute inset-0 w-full h-full object-cover ${
-            current === idx ? 'z-10' : 'z-0'
-          }`}
-          initial={{ opacity: 0, scale: 1.1 }}
-          animate={{ 
-            opacity: current === idx ? 1 : 0,
-            scale: current === idx ? 1 : 1.05
-          }}
-          transition={{ 
-            opacity: { duration: 1, ease: "easeInOut" },
-            scale: { duration: 8, ease: "easeOut" }
-          }}
-          loading={idx === 0 ? "eager" : "lazy"}
-        />
-      ))}
+      {validImages.map((img, idx) => {
+        const originalIndex = images.indexOf(img);
+        const isLoaded = loadedImages.has(originalIndex);
+        
+        return (
+          <motion.img
+            key={img}
+            src={img}
+            alt={`Hero Slide ${idx + 1}`}
+            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ${
+              current === idx ? 'z-10' : 'z-0'
+            }`}
+            style={{
+              opacity: isLoaded ? (current === idx ? 1 : 0) : 0,
+              objectPosition: 'center center',
+              imageRendering: 'auto'
+            }}
+            initial={{ opacity: 0, scale: 1.1 }}
+            animate={{ 
+              opacity: isLoaded && current === idx ? 1 : 0,
+              scale: current === idx ? 1 : 1.05
+            }}
+            transition={{ 
+              opacity: { duration: 1, ease: "easeInOut" },
+              scale: { duration: 8, ease: "easeOut" }
+            }}
+            loading={idx === 0 ? "eager" : "lazy"}
+            onError={(e) => {
+              console.warn(`Image failed to render: ${img}`);
+              e.target.style.display = 'none';
+            }}
+            onLoad={() => {
+              // Ensure smooth transition when image loads
+              if (!loadedImages.has(originalIndex)) {
+                setLoadedImages(prev => new Set([...prev, originalIndex]));
+              }
+            }}
+          />
+        );
+      })}
       
       {/* Animated Overlay */}
       <motion.div 
@@ -199,6 +254,35 @@ export default function HeroSlider() {
         </motion.div>
       </motion.div>
       
+      {/* Loading State */}
+      {validImages.length === 0 && failedImages.size < images.length && (
+        <motion.div 
+          className="absolute inset-0 z-40 flex items-center justify-center bg-warm-white"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+        >
+          <div className="text-center">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-accent-gold mx-auto mb-4"></div>
+            <p className="text-luxury-dark text-lg">Loading gallery...</p>
+          </div>
+        </motion.div>
+      )}
+      
+      {/* Fallback for when all images fail to load */}
+      {validImages.length === 0 && failedImages.size === images.length && (
+        <motion.div 
+          className="absolute inset-0 z-40 flex items-center justify-center bg-gradient-to-br from-luxury-dark to-charcoal-text"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+        >
+          <div className="text-center text-white">
+            <h2 className="text-2xl font-bold mb-4">24K Tattoo Hair & Oddities</h2>
+            <p className="text-lg opacity-80">Professional Tattoo Studio Since 2005</p>
+          </div>
+        </motion.div>
+      )}
 
     </motion.section>
   );

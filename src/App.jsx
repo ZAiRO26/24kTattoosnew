@@ -2,8 +2,7 @@ import FAQSection from './components/FAQSection';
 import HeroSlider from './components/HeroSlider';
 import React, { useEffect, Suspense, lazy, useState } from 'react'
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { ThemeProvider } from './contexts/ThemeContext';
+import { motion } from 'framer-motion';
 import { initializeCrossBrowserSupport } from './utils/crossBrowserSupport';
 import { initializeMobileOptimizations } from './utils/mobileOptimizations';
 
@@ -42,92 +41,134 @@ const GalleryPage = lazy(() => import('./pages/GalleryPage'));
 
 // Redesigned HomePage matching the Ganga Tattoo Studio minimalistic design
 const HomePage = () => {
-  const { scrollY } = useScroll();
-  
   // Work images from the home-page-work folder
   const workImages = [
     {
       id: 1,
-      image: '/assets/home-page-work/IMG_0882.jpeg',
-      title: 'Professional Tattoo Work 1'
+      image: '/assets/home-page-work/230b0218-5244-40bd-b3f5-d9d88e5cdf39.jpg'
     },
     {
       id: 2,
-      image: '/assets/home-page-work/IMG_0912.jpeg',
-      title: 'Professional Tattoo Work 2'
+      image: '/assets/home-page-work/665FE432-C169-4489-AEED-76F6DF5ADB29.jpg'
     },
     {
       id: 3,
-      image: '/assets/home-page-work/IMG_1195.jpeg',
-      title: 'Professional Tattoo Work 3'
+      image: '/assets/home-page-work/D6739A60-E4CF-47DD-BE23-D76475C2FC23.jpg'
     },
     {
       id: 4,
-      image: '/assets/home-page-work/IMG_2362.jpeg',
-      title: 'Professional Tattoo Work 4'
+      image: '/assets/home-page-work/IMG_0882.jpg'
     },
     {
       id: 5,
-      image: '/assets/home-page-work/IMG_3250.jpeg',
-      title: 'Professional Tattoo Work 5'
+      image: '/assets/home-page-work/IMG_0912.jpg'
     },
     {
       id: 6,
-      image: '/assets/home-page-work/IMG_4050.jpeg',
-      title: 'Professional Tattoo Work 6'
+      image: '/assets/home-page-work/IMG_1195.jpg'
     },
     {
       id: 7,
-      image: '/assets/home-page-work/IMG_4430.jpeg',
-      title: 'Professional Tattoo Work 7'
+      image: '/assets/home-page-work/IMG_2362.jpg'
     },
     {
       id: 8,
-      image: '/assets/home-page-work/IMG_4513.jpeg',
-      title: 'Professional Tattoo Work 8'
+      image: '/assets/home-page-work/IMG_3250.jpg'
     },
     {
       id: 9,
-      image: '/assets/home-page-work/IMG_4537.jpeg',
-      title: 'Professional Tattoo Work 9'
+      image: '/assets/home-page-work/IMG_4050.jpg'
     },
     {
       id: 10,
-      image: '/assets/home-page-work/IMG_4950.jpeg',
-      title: 'Professional Tattoo Work 10'
+      image: '/assets/home-page-work/IMG_4430.jpg'
     },
     {
       id: 11,
-      image: '/assets/home-page-work/IMG_6062.jpeg',
-      title: 'Professional Tattoo Work 11'
+      image: '/assets/home-page-work/IMG_4513.jpg'
     },
     {
       id: 12,
-      image: '/assets/home-page-work/IMG_6385.jpeg',
-      title: 'Professional Tattoo Work 12'
+      image: '/assets/home-page-work/IMG_4537.jpg'
+    },
+    {
+      id: 13,
+      image: '/assets/home-page-work/IMG_4950.jpg'
+    },
+    {
+      id: 14,
+      image: '/assets/home-page-work/IMG_6062.jpg'
+    },
+    {
+      id: 15,
+      image: '/assets/home-page-work/IMG_6385.jpg'
+    },
+    {
+      id: 16,
+      image: '/assets/home-page-work/IMG_6883.jpg'
+    },
+    {
+      id: 17,
+      image: '/assets/home-page-work/IMG_7490.jpg'
+    },
+    {
+      id: 18,
+      image: '/assets/home-page-work/IMG_7691.jpg'
+    },
+    {
+      id: 19,
+      image: '/assets/home-page-work/IMG_8052.jpg'
+    },
+    {
+      id: 20,
+      image: '/assets/home-page-work/IMG_8370.jpg'
+    },
+    {
+      id: 21,
+      image: '/assets/home-page-work/IMG_8493.jpg'
+    },
+    {
+      id: 22,
+      image: '/assets/home-page-work/IMG_8673.jpg'
+    },
+    {
+      id: 23,
+      image: '/assets/home-page-work/IMG_8894.jpg'
+    },
+    {
+      id: 24,
+      image: '/assets/home-page-work/IMG_8914.jpg'
+    },
+    {
+      id: 25,
+      image: '/assets/home-page-work/IMG_9075.jpg'
+    },
+    {
+      id: 26,
+      image: '/assets/home-page-work/IMG_9168.jpg'
+    },
+    {
+      id: 27,
+      image: '/assets/home-page-work/IMG_9238.jpg'
+    },
+    {
+      id: 28,
+      image: '/assets/home-page-work/IMG_9766.jpg'
     }
   ];
   
-  // Optimized parallax transforms with reduced values to prevent gaps
-  const workSectionY = useTransform(scrollY, [0, 2000], [0, -50]);
-  const academySectionY = useTransform(scrollY, [500, 2500], [0, -75]);
-  const servicesSectionY = useTransform(scrollY, [1000, 3000], [0, -50]);
-  const aboutSectionY = useTransform(scrollY, [1500, 3500], [0, -60]);
-  const contactSectionY = useTransform(scrollY, [2000, 4000], [0, -40]);
-  
   return (
-    <div className="pt-0 bg-minimal-white dark:bg-soothing-charcoal text-minimal-black dark:text-charcoal-text transition-colors duration-300">
+    <div className="pt-0 bg-minimal-white text-minimal-black transition-colors duration-300">
       {/* Hero Section with Slider */}
       <HeroSlider />
 
       {/* Work Section - Reduced padding */}
       <motion.section 
-        className="py-6 md:py-8 lg:py-10 bg-minimal-white dark:bg-soothing-charcoal transition-colors duration-300"
+        className="py-6 md:py-8 lg:py-10 bg-minimal-white transition-colors duration-300"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: false, margin: "-100px" }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        style={{ y: workSectionY }}
       >
         <div className="max-w-6xl mx-auto px-4 md:px-6">
           <motion.div 
@@ -138,7 +179,7 @@ const HomePage = () => {
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
             <motion.h2 
-              className="text-3xl md:text-4xl lg:text-5xl font-bold text-minimal-black dark:text-charcoal-text mb-4 md:mb-6 transition-colors duration-300"
+              className="text-3xl md:text-4xl lg:text-5xl font-bold text-minimal-black mb-4 md:mb-6 transition-colors duration-300"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -147,7 +188,7 @@ const HomePage = () => {
               Work
             </motion.h2>
             <motion.p 
-              className="text-base md:text-lg text-minimal-gray dark:text-gray-300 max-w-3xl mx-auto transition-colors duration-300"
+              className="text-base md:text-lg text-minimal-gray max-w-3xl mx-auto transition-colors duration-300"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -184,7 +225,7 @@ const HomePage = () => {
               >
                 <img 
                   src={item.image} 
-                  alt={item.title}
+                  alt="Professional tattoo work"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
               </motion.div>
@@ -214,8 +255,7 @@ const HomePage = () => {
       <motion.section 
         className="py-6 md:py-8 lg:py-10" 
         style={{ 
-          backgroundColor: '#B8B8B8',
-          y: academySectionY
+          backgroundColor: '#B8B8B8'
         }}
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
@@ -315,9 +355,6 @@ const HomePage = () => {
         whileInView={{ opacity: 1 }}
         viewport={{ once: false, margin: "-100px" }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        style={{ 
-          y: servicesSectionY
-        }}
       >
         <div className="max-w-6xl mx-auto px-4 md:px-6">
           <motion.div 
@@ -485,9 +522,6 @@ const HomePage = () => {
         whileInView={{ opacity: 1 }}
         viewport={{ once: false, margin: "-100px" }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        style={{ 
-          y: aboutSectionY
-        }}
       >
         <div className="max-w-4xl mx-auto px-4 md:px-6">
           <motion.h2 
@@ -522,20 +556,19 @@ function App() {
   }, []);
 
   return (
-    <ThemeProvider>
-      <Router>
-        <div className="min-h-screen bg-minimal-white dark:bg-soothing-charcoal text-minimal-black dark:text-charcoal-text flex flex-col transition-colors duration-300">
-          <Header />
-          <ScrollRestoration />
-          <div className="flex-1">
-            <Suspense fallback={
-              <div className="min-h-screen flex items-center justify-center bg-minimal-white dark:bg-soothing-charcoal">
-                <div className="text-center">
-                  <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-minimal-black dark:border-charcoal-text mx-auto mb-4"></div>
-                  <p className="text-minimal-gray dark:text-charcoal-text">Loading...</p>
-                </div>
+    <Router>
+      <div className="min-h-screen bg-minimal-white text-minimal-black flex flex-col transition-colors duration-300">
+        <Header />
+        <ScrollRestoration />
+        <div className="flex-1">
+          <Suspense fallback={
+            <div className="min-h-screen flex items-center justify-center bg-minimal-white">
+              <div className="text-center">
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-minimal-black mx-auto mb-4"></div>
+                <p className="text-minimal-gray">Loading...</p>
               </div>
-            }>
+            </div>
+          }>
               <Routes>
               <Route path="/" element={<HomePage />} />
               {/* Redirect old URLs to /styles */}
@@ -577,12 +610,11 @@ function App() {
               <Route path="/tattoo-academy/basic-tattoo-courses" element={<BasicTattooCoursesPage />} />
               <Route path="/tattoo-academy/pro-tattoo-courses" element={<ProTattooCoursesPage />} />
             </Routes>
-            </Suspense>
-          </div>
-          <Footer />
+          </Suspense>
         </div>
-      </Router>
-    </ThemeProvider>
+        <Footer />
+      </div>
+    </Router>
   )
 }
 

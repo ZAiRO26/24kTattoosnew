@@ -1,23 +1,9 @@
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { FaFacebookF, FaInstagram, FaWhatsapp, FaYoutube, FaArrowUp } from 'react-icons/fa';
+import { FaFacebookF, FaInstagram, FaWhatsapp, FaYoutube } from 'react-icons/fa';
 
 const Footer = () => {
-  const [showScrollButton, setShowScrollButton] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollTop = window.pageYOffset;
-      const documentHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const scrollPercentage = (scrollTop / documentHeight) * 100;
-      
-      setShowScrollButton(scrollPercentage > 20);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
   return (
     <>
       <footer className="bg-gray-50 border-t border-gray-200 py-6 text-gray-800">
@@ -82,26 +68,13 @@ const Footer = () => {
           href="https://wa.me/918178687129"
           target="_blank"
           rel="noopener noreferrer"
-          className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-green-500 flex items-center justify-center shadow-lg hover:bg-green-600 transition-colors"
+          className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-green-500 flex items-center justify-center shadow-lg hover:bg-green-600 transition-colors touch-manipulation active:bg-green-700"
+          style={{ minHeight: '56px', minWidth: '56px' }}
+          aria-label="Contact us on WhatsApp"
         >
-          <FaWhatsapp className="text-white text-xl sm:text-2xl" />
+          <FaWhatsapp className="text-white text-2xl sm:text-3xl" />
         </a>
       </div>
-      
-      {/* Scroll to Top Floating Button */}
-      {showScrollButton && (
-        <div className="fixed right-4 sm:right-6 md:right-8 bottom-4 sm:bottom-6 md:bottom-12 z-50">
-          <button
-            className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-green-500 flex items-center justify-center shadow-lg hover:bg-green-600 transition-colors"
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            aria-label="Scroll to top"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="white" className="w-6 h-6 sm:w-7 sm:h-7">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M12 8l-6 6m6-6l6 6" />
-            </svg>
-          </button>
-        </div>
-      )}
     </>
   );
 };

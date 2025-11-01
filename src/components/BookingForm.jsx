@@ -117,7 +117,7 @@ const BookingForm = () => {
         </div>
       </div>
 
-      <div className="grid md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
         <div>
           <label className="block text-sm font-semibold mb-2">
             <Phone className="inline mr-2" size={16} />
@@ -128,7 +128,7 @@ const BookingForm = () => {
             name="phone"
             value={formData.phone}
             onChange={handleInputChange}
-            className="w-full p-3 bg-black border border-gray-700 rounded-lg focus:border-red-400 focus:outline-none"
+            className="w-full p-3 bg-black border border-gray-700 rounded-lg focus:border-red-400 focus:outline-none text-base md:text-sm"
           />
         </div>
 
@@ -141,7 +141,7 @@ const BookingForm = () => {
             name="location"
             value={formData.location}
             onChange={handleInputChange}
-            className="w-full p-3 bg-black border border-gray-700 rounded-lg focus:border-red-400 focus:outline-none"
+            className="w-full p-3 bg-black border border-gray-700 rounded-lg focus:border-red-400 focus:outline-none text-base md:text-sm"
             required
           >
             <option value="">Select Location</option>
@@ -152,14 +152,14 @@ const BookingForm = () => {
       </div>
 
       {/* Service Selection */}
-      <div className="grid md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
         <div>
           <label className="block text-sm font-semibold mb-2">Service Type *</label>
           <select
             name="service"
             value={formData.service}
             onChange={handleInputChange}
-            className="w-full p-3 bg-black border border-gray-700 rounded-lg focus:border-red-400 focus:outline-none"
+            className="w-full p-3 bg-black border border-gray-700 rounded-lg focus:border-red-400 focus:outline-none text-base md:text-sm"
             required
           >
             <option value="">Select Service</option>
@@ -178,7 +178,7 @@ const BookingForm = () => {
             name="artist"
             value={formData.artist}
             onChange={handleInputChange}
-            className="w-full p-3 bg-black border border-gray-700 rounded-lg focus:border-red-400 focus:outline-none"
+            className="w-full p-3 bg-black border border-gray-700 rounded-lg focus:border-red-400 focus:outline-none text-base md:text-sm"
           >
             <option value="">No Preference</option>
             {artists.map((artist) => (
@@ -191,7 +191,7 @@ const BookingForm = () => {
       </div>
 
       {/* Date and Time */}
-      <div className="grid md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
         <div>
           <label className="block text-sm font-semibold mb-2">
             <Calendar className="inline mr-2" size={16} />
@@ -203,7 +203,7 @@ const BookingForm = () => {
             value={formData.date}
             onChange={handleInputChange}
             min={new Date().toISOString().split('T')[0]}
-            className="w-full p-3 bg-black border border-gray-700 rounded-lg focus:border-red-400 focus:outline-none"
+            className="w-full p-3 bg-black border border-gray-700 rounded-lg focus:border-red-400 focus:outline-none text-base md:text-sm"
           />
         </div>
 
@@ -216,7 +216,7 @@ const BookingForm = () => {
             name="time"
             value={formData.time}
             onChange={handleInputChange}
-            className="w-full p-3 bg-black border border-gray-700 rounded-lg focus:border-red-400 focus:outline-none"
+            className="w-full p-3 bg-black border border-gray-700 rounded-lg focus:border-red-400 focus:outline-none text-base md:text-sm"
           >
             <option value="">Select Time</option>
             {timeSlots.map((time) => (
@@ -237,7 +237,7 @@ const BookingForm = () => {
           value={formData.message}
           onChange={handleInputChange}
           rows={4}
-          className="w-full p-3 bg-black border border-gray-700 rounded-lg focus:border-red-400 focus:outline-none"
+          className="w-full p-3 bg-black border border-gray-700 rounded-lg focus:border-red-400 focus:outline-none text-base md:text-sm"
           placeholder="Describe your tattoo idea, size, placement, style preferences, or any questions you have..."
         />
       </div>
@@ -249,7 +249,7 @@ const BookingForm = () => {
           name="returningClient"
           checked={formData.returningClient}
           onChange={handleInputChange}
-          className="mr-3"
+          className="mr-3 w-4 h-4 md:w-5 md:h-5"
         />
         <label className="text-sm text-gray-400">
           I am a returning client
@@ -260,7 +260,7 @@ const BookingForm = () => {
       <button
         type="submit"
         disabled={isSubmitting}
-        className="w-full bg-red-600 hover:bg-red-700 disabled:bg-gray-600 py-4 rounded-lg font-semibold transition-colors flex items-center justify-center"
+        className="w-full bg-red-600 hover:bg-red-700 disabled:bg-gray-600 py-4 rounded-lg font-semibold transition-colors flex items-center justify-center text-base md:text-sm min-h-[48px]"
       >
         {isSubmitting ? (
           <>

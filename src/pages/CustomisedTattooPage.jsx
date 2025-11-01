@@ -1,39 +1,53 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { ArrowRight, CheckCircle, Star } from 'lucide-react'
 import { Link } from 'react-router-dom'
+import { motion } from 'framer-motion'
+import { Fancybox } from '@fancyapps/ui'
+import '@fancyapps/ui/dist/fancybox/fancybox.css'
 
 const CustomisedTattooPage = () => {
+  // Initialize Fancybox
+  useEffect(() => {
+    Fancybox.bind('[data-fancybox="custom-gallery"]', {
+      Toolbar: {
+        display: {
+          left: ["infobar"],
+          middle: ["zoomIn", "zoomOut", "toggle1to1", "rotateCCW", "rotateCW", "flipX", "flipY"],
+          right: ["slideshow", "thumbs", "close"]
+        }
+      }
+    })
+
+    return () => {
+      Fancybox.destroy()
+    }
+  }, [])
+
   // Sample customised tattoo images
   const customGallery = [
     {
       id: 1,
-      image: 'https://images.unsplash.com/photo-1611501275019-9b5cda994e8d?w=400&h=400&fit=crop',
-      title: 'Personal Symbol Design'
+      image: 'https://images.unsplash.com/photo-1611501275019-9b5cda994e8d?w=400&h=400&fit=crop'
     },
     {
       id: 2,
-      image: 'https://images.unsplash.com/photo-1565058379802-bbe93b2f703a?w=400&h=400&fit=crop',
-      title: 'Custom Sleeve Concept'
+      image: 'https://images.unsplash.com/photo-1565058379802-bbe93b2f703a?w=400&h=400&fit=crop'
     },
     {
       id: 3,
-      image: 'https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=400&h=400&fit=crop',
-      title: 'Unique Geometric Pattern'
+      image: 'https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=400&h=400&fit=crop'
     },
     {
       id: 4,
-      image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=400&fit=crop',
-      title: 'Bespoke Artwork'
+      image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=400&fit=crop'
     },
     {
       id: 5,
-      image: 'https://images.unsplash.com/photo-1590736969955-71cc94901144?w=400&h=400&fit=crop',
-      title: 'Personalized Memorial'
+      image: 'https://images.unsplash.com/photo-1590736969955-71cc94901144?w=400&h=400&fit=crop'
     },
     {
       id: 6,
-      image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=400&fit=crop',
-      title: 'Original Concept Art'
+      image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=400&fit=crop'
     }
   ]
 
@@ -73,7 +87,7 @@ const CustomisedTattooPage = () => {
             <div className="flex justify-center">
               <Link
                 to="/book-now"
-                className="bg-accent-gold hover:bg-gold-dark text-luxury-dark px-8 py-4 rounded-lg font-semibold inline-flex items-center"
+                className="bg-accent-gold hover:bg-gold-dark text-luxury-dark px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold inline-flex items-center justify-center text-sm sm:text-base w-full sm:w-auto max-w-xs sm:max-w-none mx-auto transition-all duration-300"
               >
                 Book Custom Design
                 <ArrowRight className="ml-2" size={18} />
@@ -152,16 +166,31 @@ const CustomisedTattooPage = () => {
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {customGallery.map((item) => (
-              <div key={item.id} className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
-                <img 
-                  src={item.image} 
-                  alt={item.title}
-                  className="w-full h-64 object-cover"
-                />
-                <div className="p-4">
-                  <h3 className="text-lg font-semibold text-minimal-black">{item.title}</h3>
-                </div>
-              </div>
+              <motion.div
+                key={item.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                viewport={{ once: true }}
+                className="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
+              >
+                <a
+                  href={item.image}
+                  data-fancybox="custom-gallery"
+                  className="block relative"
+                >
+                  <img 
+                    src={item.image} 
+                    alt="Custom tattoo design"
+                    className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
+                    <span className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-sm font-medium">
+                      View Full Size
+                    </span>
+                  </div>
+                </a>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -220,13 +249,15 @@ const CustomisedTattooPage = () => {
           <p className="text-lg text-gray-400 mb-8">
             Book a consultation to discuss your custom design ideas and let our artists bring your personal vision to life.
           </p>
-          <Link
-            to="/book-now"
-            className="bg-accent-gold hover:bg-gold-dark text-luxury-dark px-8 py-4 rounded-lg font-semibold inline-flex items-center justify-center"
-          >
-            BOOK CUSTOM CONSULTATION
-            <ArrowRight className="ml-2" size={18} />
-          </Link>
+          <div className="flex justify-center">
+            <Link
+              to="/book-now"
+              className="bg-accent-gold hover:bg-gold-dark text-luxury-dark px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold inline-flex items-center justify-center text-sm sm:text-base w-full sm:w-auto max-w-xs sm:max-w-none mx-auto transition-all duration-300"
+            >
+              BOOK CUSTOM CONSULTATION
+              <ArrowRight className="ml-2" size={18} />
+            </Link>
+          </div>
         </div>
       </section>
     </div>
