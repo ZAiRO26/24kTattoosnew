@@ -25,30 +25,27 @@ const PortraitsRealisticPage = () => {
 
   // Sample portrait/realistic tattoo images
   const portraitGallery = [
-    {
-      id: 1,
-      image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=400&fit=crop'
-    },
-    {
-      id: 2,
-      image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=400&fit=crop'
-    },
-    {
-      id: 3,
-      image: 'https://images.unsplash.com/photo-1590736969955-71cc94901144?w=400&h=400&fit=crop'
-    },
-    {
-      id: 4,
-      image: 'https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=400&h=400&fit=crop'
-    },
-    {
-      id: 5,
-      image: 'https://images.unsplash.com/photo-1565058379802-bbe93b2f703a?w=400&h=400&fit=crop'
-    },
-    {
-      id: 6,
-      image: 'https://images.unsplash.com/photo-1611501275019-9b5cda994e8d?w=400&h=400&fit=crop'
-    }
+    { id: 1, image: '/assets/portrait/IMG_0149.jpg' },
+    { id: 2, image: '/assets/portrait/IMG_2061.jpg' },
+    { id: 3, image: '/assets/portrait/IMG_5668.jpg' },
+    { id: 4, image: '/assets/portrait/IMG_5771.jpg' },
+    { id: 5, image: '/assets/portrait/IMG_6019.jpg' },
+    { id: 6, image: '/assets/portrait/IMG_6385.jpg' },
+    { id: 7, image: '/assets/portrait/IMG_6691.jpg' },
+    { id: 8, image: '/assets/portrait/IMG_7218.jpg' },
+    { id: 9, image: '/assets/portrait/IMG_7277.jpg' },
+    { id: 10, image: '/assets/portrait/IMG_7280.jpg' },
+    { id: 11, image: '/assets/portrait/IMG_7327.jpg' },
+    { id: 12, image: '/assets/portrait/IMG_7490.jpg' },
+    { id: 13, image: '/assets/portrait/IMG_7691.jpg' },
+    { id: 14, image: '/assets/portrait/IMG_7823.jpg' },
+    { id: 15, image: '/assets/portrait/IMG_7893.jpg' },
+    { id: 16, image: '/assets/portrait/IMG_8673.jpg' },
+    { id: 17, image: '/assets/portrait/IMG_8894.jpg' },
+    { id: 18, image: '/assets/portrait/IMG_9037.jpg' },
+    { id: 19, image: '/assets/portrait/IMG_9082.jpg' },
+    { id: 20, image: '/assets/portrait/IMG_9464.jpg' },
+    { id: 21, image: '/assets/portrait/IMG_9510.jpg' }
   ]
 
   const specialties = [
@@ -112,12 +109,12 @@ const PortraitsRealisticPage = () => {
                 Our artists specialize in creating lifelike representations that preserve memories, honor loved ones, and showcase incredible artistic mastery. From subtle skin textures to expressive eyes, every detail matters.
               </p>
               <p className="text-lg text-minimal-gray">
-                Using advanced shading techniques and precise line work, we transform your cherished photographs into permanent works of art that capture not just appearance, but emotion and personality.
+                Using advanced shading and precise line work, we transform your cherished photographs into permanent works of art that capture not just appearance, but emotion and personality.
               </p>
             </div>
             <div className="relative">
               <img 
-                src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&h=600&fit=crop" 
+                src="/assets/portrait/IMG_0149.jpg" 
                 alt="Realistic Portrait Tattoo Example" 
                 className="rounded-lg shadow-lg"
               />
