@@ -7,43 +7,43 @@ const styles = [
   {
     name: 'Cover Ups',
     description: 'Transform existing tattoos into refreshed artwork with expert cover-up techniques.',
-    image: 'https://images.unsplash.com/photo-1565058379802-bbe93b2f703a?w=600&h=400&fit=crop',
+    image: '/assets/Style-tiles/Cover Ups.jpg',
     route: '/styles/cover-ups'
   },
   {
     name: 'Black & Grey',
     description: 'Monochrome shading with depth and contrast for timeless designs.',
-    image: 'https://images.unsplash.com/photo-1611501275019-9b5cda994e8d?w=600&h=400&fit=crop',
+    image: '/assets/Style-tiles/blackgrey.jpg',
     route: '/styles/black-grey'
   },
   {
     name: 'Colour',
     description: 'Vibrant color palettes and smooth blends for bold, eye-catching pieces.',
-    image: '/assets/Color.jpeg',
+    image: '/assets/Style-tiles/Color.jpg',
     route: '/styles/colour'
   },
   {
     name: 'Portraits & Realistic',
     description: 'Photorealistic detail capturing expressions, textures, and lifelike accuracy.',
-    image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=400&fit=crop',
+    image: '/assets/Style-tiles/portraits.jpg',
     route: '/styles/portraits-realistic'
   },
   {
     name: 'Micro / Minimalist tattoo',
     description: 'Elegant, small-scale designs with crisp, precise line work.',
-    image: 'https://images.unsplash.com/photo-1590736969955-71cc94901144?w=600&h=400&fit=crop',
+    image: '/assets/Style-tiles/Minimalist .jpg',
     route: '/styles/micro-minimalist'
   },
   {
     name: 'Customised tattoo',
     description: 'Fully custom designs tailored to your story, style, and placement.',
-    image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&h=400&fit=crop',
+    image: '/assets/Style-tiles/Customised.jpg',
     route: '/styles/customised-tattoo'
   },
   {
     name: 'Gallery',
     description: 'Explore our complete collection of tattoo artistry and diverse styles.',
-    image: 'https://images.unsplash.com/photo-1590736969955-71cc94901144?w=600&h=400&fit=crop',
+    image: '/assets/Style-tiles/gallery.jpg',
     route: '/styles/gallery'
   }
 ]

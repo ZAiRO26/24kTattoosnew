@@ -53,7 +53,19 @@ const Header = () => {
 
   const navigationItems = [
     { name: 'Home', path: '/' },
-    { name: 'Styles', path: '/styles' },
+    { 
+      name: 'Styles', 
+      path: '/styles',
+      dropdown: [
+        { name: 'Cover Ups', path: '/styles/cover-ups' },
+        { name: 'Black & Grey', path: '/styles/black-grey' },
+        { name: 'Colour', path: '/styles/colour' },
+        { name: 'Portraits & Realistic', path: '/styles/portraits-realistic' },
+        { name: 'Micro / Minimalist', path: '/styles/micro-minimalist' },
+        { name: 'Customised', path: '/styles/customised-tattoo' },
+        { name: 'Gallery', path: '/styles/gallery' }
+      ]
+    },
     {
       name: 'Hair and Piercing',
       path: '/hair-and-piercing',
