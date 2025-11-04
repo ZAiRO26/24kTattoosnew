@@ -17,6 +17,10 @@ const images = [
   "/assets/Hero-images/IMG_8794.jpg"
 ];
 
+const mobileImages = [
+  "/assets/portrait/IMG_0149.jpg"
+];
+
 export default function HeroSlider() {
   const [current, setCurrent] = useState(0);
   const [isBookingNavigating, setIsBookingNavigating] = useState(false);
@@ -24,11 +28,22 @@ export default function HeroSlider() {
   const [loadedImages, setLoadedImages] = useState(new Set());
   const [failedImages, setFailedImages] = useState(new Set());
   const navigate = useNavigate();
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   // Preload images and handle errors
   useEffect(() => {
     const preloadImages = () => {
-      images.forEach((src, index) => {
+      const imagesToLoad = isMobile ? mobileImages : images;
+      imagesToLoad.forEach((src, index) => {
         const img = new Image();
         img.onload = () => {
           setLoadedImages(prev => new Set([...prev, index]));
@@ -42,10 +57,10 @@ export default function HeroSlider() {
     };
 
     preloadImages();
-  }, []);
+  }, [isMobile]);
 
   // Filter out failed images for the slideshow
-  const validImages = images.filter((_, index) => !failedImages.has(index));
+  const validImages = (isMobile ? mobileImages : images).filter((_, index) => !failedImages.has(index));
 
   useEffect(() => {
     if (validImages.length === 0) return;
@@ -75,7 +90,7 @@ export default function HeroSlider() {
             alt={`Hero Slide ${idx + 1}`}
             className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ${
               current === idx ? 'z-10' : 'z-0'
-            }`}
+            } md:object-center`}
             style={{
               opacity: isLoaded ? (current === idx ? 1 : 0) : 0,
               objectPosition: 'center center',
