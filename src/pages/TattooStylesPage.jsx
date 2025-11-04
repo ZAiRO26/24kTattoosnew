@@ -7,7 +7,7 @@ const styles = [
   {
     name: 'Cover Ups',
     description: 'Transform existing tattoos into refreshed artwork with expert cover-up techniques.',
-    image: '/assets/Style-tiles/Cover Ups.jpg',
+    image: '/assets/Style-tiles/Coverups.jpg',
     route: '/styles/cover-ups'
   },
   {
