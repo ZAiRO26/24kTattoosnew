@@ -18,7 +18,18 @@ const images = [
 ];
 
 const mobileImages = [
-  "/assets/portrait/IMG_0149.jpg"
+  "/assets/Hero-images/1.jpg",
+  "/assets/Hero-images/2.jpg",
+  "/assets/Hero-images/7B71F933-1C39-4849-A678-CDB103FA5547.jpg",
+  "/assets/Hero-images/A84C67DA-34CC-4FCB-BBBF-D7A473E85609.jpg",
+  "/assets/Hero-images/C498B419-CF97-461F-BB4E-75DF15C4CDB1.jpg",
+  "/assets/Hero-images/IMG_2061.jpg",
+  "/assets/Hero-images/IMG_3358.jpg",
+  "/assets/Hero-images/IMG_7028.jpg",
+  "/assets/Hero-images/IMG_7218.jpg",
+  "/assets/Hero-images/IMG_7492.jpg",
+  "/assets/Hero-images/IMG_7691.jpg",
+  "/assets/Hero-images/IMG_8794.jpg"
 ];
 
 export default function HeroSlider() {
