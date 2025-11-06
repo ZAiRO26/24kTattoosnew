@@ -1,18 +1,33 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import OptimizedImage from '../components/OptimizedImage';
 
 export default function BasicTattooCoursesPage() {
   return (
-    <div className="min-h-screen bg-minimal-white">
-      {/* Hero Section */}
-      <section className="relative bg-minimal-black text-minimal-white py-20 px-6">
-        <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-wide">
-            Basic Tattoo Courses
-          </h1>
-          <p className="text-xl md:text-2xl text-minimal-gray font-light">
-            Gateway to professional artistry
-          </p>
+    <div className="pt-16 bg-minimal-white text-minimal-black min-h-screen">
+      {/* Hero Section - Text over banner image (aligned like Academy) */}
+      <section className="pt-16 pb-10 bg-minimal-white">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="rounded-xl overflow-hidden border border-minimal-border bg-white shadow-md">
+            <div className="relative w-full aspect-video">
+              <OptimizedImage
+                src="/assets/Basicacad.jpg"
+                alt="Basic Tattoo Courses banner"
+                className="w-full h-full"
+                loading="eager"
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 1200px"
+              />
+              <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/25 to-transparent" />
+              <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
+                <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-white drop-shadow-md mb-3">
+                  Basic Tattoo Courses
+                </h1>
+                <p className="text-base md:text-xl text-white/90 max-w-2xl">
+                  Gateway to professional artistry
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 

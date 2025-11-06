@@ -1,18 +1,36 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import OptimizedImage from '../components/OptimizedImage';
 
 export default function TattooAcademyPage() {
   return (
-    <div className="min-h-screen bg-minimal-white">
-      {/* Hero Section */}
-      <section className="relative bg-minimal-black text-minimal-white py-20 px-6">
-        <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-wide">
-            24K Tattoo Academy
-          </h1>
-          <p className="text-xl md:text-2xl text-minimal-light-gray font-light">
-            Where artistry meets structured expertise
-          </p>
+    <div className="pt-16 bg-minimal-white text-minimal-black min-h-screen">
+      {/* Hero Section - Text over banner image (refined centering + posh) */}
+      <section className="pt-16 pb-10 bg-minimal-white">
+        <div className="max-w-6xl mx-auto px-6">
+          {/* Banner Image with overlayed text */}
+          <div className="rounded-xl overflow-hidden border border-minimal-border bg-white shadow-md">
+            <div className="relative w-full aspect-video">
+              <OptimizedImage
+                src="/assets/acadameypage.jpg"
+                alt="24K Tattoo Academy banner showcasing training environment"
+                className="w-full h-full"
+                loading="eager"
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 1200px"
+              />
+              {/* Gradient overlay for elegant readability */}
+              <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/25 to-transparent" />
+              {/* Centered text overlay */}
+              <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
+                <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-white drop-shadow-md mb-3">
+                  24K Tattoo Academy
+                </h1>
+                <p className="text-base md:text-xl text-white/90 max-w-2xl">
+                  Where artistry meets structured expertise
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -41,45 +59,48 @@ export default function TattooAcademyPage() {
           <div className="grid md:grid-cols-3 gap-8 mt-16">
             <Link 
               to="/tattoo-academy/short-term-courses"
-              className="bg-minimal-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 border border-minimal-border group"
+              className="bg-minimal-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 border border-minimal-border group text-left flex flex-col items-start space-y-4 columns-1 w-full"
+              style={{ textAlign: 'left' }}
             >
-              <h3 className="text-2xl font-bold text-minimal-black mb-4 group-hover:text-accent-gold transition-colors">
+              <h3 className="text-2xl font-bold text-minimal-black group-hover:text-accent-gold transition-colors tracking-tight leading-snug">
                 Short Term Courses
               </h3>
-              <p className="text-minimal-gray leading-relaxed">
+              <p className="text-minimal-gray leading-relaxed break-normal whitespace-normal tracking-normal w-full">
                 Intensive modules providing high-impact training for hobbyists and professionals seeking core tattooing skills in a condensed timeframe.
               </p>
-              <div className="mt-6 text-accent-gold font-medium group-hover:underline">
+              <div className="text-accent-gold font-medium group-hover:underline inline-flex items-center gap-2">
                 Learn More →
               </div>
             </Link>
 
             <Link 
               to="/tattoo-academy/basic-courses"
-              className="bg-minimal-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 border border-minimal-border group"
+              className="bg-minimal-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 border border-minimal-border group text-left flex flex-col items-start space-y-4 columns-1 w-full"
+              style={{ textAlign: 'left' }}
             >
-              <h3 className="text-2xl font-bold text-minimal-black mb-4 group-hover:text-accent-gold transition-colors">
+              <h3 className="text-2xl font-bold text-minimal-black group-hover:text-accent-gold transition-colors tracking-tight leading-snug">
                 Basic Tattoo Courses
               </h3>
-              <p className="text-minimal-gray leading-relaxed">
+              <p className="text-minimal-gray leading-relaxed break-normal whitespace-normal tracking-normal w-full">
                 Gateway to professional artistry—a meticulously structured program for beginners determined to excel in the tattoo industry.
               </p>
-              <div className="mt-6 text-accent-gold font-medium group-hover:underline">
+              <div className="text-accent-gold font-medium group-hover:underline inline-flex items-center gap-2">
                 Learn More →
               </div>
             </Link>
 
             <Link 
               to="/tattoo-academy/pro-courses"
-              className="bg-minimal-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 border border-minimal-border group"
+              className="bg-minimal-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 border border-minimal-border group text-left flex flex-col items-start space-y-4 columns-1 w-full"
+              style={{ textAlign: 'left' }}
             >
-              <h3 className="text-2xl font-bold text-minimal-black mb-4 group-hover:text-accent-gold transition-colors">
+              <h3 className="text-2xl font-bold text-minimal-black group-hover:text-accent-gold transition-colors tracking-tight leading-snug">
                 Pro Tattoo Courses
               </h3>
-              <p className="text-minimal-gray leading-relaxed">
+              <p className="text-minimal-gray leading-relaxed break-normal whitespace-normal tracking-normal w-full">
                 Advanced program for artists aspiring to push boundaries and become industry leaders with mastery in specialized techniques.
               </p>
-              <div className="mt-6 text-accent-gold font-medium group-hover:underline">
+              <div className="text-accent-gold font-medium group-hover:underline inline-flex items-center gap-2">
                 Learn More →
               </div>
             </Link>

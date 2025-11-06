@@ -5,9 +5,11 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   server: {
-    port: 8080, // Changed to a commonly allowed port
+    port: 8080, // Use a single predictable dev port
     host: '0.0.0.0', // Allow external connections
-    open: true
+    open: true,
+    strictPort: true, // Fail if port is in use to avoid multiple servers
+    clearScreen: false
   },
   build: {
     rollupOptions: {

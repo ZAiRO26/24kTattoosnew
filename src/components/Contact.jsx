@@ -52,13 +52,29 @@ const Contact = () => {
               </div>
             </div>
 
-            <div className="mt-8">
-              <h3 className="font-semibold mb-4">Follow Us</h3>
-              <div className="flex space-x-4">
-                <Instagram className="text-red-400 hover:text-red-300 cursor-pointer" size={24} />
-                <Facebook className="text-red-400 hover:text-red-300 cursor-pointer" size={24} />
+              <div className="mt-8">
+                <h3 className="font-semibold mb-4">Follow Us</h3>
+                <div className="flex space-x-4">
+                <a
+                  href="https://www.instagram.com/xxivk.in/?hl=en"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Instagram"
+                  className="text-red-400 hover:text-red-300 cursor-pointer"
+                >
+                  <Instagram size={24} />
+                </a>
+                <a
+                  href="https://www.facebook.com/xxivk.in"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Facebook"
+                  className="text-red-400 hover:text-red-300 cursor-pointer"
+                >
+                  <Facebook size={24} />
+                </a>
+                </div>
               </div>
-            </div>
           </div>
 
           <div className="bg-gray-900 p-8 rounded-lg">

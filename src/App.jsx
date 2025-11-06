@@ -1,8 +1,11 @@
 import FAQSection from './components/FAQSection';
 import HeroSlider from './components/HeroSlider';
+import OptimizedImage from './components/OptimizedImage';
 import React, { useEffect, Suspense, lazy, useState } from 'react'
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
 import { motion } from 'framer-motion';
+// Motion-enabled Link for animated navigation elements
+const MotionLink = motion(Link);
 import { initializeCrossBrowserSupport } from './utils/crossBrowserSupport';
 import { initializeMobileOptimizations } from './utils/mobileOptimizations';
 
@@ -15,6 +18,7 @@ const BookNowPage = lazy(() => import('./pages/BookNowPage'));
 const DosAndDontsPage = lazy(() => import('./pages/DosAndDontsPage'));
 const HairServicesPage = lazy(() => import('./pages/HairServicesPage'));
 const PiercingServicesPage = lazy(() => import('./pages/PiercingServicesPage'));
+const HairArtistPage = lazy(() => import('./pages/HairArtistPage'));
 const PressSocialsPage = lazy(() => import('./pages/PressSocialsPage'));
 const TattooStylesPage = lazy(() => import('./pages/TattooStylesPage'));
 const OurStoryPage = lazy(() => import('./pages/OurStoryPage'));
@@ -294,55 +298,35 @@ const HomePage = () => {
               >
                 Get the possibility of tattooing in 24K Tattoo Studio
               </motion.p>
-              <motion.div
-                className="bg-accent-gold text-deep-charcoal px-8 py-4 font-semibold hover:bg-gold-dark transition-colors duration-200"
-                component={Link}
+              <MotionLink
                 to="/tattoo-academy"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                className="inline-block bg-accent-gold text-deep-charcoal px-8 py-4 font-semibold hover:bg-gold-dark transition-colors duration-200"
+                whileHover={{ scale: 1.06 }}
+                whileTap={{ scale: 0.97 }}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.8, ease: "easeOut" }}
+                aria-label="Discover our academy"
               >
                 DISCOVER OUR ACADEMY
-              </motion.div>
+              </MotionLink>
             </motion.div>
             <motion.div 
-              className="aspect-video bg-white border border-gray-200"
+              className="aspect-video bg-white border border-gray-200 rounded overflow-hidden"
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
+              whileHover={{ scale: 1.01 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
             >
-              <div className="w-full h-full flex items-center justify-center">
-                <motion.div 
-                  className="text-center"
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: 0.6, ease: "easeOut" }}
-                >
-                  <motion.div 
-                    className="w-16 h-16 bg-accent-gold rounded-full mx-auto mb-4 flex items-center justify-center"
-                    whileHover={{ scale: 1.1, rotate: 5 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <svg className="w-8 h-8 text-deep-charcoal" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                    </svg>
-                  </motion.div>
-                  <motion.p 
-                    className="text-gray-600"
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: 0.8, ease: "easeOut" }}
-                  >
-                    Academy Preview
-                  </motion.p>
-                </motion.div>
-              </div>
+              <OptimizedImage 
+                src="/assets/academy.jpg" 
+                alt="24K Tattoo Academy preview"
+                className="w-full h-full object-cover object-center"
+                loading="lazy"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
             </motion.div>
           </motion.div>
         </div>
@@ -593,6 +577,7 @@ function App() {
               <Route path="/hair-services" element={<HairServicesPage />} />
               <Route path="/hair-and-piercing" element={<ServicesPage />} />
               <Route path="/piercing-services" element={<PiercingServicesPage />} />
+              <Route path="/hair-and-piercing/hair-artist" element={<HairArtistPage />} />
               <Route path="/press-socials" element={<PressSocialsPage />} />
               <Route path="/about" element={<OurStoryPage />} />
               <Route path="/about/our-story" element={<OurStoryPage />} />

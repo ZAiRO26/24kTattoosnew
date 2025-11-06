@@ -159,7 +159,7 @@ export default function HeroSlider() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
           >
-            24K <span style={{fontSize: '1.2em'}}>T</span>ATTOO <span style={{fontSize: '1.2em'}}>H</span>AIR & <span style={{fontSize: '1.2em'}}>O</span>DDITIES
+            <span style={{fontSize: '1.2em'}}>24K</span> <span style={{fontSize: '1.2em'}}>T</span>ATTOO <span style={{fontSize: '1.2em'}}>H</span>AIR & <span style={{fontSize: '1.2em'}}>O</span>DDITIES
           </motion.h1>
           <motion.h2 
             className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-2 sm:mb-3 tracking-normal leading-tight"

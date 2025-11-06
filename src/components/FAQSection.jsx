@@ -8,7 +8,7 @@ const faqs = [
   },
   {
     question: "WHAT’S THE STUDIO’S ADDRESS?",
-    answer: "",
+    answer: "24K Tattoo Hair & oddities — Road no 1, entry, near Nagarjuna Circle Road, opp. Mpm Times Square mall, Banjara Hills, near Florists, Hyderabad 500034",
   },
   {
     question: "WHAT SHOULD I EXPECT AT MY APPOINTMENT?",

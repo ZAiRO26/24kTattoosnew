@@ -179,7 +179,7 @@ const TattooStylesPage = () => {
               return (
                 <motion.div 
                   key={style.name} 
-                  className="style-card bg-white border border-minimal-border rounded-lg overflow-hidden hover:shadow-lg transition-all duration-300 hover:scale-105"
+                  className="style-card group bg-white border border-minimal-border rounded-lg overflow-hidden hover:shadow-lg transition-all duration-300 hover:scale-105 cursor-pointer focus:outline-none focus:ring-2 focus:ring-accent-gold"
                   initial={{ 
                     opacity: 0, 
                     x: fromHero ? slideDirection.x : 0,
@@ -204,6 +204,17 @@ const TattooStylesPage = () => {
                     rotateZ: index % 2 === 0 ? -2 : 2,
                     transition: { duration: 0.3 }
                   }}
+                >
+                <Link
+                  to={style.route}
+                  onClick={(e) => style.name === 'Cover Ups' ? handleCoverUpsClick(e) : handleStyleClick(style, e)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault()
+                      style.name === 'Cover Ups' ? handleCoverUpsClick(e) : handleStyleClick(style, e)
+                    }
+                  }}
+                  className="block"
                 >
                 <motion.img 
                   src={style.image} 
@@ -237,7 +248,7 @@ const TattooStylesPage = () => {
                 />
                 <div className="p-6">
                   <motion.h3 
-                    className="text-xl font-bold mb-2 text-minimal-black"
+                    className="text-xl font-bold mb-2 text-minimal-black group-hover:text-accent-gold transition-colors"
                     initial={{ 
                       opacity: 0, 
                       x: fromHero ? (slideDirection.x * 0.5) : -20,
@@ -274,32 +285,10 @@ const TattooStylesPage = () => {
                   >
                     {style.description}
                   </motion.p>
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: index * 0.1 + 0.5 }}
-                  >
-                    {style.name === 'Cover Ups' ? (
-                      <button
-                        onClick={handleCoverUpsClick}
-                        className="bg-accent-gold hover:bg-gold-dark text-luxury-dark px-6 py-2 rounded-lg font-semibold inline-flex items-center transition-all duration-300 hover:scale-105"
-                      >
-                        Learn More
-                        <ArrowRight className="ml-2" size={16} />
-                      </button>
-                    ) : (
-                      <button
-                        onClick={(e) => handleStyleClick(style, e)}
-                        className="bg-accent-gold hover:bg-gold-dark text-luxury-dark px-6 py-2 rounded-lg font-semibold inline-flex items-center transition-all duration-300 hover:scale-105"
-                      >
-                        Learn More
-                        <ArrowRight className="ml-2" size={16} />
-                      </button>
-                    )}
-                  </motion.div>
+                  
                 </div>
-              </motion.div>
+                </Link>
+                </motion.div>
             );
             })}
           </div>

@@ -1,9 +1,0 @@
-User-agent: *
-Allow: /
-Sitemap: https://24ktattoos.com/sitemap.xml
-
-# Block access to admin or sensitive areas (if any)
-# Disallow: /admin/
-# Disallow: /private/
-
-

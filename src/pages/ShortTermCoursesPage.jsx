@@ -1,18 +1,33 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import OptimizedImage from '../components/OptimizedImage';
 
 export default function ShortTermCoursesPage() {
   return (
-    <div className="min-h-screen bg-minimal-white">
-      {/* Hero Section */}
-      <section className="relative bg-minimal-black text-minimal-white py-20 px-6">
-        <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-wide">
-            Short Term Courses
-          </h1>
-          <p className="text-xl md:text-2xl text-minimal-gray font-light">
-            High-impact training in a condensed timeframe
-          </p>
+    <div className="pt-16 bg-minimal-white text-minimal-black min-h-screen">
+      {/* Hero Section - Text over banner image (aligned like Academy) */}
+      <section className="pt-16 pb-10 bg-minimal-white">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="rounded-xl overflow-hidden border border-minimal-border bg-white shadow-md">
+            <div className="relative w-full aspect-video">
+              <OptimizedImage
+                src="/assets/Shortterm.jpg"
+                alt="Short Term Tattoo Courses banner"
+                className="w-full h-full"
+                loading="eager"
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 1200px"
+              />
+              <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/25 to-transparent" />
+              <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
+                <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-white drop-shadow-md mb-3">
+                  Short Term Courses
+                </h1>
+                <p className="text-base md:text-xl text-white/90 max-w-2xl">
+                  High-impact training in a condensed timeframe
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -74,25 +89,25 @@ export default function ShortTermCoursesPage() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="bg-minimal-dark-gray py-16 px-6">
+      {/* CTA Section (color theme replicated from Basic Courses) */}
+      <section className="bg-accent-gold py-16 px-6">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-minimal-white mb-6">
+          <h2 className="text-3xl md:text-4xl font-bold text-minimal-black mb-6">
             Ready to Start Your Tattoo Journey?
           </h2>
-          <p className="text-xl text-minimal-white mb-8">
+          <p className="text-xl text-minimal-black mb-8">
             Join our Short Term Course and discover the world of tattoo artistry.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link 
               to="/book-now"
-              className="inline-block bg-minimal-black text-minimal-white px-8 py-4 font-medium hover:bg-minimal-gray transition-colors duration-200"
+              className="inline-block bg-minimal-black text-minimal-white px-8 py-4 font-medium hover:bg-minimal-dark-gray transition-colors duration-200"
             >
               ENROLL NOW
             </Link>
             <Link 
               to="/tattoo-academy"
-              className="inline-block border-2 border-minimal-white text-minimal-white px-8 py-4 font-medium hover:bg-minimal-white hover:text-minimal-black transition-colors duration-200"
+              className="inline-block border-2 border-minimal-black text-minimal-black px-8 py-4 font-medium hover:bg-minimal-black hover:text-minimal-white transition-colors duration-200"
             >
               VIEW ALL COURSES
             </Link>

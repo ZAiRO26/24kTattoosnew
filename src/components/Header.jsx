@@ -71,7 +71,8 @@ const Header = () => {
       path: '/hair-and-piercing',
       dropdown: [
         { name: 'Hair Services', path: '/hair-services' },
-        { name: 'Piercing Services', path: '/piercing-services' }
+        { name: 'Piercing Services', path: '/piercing-services' },
+        { name: 'About Hair Artist', path: '/hair-and-piercing/hair-artist' }
       ]
     },
     {

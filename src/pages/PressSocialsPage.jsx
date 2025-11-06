@@ -1,5 +1,5 @@
 import React from 'react'
-import { Newspaper, Instagram, Facebook, Youtube, Link as ExternalLink, ArrowRight } from 'lucide-react'
+import { Newspaper, Instagram, Facebook, Youtube, ArrowRight } from 'lucide-react'
 
 const PressSocialsPage = () => {
   const pressItems = [
@@ -21,10 +21,10 @@ const PressSocialsPage = () => {
   ]
 
   const socials = [
-    { name: 'Instagram', icon: <Instagram className="w-5 h-5" />, url: '#'},
-    { name: 'Facebook', icon: <Facebook className="w-5 h-5" />, url: '#'},
-    { name: 'Pinterest', icon: <ExternalLink className="w-5 h-5" />, url: 'http://pinterest.com/hyderabadtattooer/'},
-    { name: 'YouTube', icon: <Youtube className="w-5 h-5" />, url: '#'}
+    { name: 'Instagram', icon: <Instagram className="w-5 h-5" />, url: 'https://www.instagram.com/xxivk.in/?hl=en'},
+    { name: 'Facebook', icon: <Facebook className="w-5 h-5" />, url: 'https://www.facebook.com/xxivk.in'},
+    { name: 'Instagram', icon: <Instagram className="w-5 h-5" />, url: 'https://www.instagram.com/tattoosbyvikram/?hl=en'},
+    { name: 'YouTube', icon: <Youtube className="w-5 h-5" />, url: 'https://www.youtube.com/@TattooHyderabad/featured'}
   ]
 
   return (
