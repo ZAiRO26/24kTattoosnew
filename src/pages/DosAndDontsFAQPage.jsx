@@ -1,4 +1,5 @@
 import React from 'react'
+ 
 
 const QA = ({ q, a }) => (
   <div className="mb-6">
@@ -16,6 +17,7 @@ const Section = ({ title, children }) => (
 
 const DosAndDontsFAQPage = () => (
   <div className="pt-16 bg-minimal-white text-minimal-black min-h-screen">
+    
     <div className="max-w-4xl mx-auto px-6 py-12">
       <h1 className="text-4xl md:text-6xl font-bold mb-8">FAQ</h1>
 

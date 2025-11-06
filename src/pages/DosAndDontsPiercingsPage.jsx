@@ -1,9 +1,11 @@
 import React from 'react'
 import { CheckCircle, XCircle, AlertCircle, ArrowRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
+ 
 
 const DosAndDontsPiercingsPage = () => (
   <div className="pt-16 bg-minimal-white text-minimal-black min-h-screen">
+    
     {/* Hero */}
     <section className="py-16 bg-minimal-white">
       <div className="max-w-6xl mx-auto px-6 text-center">

@@ -12,6 +12,7 @@ import { initializeMobileOptimizations } from './utils/mobileOptimizations';
 import Header from './components/Header'
 import Footer from './components/Footer'
 import ScrollRestoration from './components/ScrollRestoration'
+import FloatingButtons from './components/FloatingButtons'
 
 // Lazy load page components for better performance
 const BookNowPage = lazy(() => import('./pages/BookNowPage'));
@@ -598,6 +599,7 @@ function App() {
           </Suspense>
         </div>
         <Footer />
+        <FloatingButtons />
       </div>
     </Router>
   )

@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import { Fancybox } from '@fancyapps/ui'
 import '@fancyapps/ui/dist/fancybox/fancybox.css'
 import OptimizedImage from '../components/OptimizedImage'
+ 
 
 const StudioPage = () => {
   // Initialize Fancybox
@@ -50,6 +51,7 @@ const StudioPage = () => {
 
   return (
     <div className="pt-16 bg-minimal-white text-minimal-black min-h-screen">
+      
       <section className="py-16 bg-minimal-white">
         <div className="max-w-4xl mx-auto px-6">
           <h1 className="text-4xl md:text-6xl font-bold mb-6">The Studio</h1>

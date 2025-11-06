@@ -1,5 +1,6 @@
 import React from 'react'
 import { CheckCircle, Scissors, Sparkles, Wind, Palette, Droplets, Hand } from 'lucide-react'
+ 
 
 const HairServicesPage = () => {
   const hairServices = [
@@ -42,6 +43,7 @@ const HairServicesPage = () => {
 
   return (
     <div className="pt-16 bg-minimal-white text-minimal-black min-h-screen">
+      
       {/* Hero Section */}
       <section className="py-16 bg-minimal-white">
         <div className="max-w-6xl mx-auto px-6">

@@ -1,10 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import OptimizedImage from '../components/OptimizedImage';
+ 
 
 export default function BasicTattooCoursesPage() {
   return (
     <div className="pt-16 bg-minimal-white text-minimal-black min-h-screen">
+      
       {/* Hero Section - Text over banner image (aligned like Academy) */}
       <section className="pt-16 pb-10 bg-minimal-white">
         <div className="max-w-6xl mx-auto px-6">

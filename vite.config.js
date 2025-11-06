@@ -8,7 +8,7 @@ export default defineConfig({
     port: 8080, // Use a single predictable dev port
     host: '0.0.0.0', // Allow external connections
     open: true,
-    strictPort: true, // Fail if port is in use to avoid multiple servers
+    strictPort: false, // Allow using a fallback port if 8080 is busy
     clearScreen: false
   },
   build: {

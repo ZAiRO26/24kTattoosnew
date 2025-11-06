@@ -1,7 +1,9 @@
 import React from 'react'
+ 
 
 const AboutArtistPage = () => (
   <div className="pt-16 bg-minimal-white text-minimal-black min-h-screen">
+    
     <section className="py-16 bg-minimal-white">
       <div className="max-w-4xl mx-auto px-6">
         <h1 className="text-4xl md:text-6xl font-bold mb-6">About the Artist</h1>

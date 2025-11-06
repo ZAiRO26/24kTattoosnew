@@ -1,5 +1,6 @@
 import React from 'react'
 import { CheckCircle, Zap, Shield, Clock, Star, Award } from 'lucide-react'
+ 
 
 const PiercingServicesPage = () => {
   const piercingServices = [
@@ -34,6 +35,7 @@ const PiercingServicesPage = () => {
 
   return (
     <div className="pt-16 bg-minimal-white text-minimal-black min-h-screen">
+      
       {/* Hero Section */}
       <section className="py-16 bg-minimal-white">
         <div className="max-w-6xl mx-auto px-6">

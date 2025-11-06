@@ -5,6 +5,7 @@ import '@fancyapps/ui/dist/fancybox/fancybox.css';
 import OptimizedImage from '../components/OptimizedImage';
 import { ArrowRight, CheckCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
+ 
 
 const GalleryPage = () => {
 
@@ -192,6 +193,7 @@ const GalleryPage = () => {
 
   return (
     <div className="pt-16 bg-minimal-white text-minimal-black min-h-screen">
+      
       {/* Hero Section */}
       <section className="py-20 bg-minimal-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

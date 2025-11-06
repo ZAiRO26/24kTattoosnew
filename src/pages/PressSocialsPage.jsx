@@ -1,5 +1,6 @@
 import React from 'react'
 import { Newspaper, Instagram, Facebook, Youtube, ArrowRight } from 'lucide-react'
+ 
 
 const PressSocialsPage = () => {
   const pressItems = [
@@ -29,6 +30,7 @@ const PressSocialsPage = () => {
 
   return (
     <div className="pt-16 bg-minimal-white text-minimal-black min-h-screen">
+      
       {/* Hero */}
       <section className="py-16 bg-minimal-white">
         <div className="max-w-6xl mx-auto px-6 text-center">
